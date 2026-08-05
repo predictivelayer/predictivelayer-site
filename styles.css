@@ -261,7 +261,7 @@ br.brk { display: none; }
 
 .demo-body {
   padding: 22px;
-  min-height: 430px;
+  min-height: 890px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -717,3 +717,19 @@ table.data td.why { color: var(--muted); white-space: normal; }
   }
   .menu-item { padding: 11px 0; border-bottom: 1px solid var(--line-soft); border-radius: 0; }
 }
+
+/* ---------- assistant messages ---------- */
+
+.msg-bot {
+  align-self: flex-start;
+  max-width: 84%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  border-radius: 12px 12px 12px 4px;
+  padding: 11px 15px;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+.msg-bot b { color: var(--ink); font-weight: 500; }
+.msg-bot .q { display: block; margin-top: 8px; color: var(--ink); }

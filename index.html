@@ -6,7 +6,7 @@
 <title>predictivelayer.io — ask for a prediction, get one</title>
 <meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
 <meta name="theme-color" content="#08090b">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -61,46 +61,56 @@
           <div class="demo-body">
 
             <div class="chips" data-el="chips">
-              <span class="chip"><span class="ic">&#9679;</span> closed_accounts.csv <span class="sz">180 rows</span></span>
-              <span class="chip"><span class="ic">&#9679;</span> pipeline_q3.csv <span class="sz">4,120 rows</span></span>
+              <span class="chip"><span class="ic">&#9679;</span> tracked_companies.csv <span class="sz">4,012 rows</span></span>
             </div>
 
-            <div class="msg msg-user" data-el="ask"><span data-el="typed"></span><span class="cursor"></span></div>
+            <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+
+            <div class="msg msg-bot" data-el="bot1">
+              I will treat those 84 owners as your examples of someone who sold, and score everyone else against them.
+              <span class="q">Two things before I start. Does a sale to a strategic buyer count the same as a sale to a fund? And is there a size you stop caring below?</span>
+            </div>
+
+            <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
 
             <div class="steps">
-              <div class="step" data-el="s1"><span class="tick">&#10003;</span>Matched columns across both files <span class="val">8 shared</span></div>
-              <div class="step" data-el="s2"><span class="tick">&#10003;</span>Detected the task <span class="val">classification, 2 classes</span></div>
-              <div class="step" data-el="s3"><span class="tick">&#10003;</span>Learned from your labeled rows <span class="val">no training run</span></div>
-              <div class="step" data-el="s4"><span class="tick">&#10003;</span>Scored the rest <span class="val">4,120 rows in 6.2s</span></div>
+              <div class="step" data-el="s1"><span class="tick">&#10003;</span>Read your list <span class="val">4,012 companies, 84 marked sold</span></div>
+              <div class="step" data-el="s2"><span class="tick">&#10003;</span>Kept the ones in range <span class="val">3,180 with 20 staff or more</span></div>
+              <div class="step" data-el="s3"><span class="tick">&#10003;</span>Found what the 84 had in common <span class="val">owner age, years held, flat headcount</span></div>
+              <div class="step" data-el="s4"><span class="tick">&#10003;</span>Scored everyone else <span class="val">3,096 companies in 7.4s</span></div>
             </div>
 
             <div class="result" data-el="result">
               <div class="tbl-wrap">
-                <div class="tbl-head"><span>pipeline_q3_scored.csv</span><span class="dl">4,120 rows</span></div>
+                <div class="tbl-head"><span>tracked_companies_scored.csv</span><span class="dl">sorted by sell intent</span></div>
                 <div class="tbl-scroll">
                   <table class="data">
                     <thead>
                       <tr>
-                        <th>account</th><th>employees</th><th>industry</th><th>stage</th>
-                        <th class="col-new">prediction</th><th class="col-new">confidence</th>
+                        <th>company</th><th>owner age</th><th>years held</th><th>staff</th><th>state</th>
+                        <th class="col-new">sell intent</th><th class="col-new">confidence</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td>Northwind Ltd</td><td>420</td><td>logistics</td><td>Series B</td>
-                          <td class="col-new">good fit</td><td class="col-new">0.91</td></tr>
-                      <tr><td>Aster Health</td><td>38</td><td>healthcare</td><td>Seed</td>
-                          <td class="col-new">poor fit</td><td class="col-new">0.84</td></tr>
-                      <tr><td>Kestrel Robotics</td><td>1,240</td><td>manufacturing</td><td>Series D</td>
-                          <td class="col-new">good fit</td><td class="col-new">0.77</td></tr>
-                      <tr><td>Vantage Print</td><td>61</td><td>printing</td><td>Bootstrapped</td>
-                          <td class="col-new">poor fit</td><td class="col-new">0.95</td></tr>
-                      <tr><td>Orchard Labs</td><td>310</td><td>biotech</td><td>Series A</td>
-                          <td class="col-new">good fit</td><td class="col-new">0.62</td></tr>
+                      <tr><td>Northwind Mechanical</td><td>63</td><td>27</td><td>41</td><td>OH</td>
+                          <td class="col-new">high</td><td class="col-new">0.92</td></tr>
+                      <tr><td>Kestrel Heating</td><td>67</td><td>31</td><td>24</td><td>PA</td>
+                          <td class="col-new">high</td><td class="col-new">0.81</td></tr>
+                      <tr><td>Orchard Climate</td><td>59</td><td>22</td><td>63</td><td>NC</td>
+                          <td class="col-new">high</td><td class="col-new">0.64</td></tr>
+                      <tr><td>Vantage Air</td><td>45</td><td>12</td><td>130</td><td>FL</td>
+                          <td class="col-new">low</td><td class="col-new">0.90</td></tr>
+                      <tr><td>Aster Plumbing Co</td><td>38</td><td>6</td><td>88</td><td>TX</td>
+                          <td class="col-new">low</td><td class="col-new">0.87</td></tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div class="demo-cta"><span class="dl">Download CSV</span><span>Every row keeps its original values. One column added.</span></div>
+              <div class="demo-cta"><span class="dl">Download CSV</span><span>Your original rows, untouched. Two columns added.</span></div>
+            </div>
+
+            <div class="msg msg-bot" data-el="bot2">
+              <b>214 companies score above 0.80.</b> That is your call list for the quarter. Ask me why any one of them scored the way it did, or tell me I got one wrong and I will take it into account.
             </div>
 
           </div>
@@ -209,6 +219,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=5"></script>
+<script src="main.js?v=6"></script>
 </body>
 </html>
