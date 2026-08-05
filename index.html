@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>predictivelayer.io — the predictive layer for your data</title>
-<meta name="description" content="Give it a few labeled examples, and it scores the rest. A predictive layer for tabular data, built on a tabular foundation model. No model training required.">
+<title>predictivelayer.io — AI that predicts, not just chats</title>
+<meta name="description" content="Give it a few labeled examples and it scores the rest. A predictive layer for your tabular data, built on a tabular foundation model. No model training.">
+<meta name="theme-color" content="#08090b">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:,">
 </head>
@@ -13,12 +14,16 @@
 <header class="site-header">
   <div class="wrap nav">
     <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
     <nav class="nav-links">
       <a href="product.html">Product</a>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="nav-right">
+      <a class="btn btn-ghost" href="product.html">How it works</a>
+      <a class="btn btn-primary" href="contact.html">Get in touch</a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
   </div>
 </header>
 
@@ -26,53 +31,96 @@
 
   <section class="hero">
     <div class="wrap">
-      <h1>The predictive layer for your data.</h1>
-      <p class="lead">Give it a few labeled examples, and it scores the rest. Define your own criteria, drop in a spreadsheet, and get a predicted column back. No model training, no tuning, no data science team.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+      <h1>Finally, AI that predicts,<br class="brk"> not just chats</h1>
+      <p class="sub">Give it a few labeled examples and it scores the rest. Your own criteria, applied to every row you have. No model training, no tuning, no data science team.</p>
+      <div class="btn-row center">
         <a class="btn btn-secondary" href="product.html#how">See how it works</a>
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
       </div>
-    </div>
-  </section>
 
-  <section class="alt tight">
-    <div class="wrap">
-      <div class="diagram">
-        <div class="diagram-head">Your rows, with one column appended</div>
-        <div class="diagram-scroll">
-          <table>
-            <tr>
-              <th>company</th>
-              <th>employees</th>
-              <th>industry</th>
-              <th>funding_stage</th>
-              <th class="col-new">prediction</th>
-              <th class="col-new">confidence</th>
-            </tr>
-            <tr>
-              <td>Northwind Ltd</td><td>420</td><td>logistics</td><td>Series B</td>
-              <td class="col-new">good fit</td><td class="col-new">0.91</td>
-            </tr>
-            <tr>
-              <td>Aster Health</td><td>38</td><td>healthcare</td><td>Seed</td>
-              <td class="col-new">poor fit</td><td class="col-new">0.84</td>
-            </tr>
-            <tr>
-              <td>Kestrel Robotics</td><td>1,240</td><td>manufacturing</td><td>Series D</td>
-              <td class="col-new">good fit</td><td class="col-new">0.77</td>
-            </tr>
-          </table>
+      <div class="hero-visual">
+        <div class="app">
+          <div class="app-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="app-crumb">predictivelayer &nbsp;/&nbsp; <b>account-scoring</b></span>
+            <span class="spacer"></span>
+            <span class="pill">local &middot; cpu</span>
+          </div>
+          <div class="app-body">
+            <div class="app-rail">
+              <div class="rail-label">Datasets</div>
+              <div class="rail-item done"><span class="tick">&#10003;</span>Labeled examples</div>
+              <div class="rail-item done"><span class="tick">&#10003;</span>Rows to score</div>
+              <div class="rail-label">Predict</div>
+              <div class="rail-item done"><span class="tick">&#10003;</span>Target column</div>
+              <div class="rail-item on"><span class="tick">&#9679;</span>Results</div>
+              <div class="rail-label">Export</div>
+              <div class="rail-item"><span class="tick"></span>Download CSV</div>
+            </div>
+            <div class="app-main">
+
+              <div class="drops">
+                <div class="drop filled">
+                  <div class="drop-tag">A &middot; Labeled examples</div>
+                  <div class="drop-file"><span class="ok">&#10003;</span> closed_accounts.csv</div>
+                  <div class="drop-meta">180 rows &middot; 9 columns</div>
+                </div>
+                <div class="drop filled">
+                  <div class="drop-tag">B &middot; Rows to score</div>
+                  <div class="drop-file"><span class="ok">&#10003;</span> pipeline_q3.csv</div>
+                  <div class="drop-meta">4,120 rows &middot; 8 columns</div>
+                </div>
+              </div>
+
+              <div class="controls">
+                <div>
+                  <span class="ctrl-label">Target column in A</span>
+                  <div class="fake-select"><span>outcome</span><span>&#9662;</span></div>
+                </div>
+                <div>
+                  <span class="ctrl-label">Task</span>
+                  <div class="fake-select"><span>Auto</span><span>&#9662;</span></div>
+                </div>
+                <div><span class="run">Predict</span></div>
+              </div>
+
+              <p class="note">Used 8 shared feature columns. Task detected: classification, 2 classes. 4,120 rows scored in 6.2s.</p>
+
+              <div class="tbl-wrap">
+                <div class="tbl-head"><span>pipeline_q3_scored.csv</span><span class="dl">Download CSV</span></div>
+                <div class="tbl-scroll">
+                  <table class="data">
+                    <tr>
+                      <th>account</th><th>employees</th><th>industry</th><th>stage</th>
+                      <th class="col-new">prediction</th><th class="col-new">confidence</th>
+                    </tr>
+                    <tr><td>Northwind Ltd</td><td>420</td><td>logistics</td><td>Series B</td>
+                        <td class="col-new">good fit</td><td class="col-new">0.91</td></tr>
+                    <tr><td>Aster Health</td><td>38</td><td>healthcare</td><td>Seed</td>
+                        <td class="col-new">poor fit</td><td class="col-new">0.84</td></tr>
+                    <tr><td>Kestrel Robotics</td><td>1,240</td><td>manufacturing</td><td>Series D</td>
+                        <td class="col-new">good fit</td><td class="col-new">0.77</td></tr>
+                    <tr><td>Vantage Print</td><td>61</td><td>printing</td><td>Bootstrapped</td>
+                        <td class="col-new">poor fit</td><td class="col-new">0.95</td></tr>
+                    <tr><td>Orchard Labs</td><td>310</td><td>biotech</td><td>Series A</td>
+                        <td class="col-new">good fit</td><td class="col-new">0.62</td></tr>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="rule">
     <div class="wrap">
-      <p class="eyebrow">How it works</p>
-      <h2>Three steps.</h2>
-      <p class="lead narrow">You bring the judgement. The model copies it across the rest of your rows.</p>
-      <div class="grid grid-3" style="margin-top:40px">
+      <p class="eyebrow center">How it works</p>
+      <h2 class="center">Two files in, one column out</h2>
+      <p class="sub center" style="text-align:center">You bring the judgement. The model copies it across the rest of your rows.</p>
+      <div class="grid grid-3" style="margin-top:52px">
         <div class="card">
           <span class="step-num">01</span>
           <h3>Upload labeled examples</h3>
@@ -81,7 +129,7 @@
         <div class="card">
           <span class="step-num">02</span>
           <h3>Upload rows to score</h3>
-          <p>The same columns, minus the answer. This is the set you want scored, from a few hundred rows to a few thousand.</p>
+          <p>The same columns, minus the answer. From a few hundred rows to a few thousand.</p>
         </div>
         <div class="card">
           <span class="step-num">03</span>
@@ -92,14 +140,14 @@
     </div>
   </section>
 
-  <section class="alt">
+  <section class="rule">
     <div class="wrap">
-      <div class="grid grid-2">
+      <div class="grid split">
         <div>
-          <p class="eyebrow">Why it is different</p>
-          <h2>No training run. No tuning.</h2>
-          <p>Under the hood is a tabular foundation model. It was pre-trained on millions of synthetic tables, so it already knows how columns tend to relate to each other. Your examples go in as context, not as a training set.</p>
-          <p>That means a prediction takes seconds, not a sprint, and you can change your criteria and re-run without starting over.</p>
+          <p class="eyebrow">The model</p>
+          <h2>No training run, no tuning</h2>
+          <p class="lead">Under the hood is a tabular foundation model, pre-trained on millions of synthetic tables. It already knows how columns tend to relate, so your examples go in as context rather than as a training set.</p>
+          <p class="lead">A prediction takes seconds instead of a sprint, and you can change your criteria and run it again without starting over.</p>
           <p><a href="product.html">Read more about the product &rarr;</a></p>
         </div>
         <div class="grid" style="gap:16px">
@@ -109,22 +157,37 @@
           </div>
           <div class="card">
             <h3>Works on plain CSVs</h3>
-            <p>Numbers, text categories, missing values. Columns are matched between the two files automatically.</p>
+            <p>Numbers, text categories, missing values. Columns are matched between the two files for you.</p>
           </div>
           <div class="card">
             <h3>Runs on your machine</h3>
-            <p>The prediction app runs locally on a laptop CPU. Your data does not have to leave your network.</p>
+            <p>The app runs locally on a laptop CPU. Your data does not have to leave your network.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="wrap narrow" style="text-align:center">
-      <h2>Try it on your own data.</h2>
-      <p class="lead">Send us a note about what you want to score and we will get you set up.</p>
-      <div class="btn-row" style="justify-content:center">
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">Where it fits</p>
+      <h2 class="center">Anything you can label</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card"><h3>Lead and account scoring</h3><p>Label the accounts that closed. Score the rest of the list against the same bar.</p></div>
+        <div class="card"><h3>Churn and renewal risk</h3><p>Label who left and who stayed. Flag the accounts heading the same way.</p></div>
+        <div class="card"><h3>Review triage</h3><p>Label the cases that needed a look. Rank the queue by how likely each one is to matter.</p></div>
+        <div class="card"><h3>Data quality flags</h3><p>Label the rows you know are wrong. Find the ones that look like them.</p></div>
+        <div class="card"><h3>Category fill-in</h3><p>Tag part of a catalogue by hand. Let the model finish the rest.</p></div>
+        <div class="card"><h3>Estimates and grades</h3><p>Continuous targets work too: price, duration, a numeric quality score.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap narrow center">
+      <h2>Try it on your own data</h2>
+      <p class="sub center" style="text-align:center;margin-bottom:0">Tell us what you want to score and we will get you set up.</p>
+      <div class="btn-row center">
         <a class="btn btn-primary" href="contact.html">Get in touch</a>
         <a class="btn btn-secondary" href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
       </div>
