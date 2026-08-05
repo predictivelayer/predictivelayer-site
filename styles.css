@@ -13,10 +13,19 @@
   --ink-2:      #a3a3a3;
   --muted:      #6e6e6e;
 
-  --accent:     #5b8cf0;
-  --accent-2:   #4a79d8;
-  --accent-dim: rgba(91,140,240,.10);
-  --accent-ink: #8fadea;
+  /* Brand green. Sampled from Cartesia and kept as the one colour on
+     the site. --green-text is a lifted version of --green so it stays
+     readable on black; do not use --green for small text. */
+  --green-deep: #1f4d2d;
+  --green:      #309d4b;
+  --green-2:    #277f3d;
+  --green-text: #4fbc6c;
+  --green-soft: #c1e6c6;
+
+  --accent:     var(--green);
+  --accent-2:   var(--green-2);
+  --accent-dim: rgba(48,157,75,.13);
+  --accent-ink: var(--green-text);
 
   --radius:     10px;
   --radius-lg:  14px;
@@ -58,7 +67,7 @@ body {
   overflow-x: hidden;
 }
 
-/* the blue glow behind the top of the page */
+/* the soft green glow behind the top of the page */
 body::before {
   content: "";
   position: absolute;
@@ -68,8 +77,8 @@ body::before {
   width: 1900px;
   height: 1000px;
   background: radial-gradient(ellipse at center,
-              rgba(255,255,255,.045) 0%,
-              rgba(255,255,255,.018) 42%,
+              rgba(48,157,75,.10) 0%,
+              rgba(48,157,75,.035) 42%,
               rgba(0,0,0,0) 72%);
   pointer-events: none;
   z-index: 0;
@@ -90,7 +99,7 @@ h3 { font-size: 1.02rem; font-weight: 500; letter-spacing: -0.012em; }
 p { margin: 0 0 1.05em; }
 
 a { color: var(--accent-ink); text-decoration: none; }
-a:hover { color: #b9d2fd; }
+a:hover { color: var(--green-soft); }
 
 code {
   font-family: var(--mono);
@@ -103,7 +112,9 @@ code {
 }
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-.narrow { max-width: 720px; }
+/* keep narrow blocks on the same left edge as the rest of the page */
+.narrow { max-width: var(--maxw); }
+.narrow > * { max-width: 720px; }
 .center { text-align: left; }
 
 /* ---------- header ---------- */
@@ -136,7 +147,7 @@ code {
 .wordmark:hover { color: var(--ink); }
 .mark {
   width: 15px; height: 15px;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--green);
   border-radius: 3px;
   position: relative;
   flex: none;
@@ -146,7 +157,7 @@ code {
   position: absolute;
   right: -1.5px; top: -1.5px; bottom: -1.5px;
   width: 5px;
-  background: var(--ink);
+  background: var(--green);
   border-radius: 0 2px 2px 0;
 }
 
@@ -184,15 +195,15 @@ code {
   white-space: nowrap;
 }
 
-.btn-primary { background: #fff; color: #000; }
-.btn-primary:hover { background: #e2e2e2; color: #000; }
+.btn-primary { background: var(--green); color: #ffffff; }
+.btn-primary:hover { background: var(--green-2); color: #ffffff; }
 
 .btn-secondary {
   background: var(--panel);
   color: var(--ink);
   border-color: var(--line);
 }
-.btn-secondary:hover { background: var(--panel-2); border-color: #2b3239; color: var(--ink); }
+.btn-secondary:hover { background: var(--panel-2); border-color: #2e2e2e; color: var(--ink); }
 
 .btn-ghost { background: none; color: var(--ink-2); padding: 9px 4px; }
 .btn-ghost:hover { color: var(--ink); }
@@ -222,7 +233,8 @@ section.tight { padding: 66px 0; }
 
 .hero { padding: 96px 0 0; text-align: left; }
 .hero h1 { max-width: 22ch; margin-left: 0; }
-.hl-alt { color: var(--ink-2); }
+.hl { color: var(--green-text); }
+.hl-alt { color: var(--green-text); }
 
 /* line break that only applies on wide screens */
 br.brk { display: none; }
@@ -254,7 +266,7 @@ br.brk { display: none; }
   color: var(--muted);
 }
 .dots { display: flex; gap: 6px; }
-.dots i { width: 9px; height: 9px; border-radius: 50%; background: #2a3037; display: block; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; background: #262626; display: block; }
 .demo-bar .spacer { flex: 1; }
 .pill {
   font-size: .72rem;
@@ -268,7 +280,7 @@ br.brk { display: none; }
 }
 .pill .live {
   width: 6px; height: 6px; border-radius: 50%;
-  background: #3fbf7f; display: block;
+  background: var(--green); display: block;
 }
 
 .demo-body {
@@ -433,7 +445,7 @@ table.data th.col-new { color: var(--accent-ink) !important; }
 .card h3 { margin-bottom: .45em; }
 .card p { margin-bottom: 0; font-size: .95rem; color: var(--muted); }
 .card-link { display: block; color: inherit; }
-.card-link:hover { border-color: #2b3239; background: var(--panel-2); color: inherit; }
+.card-link:hover { border-color: #2e2e2e; background: var(--panel-2); color: inherit; }
 .card-tag {
   font-size: .7rem;
   font-weight: 600;
@@ -480,7 +492,7 @@ table.data th.col-new { color: var(--accent-ink) !important; }
   color: var(--ink);
   cursor: pointer;
 }
-.copy-btn:hover { border-color: #2b3239; }
+.copy-btn:hover { border-color: #2e2e2e; }
 
 .field { margin-bottom: 15px; text-align: left; }
 .field label { display: block; font-size: .85rem; font-weight: 500; color: var(--ink-2); margin-bottom: 6px; }
@@ -604,7 +616,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   border-radius: 4px;
   padding: 2px 7px;
 }
-.tag-good { background: rgba(63,191,127,.14); color: #6fd6a4; }
+.tag-good { background: rgba(48,157,75,.16); color: var(--green-text); }
 .tag-bad  { background: rgba(220,90,90,.13);  color: #e08a8a; }
 
 .fix {
