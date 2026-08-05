@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>predictivelayer.io — AI that predicts, not just chats</title>
-<meta name="description" content="Give it a few labeled examples and it scores the rest. A predictive layer for your tabular data, built on a tabular foundation model. No model training.">
+<title>predictivelayer.io — ask for a prediction, get one</title>
+<meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
 <meta name="theme-color" content="#08090b">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -31,84 +31,74 @@
 
   <section class="hero">
     <div class="wrap">
-      <h1>Finally, AI that predicts,<br class="brk"> not just chats</h1>
-      <p class="sub">Give it a few labeled examples and it scores the rest. Your own criteria, applied to every row you have. No model training, no tuning, no data science team.</p>
+      <h1>Ask for a prediction.<br class="brk"> <span class="hl-alt">Get one, not an LLM guess.</span></h1>
+      <p class="sub">Say what you want to predict. It learns from your examples, scores every other row, and puts a confidence figure on each one. In chat, or as a tool your agents call.</p>
       <div class="btn-row center">
         <a class="btn btn-secondary" href="product.html#how">See how it works</a>
         <a class="btn btn-primary" href="contact.html">Get in touch</a>
       </div>
 
       <div class="hero-visual">
-        <div class="app">
-          <div class="app-bar">
+        <div class="demo" id="demo">
+          <div class="demo-bar">
             <span class="dots"><i></i><i></i><i></i></span>
-            <span class="app-crumb">predictivelayer &nbsp;/&nbsp; <b>account-scoring</b></span>
+            <span>predictivelayer</span>
             <span class="spacer"></span>
-            <span class="pill">local &middot; cpu</span>
+            <span class="pill"><span class="live"></span> connected</span>
           </div>
-          <div class="app-body">
-            <div class="app-rail">
-              <div class="rail-label">Datasets</div>
-              <div class="rail-item done"><span class="tick">&#10003;</span>Labeled examples</div>
-              <div class="rail-item done"><span class="tick">&#10003;</span>Rows to score</div>
-              <div class="rail-label">Predict</div>
-              <div class="rail-item done"><span class="tick">&#10003;</span>Target column</div>
-              <div class="rail-item on"><span class="tick">&#9679;</span>Results</div>
-              <div class="rail-label">Export</div>
-              <div class="rail-item"><span class="tick"></span>Download CSV</div>
+
+          <div class="demo-body">
+
+            <div class="chips" data-el="chips">
+              <span class="chip"><span class="ic">&#9679;</span> closed_accounts.csv <span class="sz">180 rows</span></span>
+              <span class="chip"><span class="ic">&#9679;</span> pipeline_q3.csv <span class="sz">4,120 rows</span></span>
             </div>
-            <div class="app-main">
 
-              <div class="drops">
-                <div class="drop filled">
-                  <div class="drop-tag">A &middot; Labeled examples</div>
-                  <div class="drop-file"><span class="ok">&#10003;</span> closed_accounts.csv</div>
-                  <div class="drop-meta">180 rows &middot; 9 columns</div>
-                </div>
-                <div class="drop filled">
-                  <div class="drop-tag">B &middot; Rows to score</div>
-                  <div class="drop-file"><span class="ok">&#10003;</span> pipeline_q3.csv</div>
-                  <div class="drop-meta">4,120 rows &middot; 8 columns</div>
-                </div>
-              </div>
+            <div class="msg msg-user" data-el="ask"><span data-el="typed"></span><span class="cursor"></span></div>
 
-              <div class="controls">
-                <div>
-                  <span class="ctrl-label">Target column in A</span>
-                  <div class="fake-select"><span>outcome</span><span>&#9662;</span></div>
-                </div>
-                <div>
-                  <span class="ctrl-label">Task</span>
-                  <div class="fake-select"><span>Auto</span><span>&#9662;</span></div>
-                </div>
-                <div><span class="run">Predict</span></div>
-              </div>
+            <div class="steps">
+              <div class="step" data-el="s1"><span class="tick">&#10003;</span>Matched columns across both files <span class="val">8 shared</span></div>
+              <div class="step" data-el="s2"><span class="tick">&#10003;</span>Detected the task <span class="val">classification, 2 classes</span></div>
+              <div class="step" data-el="s3"><span class="tick">&#10003;</span>Learned from your labeled rows <span class="val">no training run</span></div>
+              <div class="step" data-el="s4"><span class="tick">&#10003;</span>Scored the rest <span class="val">4,120 rows in 6.2s</span></div>
+            </div>
 
-              <p class="note">Used 8 shared feature columns. Task detected: classification, 2 classes. 4,120 rows scored in 6.2s.</p>
-
+            <div class="result" data-el="result">
               <div class="tbl-wrap">
-                <div class="tbl-head"><span>pipeline_q3_scored.csv</span><span class="dl">Download CSV</span></div>
+                <div class="tbl-head"><span>pipeline_q3_scored.csv</span><span class="dl">4,120 rows</span></div>
                 <div class="tbl-scroll">
                   <table class="data">
-                    <tr>
-                      <th>account</th><th>employees</th><th>industry</th><th>stage</th>
-                      <th class="col-new">prediction</th><th class="col-new">confidence</th>
-                    </tr>
-                    <tr><td>Northwind Ltd</td><td>420</td><td>logistics</td><td>Series B</td>
-                        <td class="col-new">good fit</td><td class="col-new">0.91</td></tr>
-                    <tr><td>Aster Health</td><td>38</td><td>healthcare</td><td>Seed</td>
-                        <td class="col-new">poor fit</td><td class="col-new">0.84</td></tr>
-                    <tr><td>Kestrel Robotics</td><td>1,240</td><td>manufacturing</td><td>Series D</td>
-                        <td class="col-new">good fit</td><td class="col-new">0.77</td></tr>
-                    <tr><td>Vantage Print</td><td>61</td><td>printing</td><td>Bootstrapped</td>
-                        <td class="col-new">poor fit</td><td class="col-new">0.95</td></tr>
-                    <tr><td>Orchard Labs</td><td>310</td><td>biotech</td><td>Series A</td>
-                        <td class="col-new">good fit</td><td class="col-new">0.62</td></tr>
+                    <thead>
+                      <tr>
+                        <th>account</th><th>employees</th><th>industry</th><th>stage</th>
+                        <th class="col-new">prediction</th><th class="col-new">confidence</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Northwind Ltd</td><td>420</td><td>logistics</td><td>Series B</td>
+                          <td class="col-new">good fit</td><td class="col-new">0.91</td></tr>
+                      <tr><td>Aster Health</td><td>38</td><td>healthcare</td><td>Seed</td>
+                          <td class="col-new">poor fit</td><td class="col-new">0.84</td></tr>
+                      <tr><td>Kestrel Robotics</td><td>1,240</td><td>manufacturing</td><td>Series D</td>
+                          <td class="col-new">good fit</td><td class="col-new">0.77</td></tr>
+                      <tr><td>Vantage Print</td><td>61</td><td>printing</td><td>Bootstrapped</td>
+                          <td class="col-new">poor fit</td><td class="col-new">0.95</td></tr>
+                      <tr><td>Orchard Labs</td><td>310</td><td>biotech</td><td>Series A</td>
+                          <td class="col-new">good fit</td><td class="col-new">0.62</td></tr>
+                    </tbody>
                   </table>
                 </div>
               </div>
-
+              <div class="demo-cta"><span class="dl">Download CSV</span><span>Every row keeps its original values. One column added.</span></div>
             </div>
+
+          </div>
+
+          <div class="demo-foot">
+            <span class="caret">&#9656;</span>
+            <span>Ask for a prediction</span>
+            <span class="spacer"></span>
+            <span class="send">&#8593;</span>
           </div>
         </div>
       </div>
@@ -118,23 +108,23 @@
   <section class="rule">
     <div class="wrap">
       <p class="eyebrow center">How it works</p>
-      <h2 class="center">Two files in, one column out</h2>
-      <p class="sub center" style="text-align:center">You bring the judgement. The model copies it across the rest of your rows.</p>
+      <h2 class="center">Ask once. Every row scored.</h2>
+      <p class="sub center" style="text-align:center">You bring the judgement. It handles everything between the question and the answer.</p>
       <div class="grid grid-3" style="margin-top:52px">
         <div class="card">
           <span class="step-num">01</span>
-          <h3>Upload labeled examples</h3>
-          <p>A small CSV of rows you have already judged, with the column you care about filled in. A few dozen is often enough.</p>
+          <h3>Show it what good looks like</h3>
+          <p>A handful of rows you have already judged. Fifty is often enough. That is your criterion, not a setting in a dropdown.</p>
         </div>
         <div class="card">
           <span class="step-num">02</span>
-          <h3>Upload rows to score</h3>
-          <p>The same columns, minus the answer. From a few hundred rows to a few thousand.</p>
+          <h3>Ask in plain English</h3>
+          <p>"Score these for fit." In chat, or as a tool call from your own agent. No column mapping, no config file.</p>
         </div>
         <div class="card">
           <span class="step-num">03</span>
-          <h3>Get a predicted column back</h3>
-          <p>Preview the scored table in the browser and download it as CSV, with a confidence score on every row.</p>
+          <h3>Get every row back, scored</h3>
+          <p>With a confidence figure on each one, so you know which rows to trust and which to check. Download it or pipe it onward.</p>
         </div>
       </div>
     </div>
@@ -207,6 +197,6 @@
   </div>
 </footer>
 
-<script src="main.js"></script>
+<script src="main.js?v=3"></script>
 </body>
 </html>
