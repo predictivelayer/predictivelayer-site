@@ -33,11 +33,23 @@
     item.addEventListener('mouseleave', function () { setOpen(false); });
   }
 
-  /* ---------- copy email ---------- */
-  var copy = document.querySelector('[data-copy]');
+  /* ---------- email, assembled at run time ----------
+     The address is never written into the HTML, so a scraper reading the
+     page source finds nothing. The buttons still open a normal mail client. */
+  var MAIL = ['zfu126', 'gmail.com'].join('@');
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-mail-open]'), function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = 'mailto:' + MAIL + '?subject=' +
+        encodeURIComponent('Predictive Layer enquiry');
+    });
+  });
+
+  var copy = document.querySelector('[data-mail-copy]');
   if (copy) {
     copy.addEventListener('click', function () {
-      var text = copy.getAttribute('data-copy');
+      var text = MAIL;
       var done = function () {
         var old = copy.textContent;
         copy.textContent = 'Copied';
@@ -66,7 +78,7 @@
         var f = form.elements[n];
         return f ? f.value.trim() : '';
       };
-      var subject = 'predictivelayer.io enquiry' + (get('company') ? ' — ' + get('company') : '');
+      var subject = 'Predictive Layer enquiry' + (get('company') ? ', ' + get('company') : '');
       var body = [
         'Name: ' + get('name'),
         'Company: ' + get('company'),
@@ -75,7 +87,7 @@
         get('message')
       ].join('\n');
       window.location.href =
-        'mailto:zfu126@gmail.com?subject=' + encodeURIComponent(subject) +
+        'mailto:' + MAIL + '?subject=' + encodeURIComponent(subject) +
         '&body=' + encodeURIComponent(body);
     });
   }

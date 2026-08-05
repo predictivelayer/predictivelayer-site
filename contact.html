@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — predictivelayer.io</title>
-<meta name="description" content="Get in touch about predictivelayer.io. Email zfu126@gmail.com.">
+<meta name="description" content="Get in touch about Predictive Layer. Tell us what you want to predict and we will reply within a day.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=13">
+<link rel="stylesheet" href="styles.css?v=15">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -28,6 +28,7 @@
           </a>
         </div>
       </div>
+      <a href="index.html#how">How it works</a>
       <a href="resources.html">Resources</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
@@ -49,12 +50,13 @@
       <div class="email-box" style="margin-top:40px">
         <div>
           <div style="font-size:.8rem;color:var(--muted);margin-bottom:4px">Email</div>
-          <a class="email-address" href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+          <div class="email-address">A real person replies, usually within a day</div>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="copy-btn" data-copy="zfu126@gmail.com">Copy address</button>
-          <a class="btn btn-primary" href="mailto:zfu126@gmail.com?subject=predictivelayer.io%20enquiry">Send an email</a>
+          <button class="copy-btn" data-mail-copy>Copy address</button>
+          <button class="btn btn-primary" data-mail-open>Send an email</button>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -84,7 +86,7 @@
           <textarea id="message" name="message" placeholder="Size of your dataset, how you label today, what you have tried."></textarea>
         </div>
         <button class="btn btn-primary" type="submit">Open in my email app</button>
-        <p class="form-note">Prefer to write directly? <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a></p>
+        <p class="form-note">Prefer to write directly? <a href="#" data-mail-open>Open a blank email to us</a></p>
       </form>
     </div>
   </section>
@@ -97,12 +99,14 @@
     <div class="footer-links">
       <a href="auto.html">Auto Prediction</a>
       <a href="product.html">Quick Prediction</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#how">How it works</a>
       <a href="resources.html">Resources</a>
-      <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+      <a href="#" data-mail-open>Email us</a>
     </div>
   </div>
 </footer>
 
-<script src="main.js?v=7"></script>
+<script src="main.js?v=8"></script>
 </body>
 </html>
