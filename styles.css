@@ -28,6 +28,17 @@
           "Liberation Mono", monospace;
 }
 
+/* Space Grotesk, SIL Open Font License. Self-hosted and subset to the
+   sixteen characters of the wordmark, so it costs 1.4KB and no third party
+   ever sees a request. */
+@font-face {
+  font-family: "Wordmark";
+  src: url("wordmark.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -112,10 +123,11 @@ code {
 }
 
 .wordmark {
-  font-size: 1.02rem;
+  font-family: "Wordmark", var(--font);
+  font-size: 1.13rem;
   font-weight: 600;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.005em;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -123,8 +135,8 @@ code {
 }
 .wordmark:hover { color: var(--ink); }
 .mark {
-  width: 16px; height: 16px;
-  border: 1.5px solid var(--accent);
+  width: 15px; height: 15px;
+  border: 1.5px solid var(--ink);
   border-radius: 3px;
   position: relative;
   flex: none;
@@ -134,7 +146,7 @@ code {
   position: absolute;
   right: -1.5px; top: -1.5px; bottom: -1.5px;
   width: 5px;
-  background: var(--accent);
+  background: var(--ink);
   border-radius: 0 2px 2px 0;
 }
 
