@@ -12,6 +12,27 @@
     });
   }
 
+  /* ---------- product dropdown ---------- */
+  var item = document.querySelector('.nav-item');
+  var trig = item && item.querySelector('.nav-trigger');
+  if (item && trig) {
+    var setOpen = function (on) {
+      item.classList.toggle('open', on);
+      trig.setAttribute('aria-expanded', on ? 'true' : 'false');
+    };
+    trig.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!item.classList.contains('open'));
+    });
+    document.addEventListener('click', function (e) {
+      if (!item.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    item.addEventListener('mouseleave', function () { setOpen(false); });
+  }
+
   /* ---------- copy email ---------- */
   var copy = document.querySelector('[data-copy]');
   if (copy) {

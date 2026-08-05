@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Prediction — predictivelayer.io</title>
+<meta name="description" content="Data, labels, predictions in one conversation. It works out what it needs, collects it, labels a sample against your criterion, and scores the rest.">
+<meta name="theme-color" content="#08090b">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger active" aria-expanded="false" aria-haspopup="true">Product <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">Auto Prediction <span class="menu-tag">Flagship</span></span>
+            <span class="menu-desc">Bring a question and a list of rows. It finds the data, labels a sample with you, and scores the rest.</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">Quick Prediction <span class="menu-tag soft">Available now</span></span>
+            <span class="menu-desc">Already have the rows and the labels? Drop in two CSVs and get a scored column back.</span>
+          </a>
+        </div>
+      </div>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary" href="contact.html">Get in touch</a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Auto Prediction</p>
+      <h1>Data, labels, predictions.<br class="brk"> <span class="hl-alt">One conversation.</span></h1>
+      <p class="sub">Three specialist jobs stand between a question and a prediction. Auto Prediction does all three and shows you its work at every step.</p>
+      <div class="btn-row center">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="demo">
+          <div class="demo-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span>run &nbsp;/&nbsp; who-is-worth-a-call</span>
+            <span class="spacer"></span>
+            <span class="pill"><span class="live"></span> finished in 4m 12s</span>
+          </div>
+
+          <div class="demo-body" style="min-height:0;gap:0">
+
+            <div class="run-stage">
+              <div class="run-head"><span class="run-num">01</span> Collected the data <span class="tick">11 signals &middot; 3 sources</span></div>
+              <div class="chips show">
+                <span class="chip">headcount <span class="sz">+ 12mo change</span></span>
+                <span class="chip">open roles <span class="sz">by function</span></span>
+                <span class="chip">funding stage</span>
+                <span class="chip">tech stack</span>
+                <span class="chip">review volume</span>
+                <span class="chip">site traffic band</span>
+                <span class="chip">office count</span>
+              </div>
+              <p class="run-meta">You gave it <b>4,120 company names</b>. It worked out which signals would separate a good call from a bad one, went and got them, and wrote <b>38,400 fields</b> back to your rows. Every field says where it came from.</p>
+            </div>
+
+            <div class="run-stage">
+              <div class="run-head"><span class="run-num">02</span> Labeled a sample <span class="tick">200 rows</span></div>
+              <div class="tbl-wrap">
+                <div class="tbl-head"><span>sample_labeled.csv</span><span class="dl">200 of 4,120</span></div>
+                <div class="tbl-scroll">
+                  <table class="data">
+                    <tr><th>company</th><th>label</th><th>why it said so</th></tr>
+                    <tr class="in"><td>Northwind Ltd</td><td><span class="tag-good">worth a call</span></td>
+                        <td class="why">Hiring three ops roles, headcount up 40% in a year</td></tr>
+                    <tr class="in"><td>Aster Health</td><td><span class="tag-bad">not yet</span></td>
+                        <td class="why">Eight people, no ops function to sell into</td></tr>
+                    <tr class="in"><td>Kestrel Robotics</td><td><span class="tag-good">worth a call</span></td>
+                        <td class="why">Two warehouses opened since March, stack matches</td></tr>
+                    <tr class="in"><td>Vantage Print</td><td><span class="tag-bad">not yet</span></td>
+                        <td class="why">Flat headcount, no hiring, legacy stack</td></tr>
+                  </table>
+                </div>
+              </div>
+              <span class="fix"><span class="n">6</span> labels you corrected, folded back into the criterion</span>
+              <p class="run-meta">It labels against your criterion and writes down its reason each time. You skim, fix what it got wrong, and your fixes become the definition. Ten minutes of your attention instead of an afternoon.</p>
+            </div>
+
+            <div class="run-stage">
+              <div class="run-head"><span class="run-num">03</span> Scored the rest <span class="tick">3,920 rows</span></div>
+              <div class="tbl-wrap">
+                <div class="tbl-head"><span>companies_scored.csv</span><span class="dl">Download CSV</span></div>
+                <div class="tbl-scroll">
+                  <table class="data">
+                    <tr><th>company</th><th>headcount</th><th>open roles</th><th>stage</th>
+                        <th class="col-new">prediction</th><th class="col-new">confidence</th></tr>
+                    <tr class="in"><td>Halcyon Group</td><td>310</td><td>7</td><td>Series B</td>
+                        <td class="col-new">worth a call</td><td class="col-new">0.94</td></tr>
+                    <tr class="in"><td>Bellweather Co</td><td>44</td><td>0</td><td>Seed</td>
+                        <td class="col-new">not yet</td><td class="col-new">0.89</td></tr>
+                    <tr class="in"><td>Orchard Labs</td><td>1,180</td><td>21</td><td>Series D</td>
+                        <td class="col-new">worth a call</td><td class="col-new">0.86</td></tr>
+                    <tr class="in"><td>Merrow Freight</td><td>96</td><td>2</td><td>Bootstrapped</td>
+                        <td class="col-new">worth a call</td><td class="col-new">0.58</td></tr>
+                  </table>
+                </div>
+              </div>
+              <p class="run-meta">Every remaining row scored, with a confidence figure on each. Sort by it and you know which rows to trust and which to read yourself.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="grid split">
+        <div>
+          <p class="eyebrow">The gap</p>
+          <h2>The model was never the hard part</h2>
+          <p class="lead">Ask anyone who has shipped a prediction where the months went. Almost none of it was the model. It went on finding data that was not in the table, arguing about what the label actually means, and hand-tagging rows until somebody lost patience and shipped a rule instead.</p>
+          <p class="lead">Auto Prediction takes all three jobs. You say what you want to know. It works out what it needs, goes and gets it, labels a sample, checks those labels with you, and scores everything else.</p>
+        </div>
+        <ul class="plain">
+          <li><b>Find the data</b>A list of names is not a dataset. It works out which signals would separate your outcomes and goes and collects them.</li>
+          <li><b>Agree the label</b>Your criterion lives in your head. It writes a first draft, you correct it, and the corrected version is what gets used.</li>
+          <li><b>Score the rest</b>A tabular foundation model reads your examples as context and scores every other row. Seconds, not a training run.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">How it works</p>
+      <h2 class="center">Say it once. Watch it work.</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card">
+          <span class="step-num">01</span>
+          <h3>It finds the data</h3>
+          <p>You have names and not much else. It decides which signals matter for your question and collects them from public pages, filings, job posts, review sites, and your own systems. Every field it adds carries its source.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">02</span>
+          <h3>It labels the examples</h3>
+          <p>It reads a sample and labels each row against your criterion, with a one-line reason. You skim, correct what it got wrong, and your corrections outrank its guesses from then on.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">03</span>
+          <h3>It predicts the rest</h3>
+          <p>Every remaining row scored, with a confidence figure on each. Download it, push it back to your CRM, or let your agent read it straight from the tool.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="grid split">
+        <div>
+          <p class="eyebrow">Control</p>
+          <h2>Nothing happens off-screen</h2>
+          <p class="lead">An automated pipeline you cannot inspect is a rumour with a progress bar. Every stage of a run is written down and open to you.</p>
+          <p class="lead">Change your mind about the criterion and run it again. It costs minutes, so you can afford to be picky about what a good row actually looks like.</p>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="card"><h3>Every field shows its source</h3><p>Click any collected value and see the page, filing, or system it came from, and when it was read.</p></div>
+          <div class="card"><h3>Every label shows its reason</h3><p>One line per row, in plain English. If the reason is wrong, the label is wrong, and you can see it in a glance.</p></div>
+          <div class="card"><h3>Your corrections win</h3><p>A row you have judged is never overwritten by a row it guessed. Your edits define the criterion.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">Where you ask</p>
+      <h2 class="center">Ask from wherever you work</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card"><h3>In chat</h3><p>Describe the prediction in a sentence. It comes back with the run, the labels, and the scored rows.</p></div>
+        <div class="card"><h3>From your agent</h3><p>Over MCP, as a tool your agent calls mid-task. It gets a number and a confidence back, not a paragraph of prose.</p></div>
+        <div class="card"><h3>In the browser</h3><p>Watch a run as it happens, correct the labels by hand, and download the result.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap narrow center">
+      <h2>Tell us what you want to know</h2>
+      <p class="sub center" style="text-align:center;margin-bottom:0">Bring a question and a list of rows. We will show you what a run looks like on your own data.</p>
+      <div class="btn-row center">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 predictivelayer.io</div>
+    <div class="footer-links">
+      <a href="auto.html">Auto Prediction</a>
+      <a href="product.html">Quick Prediction</a>
+      <a href="resources.html">Resources</a>
+      <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js?v=5"></script>
+</body>
+</html>

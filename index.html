@@ -6,7 +6,7 @@
 <title>predictivelayer.io — ask for a prediction, get one</title>
 <meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
 <meta name="theme-color" content="#08090b">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=5">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -15,12 +15,23 @@
   <div class="wrap nav">
     <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
     <nav class="nav-links">
-      <a href="product.html">Product</a>
+      <div class="nav-item">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">Product <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">Auto Prediction <span class="menu-tag">Flagship</span></span>
+            <span class="menu-desc">Bring a question and a list of rows. It finds the data, labels a sample with you, and scores the rest.</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">Quick Prediction <span class="menu-tag soft">Available now</span></span>
+            <span class="menu-desc">Already have the rows and the labels? Drop in two CSVs and get a scored column back.</span>
+          </a>
+        </div>
+      </div>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-right">
-      <a class="btn btn-ghost" href="product.html">How it works</a>
       <a class="btn btn-primary" href="contact.html">Get in touch</a>
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
@@ -34,7 +45,7 @@
       <h1>Ask for a prediction.<br class="brk"> <span class="hl-alt">Get one, not an LLM guess.</span></h1>
       <p class="sub">Say what you want to predict. It learns from your examples, scores every other row, and puts a confidence figure on each one. In chat, or as a tool your agents call.</p>
       <div class="btn-row center">
-        <a class="btn btn-secondary" href="product.html#how">See how it works</a>
+        <a class="btn btn-secondary" href="auto.html">See how it works</a>
         <a class="btn btn-primary" href="contact.html">Get in touch</a>
       </div>
 
@@ -138,7 +149,7 @@
           <h2>No training run, no tuning</h2>
           <p class="lead">Under the hood is a tabular foundation model, pre-trained on millions of synthetic tables. It already knows how columns tend to relate, so your examples go in as context rather than as a training set.</p>
           <p class="lead">A prediction takes seconds instead of a sprint, and you can change your criteria and run it again without starting over.</p>
-          <p><a href="product.html">Read more about the product &rarr;</a></p>
+          <p><a href="auto.html">See a full run &rarr;</a></p>
         </div>
         <div class="grid" style="gap:16px">
           <div class="card">
@@ -190,13 +201,14 @@
   <div class="wrap footer-row">
     <div>&copy; 2026 predictivelayer.io</div>
     <div class="footer-links">
-      <a href="product.html">Product</a>
+      <a href="auto.html">Auto Prediction</a>
+      <a href="product.html">Quick Prediction</a>
       <a href="resources.html">Resources</a>
       <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
     </div>
   </div>
 </footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>

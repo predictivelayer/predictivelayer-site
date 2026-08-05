@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product — predictivelayer.io</title>
+<title>Quick Prediction — predictivelayer.io</title>
 <meta name="description" content="Drop in two datasets and get a predicted column back. How the predictive layer works, what it handles, and where its limits are.">
 <meta name="theme-color" content="#08090b">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=5">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -15,7 +15,19 @@
   <div class="wrap nav">
     <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
     <nav class="nav-links">
-      <a href="product.html" class="active">Product</a>
+      <div class="nav-item">
+        <button class="nav-trigger active" aria-expanded="false" aria-haspopup="true">Product <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">Auto Prediction <span class="menu-tag">Flagship</span></span>
+            <span class="menu-desc">Bring a question and a list of rows. It finds the data, labels a sample with you, and scores the rest.</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">Quick Prediction <span class="menu-tag soft">Available now</span></span>
+            <span class="menu-desc">Already have the rows and the labels? Drop in two CSVs and get a scored column back.</span>
+          </a>
+        </div>
+      </div>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -30,9 +42,9 @@
 
   <section class="hero" style="padding-bottom:0">
     <div class="wrap">
-      <p class="eyebrow">Product</p>
-      <h1 style="font-size:3.4rem;max-width:19ch">Drop in two files. Get predictions back.</h1>
-      <p class="sub" style="max-width:56ch">Most useful data work is judgement applied at scale: which leads are worth a call, which claims to review, which rows are wrong. You already make that call. The bottleneck is making it ten thousand times.</p>
+      <p class="eyebrow">Quick Prediction</p>
+      <h1 style="font-size:3.4rem;max-width:19ch">You already have the rows. Drop them in.</h1>
+      <p class="sub" style="max-width:56ch">When your data is already collected and already labeled, you do not need a pipeline. Upload the rows you have judged, upload the rows you have not, and get a scored column back. If the data or the labels are the missing part, use <a href="auto.html">Auto Prediction</a> instead.</p>
     </div>
   </section>
 
@@ -140,7 +152,7 @@
       <p class="lead">It reads the columns you give it. If the signal is not in the table, it is not in the prediction.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="contact.html">Get in touch</a>
-        <a class="btn btn-secondary" href="resources.html">Resources</a>
+        <a class="btn btn-secondary" href="auto.html">Auto Prediction</a>
       </div>
     </div>
   </section>
@@ -151,13 +163,14 @@
   <div class="wrap footer-row">
     <div>&copy; 2026 predictivelayer.io</div>
     <div class="footer-links">
-      <a href="product.html">Product</a>
+      <a href="auto.html">Auto Prediction</a>
+      <a href="product.html">Quick Prediction</a>
       <a href="resources.html">Resources</a>
       <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
     </div>
   </div>
 </footer>
 
-<script src="main.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>
