@@ -22,6 +22,19 @@
   --green-text: #4fbc6c;
   --green-soft: #c1e6c6;
 
+  /* Supporting spectrum. Blue is the second state and the second data
+     series. Amber is caution. Red is errors only, never a data category,
+     because red against green is the pair a twelfth of men cannot split. */
+  --blue:       #4a86e8;
+  --blue-text:  #7ba8f0;
+  --blue-dim:   rgba(74,134,232,.13);
+  --amber:      #d9962b;
+  --amber-text: #e9b84a;
+  --amber-dim:  rgba(217,150,43,.13);
+  --red:        #e5484d;
+  --red-text:   #f08d90;
+  --violet:     #8b7bea;
+
   --accent:     var(--green);
   --accent-2:   var(--green-2);
   --accent-dim: rgba(48,157,75,.13);
@@ -617,7 +630,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   padding: 2px 7px;
 }
 .tag-good { background: rgba(48,157,75,.16); color: var(--green-text); }
-.tag-bad  { background: rgba(220,90,90,.13);  color: #e08a8a; }
+.tag-bad  { background: var(--blue-dim); color: var(--blue-text); }
 
 .fix {
   display: inline-flex;
@@ -758,3 +771,70 @@ table.data td.why { color: var(--muted); white-space: normal; }
 }
 .msg-bot b { color: var(--ink); font-weight: 500; }
 .msg-bot .q { display: block; margin-top: 8px; color: var(--ink); }
+
+/* ---------- labeling feature block ---------- */
+
+.label-demo {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.label-demo .cap {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--panel);
+  font-size: .8rem;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.label-demo .cap .spacer { flex: 1; }
+
+.lrow {
+  display: grid;
+  grid-template-columns: 190px 130px 1fr 92px;
+  gap: 14px;
+  align-items: center;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: .84rem;
+}
+.lrow:last-child { border-bottom: 0; }
+.lrow .co { color: var(--ink); font-family: var(--mono); font-size: .8rem; }
+.lrow .why { color: var(--muted); }
+.lrow .act {
+  font-size: .74rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 9px;
+  text-align: center;
+}
+.lrow.fixed { background: rgba(48,157,75,.05); }
+.lrow.fixed .act { border-color: rgba(48,157,75,.4); color: var(--green-text); }
+.lrow .was {
+  font-size: .72rem;
+  color: var(--muted);
+  text-decoration: line-through;
+  margin-left: 7px;
+}
+
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.stat { border-top: 1px solid var(--line); padding-top: 18px; }
+.stat .n {
+  font-size: 2rem;
+  color: var(--green-text);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 9px;
+}
+.stat .l { font-size: .9rem; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .lrow { grid-template-columns: 1fr; gap: 6px; }
+  .lrow .act { text-align: left; width: fit-content; }
+  .stat-row { grid-template-columns: 1fr; gap: 14px; }
+}

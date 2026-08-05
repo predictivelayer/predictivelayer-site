@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Auto Prediction — predictivelayer.io</title>
-<meta name="description" content="Data, labels, predictions in one conversation. It works out what it needs, collects it, labels a sample against your criterion, and scores the rest.">
+<title>Auto Prediction — an agent labels your rows, you check its work</title>
+<meta name="description" content="An agent reads each row, applies your criterion, and writes down why. You correct what it got wrong and your corrections become the definition. Then it scores everything else.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=13">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -43,8 +43,8 @@
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow">Auto Prediction</p>
-      <h1>Data, labels, predictions.<br class="brk"> <span class="hl-alt">One conversation.</span></h1>
-      <p class="sub">Three specialist jobs stand between a question and a prediction. Auto Prediction does all three and shows you its work at every step.</p>
+      <h1>An agent labels your rows.<br class="brk"> <span class="hl">You just check its work.</span></h1>
+      <p class="sub">Labeling is where prediction projects die. Not the model, the afternoon nobody has for judging four hundred rows by hand. Auto Prediction puts an agent on that job, makes it show its reasoning, and lets you overrule it.</p>
       <div class="btn-row center">
         <a class="btn btn-primary" href="contact.html">Get in touch</a>
       </div>
@@ -119,6 +119,76 @@
             </div>
 
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow">The part that was never automated</p>
+      <h2>Labeling, done by an agent that shows its reasoning</h2>
+      <p class="sub" style="max-width:66ch">Every prediction tool on the market starts by asking you for labeled examples. Nobody asks where those come from. They come from a person reading rows one at a time, which is why most prediction projects stall before the model is ever run.</p>
+      <p class="sub" style="max-width:66ch">An agent can read a row the way you would. Not just the numbers in the columns, but the filings, the job posts, the site. So we put it on the labeling job, and made it write down its reason for every single row. That reason is what makes the work checkable in minutes rather than hours.</p>
+
+      <div class="label-demo" style="margin-top:40px">
+        <div class="cap">
+          <span>Agent labeling &nbsp;/&nbsp; is this company worth a call</span>
+          <span class="spacer"></span>
+          <span>200 rows sampled from 4,120</span>
+        </div>
+
+        <div class="lrow">
+          <span class="co">Northwind Ltd</span>
+          <span><span class="tag-good">worth a call</span></span>
+          <span class="why">Hiring three ops roles, headcount up 40% in a year</span>
+          <span class="act">agree</span>
+        </div>
+        <div class="lrow">
+          <span class="co">Aster Health</span>
+          <span><span class="tag-bad">not yet</span></span>
+          <span class="why">Eight people, no ops function to sell into</span>
+          <span class="act">agree</span>
+        </div>
+        <div class="lrow fixed">
+          <span class="co">Kestrel Robotics</span>
+          <span><span class="tag-good">worth a call</span><span class="was">not yet</span></span>
+          <span class="why">You said: two new warehouses beats a legacy stack</span>
+          <span class="act">you fixed this</span>
+        </div>
+        <div class="lrow">
+          <span class="co">Vantage Print</span>
+          <span><span class="tag-bad">not yet</span></span>
+          <span class="why">Flat headcount, no hiring, legacy stack</span>
+          <span class="act">agree</span>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="n">200</div><div class="l">rows labeled by the agent, each with a written reason</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">you disagreed with, which is all the work you actually do</div></div>
+        <div class="stat"><div class="n">10 min</div><div class="l">to check the lot, instead of an afternoon judging rows cold</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">Why the reasons matter</p>
+      <h2 class="center">A label you cannot check is worthless</h2>
+      <p class="sub" style="max-width:66ch">An agent that just hands back four hundred labels has moved the problem, not solved it. You would have to trust it blind or redo the work. The reason column is what turns it into something you can actually accept.</p>
+      <div class="grid grid-3" style="margin-top:44px">
+        <div class="card">
+          <h3>It reads more than the columns</h3>
+          <p>Filings, job posts, the company site, whatever it collected in step one. It labels on the same evidence a person would use, not on four numbers in a spreadsheet.</p>
+        </div>
+        <div class="card">
+          <h3>One line of reasoning per row</h3>
+          <p>Plain English, short enough to scan. Wrong reasoning is obvious at a glance even when the label happens to be right, which is the failure everyone else hides.</p>
+        </div>
+        <div class="card">
+          <h3>Your correction is final</h3>
+          <p>Overrule it and that row is settled for good. It relabels the rest of the sample against what you just told it, so one fix moves everything like it.</p>
         </div>
       </div>
     </div>
