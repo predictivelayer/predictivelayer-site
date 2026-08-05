@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>predictivelayer.io — the predictive layer for your data</title>
+<meta name="description" content="Give it a few labeled examples, and it scores the rest. A predictive layer for tabular data, built on a tabular foundation model. No model training required.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+    <nav class="nav-links">
+      <a href="product.html">Product</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>The predictive layer for your data.</h1>
+      <p class="lead">Give it a few labeled examples, and it scores the rest. Define your own criteria, drop in a spreadsheet, and get a predicted column back. No model training, no tuning, no data science team.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <a class="btn btn-secondary" href="product.html#how">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt tight">
+    <div class="wrap">
+      <div class="diagram">
+        <div class="diagram-head">Your rows, with one column appended</div>
+        <div class="diagram-scroll">
+          <table>
+            <tr>
+              <th>company</th>
+              <th>employees</th>
+              <th>industry</th>
+              <th>funding_stage</th>
+              <th class="col-new">prediction</th>
+              <th class="col-new">confidence</th>
+            </tr>
+            <tr>
+              <td>Northwind Ltd</td><td>420</td><td>logistics</td><td>Series B</td>
+              <td class="col-new">good fit</td><td class="col-new">0.91</td>
+            </tr>
+            <tr>
+              <td>Aster Health</td><td>38</td><td>healthcare</td><td>Seed</td>
+              <td class="col-new">poor fit</td><td class="col-new">0.84</td>
+            </tr>
+            <tr>
+              <td>Kestrel Robotics</td><td>1,240</td><td>manufacturing</td><td>Series D</td>
+              <td class="col-new">good fit</td><td class="col-new">0.77</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps.</h2>
+      <p class="lead narrow">You bring the judgement. The model copies it across the rest of your rows.</p>
+      <div class="grid grid-3" style="margin-top:40px">
+        <div class="card">
+          <span class="step-num">01</span>
+          <h3>Upload labeled examples</h3>
+          <p>A small CSV of rows you have already judged, with the column you care about filled in. A few dozen is often enough.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">02</span>
+          <h3>Upload rows to score</h3>
+          <p>The same columns, minus the answer. This is the set you want scored, from a few hundred rows to a few thousand.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">03</span>
+          <h3>Get a predicted column back</h3>
+          <p>Preview the scored table in the browser and download it as CSV, with a confidence score on every row.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <div>
+          <p class="eyebrow">Why it is different</p>
+          <h2>No training run. No tuning.</h2>
+          <p>Under the hood is a tabular foundation model. It was pre-trained on millions of synthetic tables, so it already knows how columns tend to relate to each other. Your examples go in as context, not as a training set.</p>
+          <p>That means a prediction takes seconds, not a sprint, and you can change your criteria and re-run without starting over.</p>
+          <p><a href="product.html">Read more about the product &rarr;</a></p>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="card">
+            <h3>Your criteria, not a fixed schema</h3>
+            <p>Lead fit, risk flags, churn, priority, a quality grade. If you can label 50 rows, you can predict the rest.</p>
+          </div>
+          <div class="card">
+            <h3>Works on plain CSVs</h3>
+            <p>Numbers, text categories, missing values. Columns are matched between the two files automatically.</p>
+          </div>
+          <div class="card">
+            <h3>Runs on your machine</h3>
+            <p>The prediction app runs locally on a laptop CPU. Your data does not have to leave your network.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap narrow" style="text-align:center">
+      <h2>Try it on your own data.</h2>
+      <p class="lead">Send us a note about what you want to score and we will get you set up.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <a class="btn btn-secondary" href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 predictivelayer.io</div>
+    <div class="footer-links">
+      <a href="product.html">Product</a>
+      <a href="resources.html">Resources</a>
+      <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

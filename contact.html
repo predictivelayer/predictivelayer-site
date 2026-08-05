@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — predictivelayer.io</title>
+<meta name="description" content="Get in touch about predictivelayer.io. Email zfu126@gmail.com.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+    <nav class="nav-links">
+      <a href="product.html">Product</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" style="padding-bottom:40px">
+    <div class="wrap narrow">
+      <p class="eyebrow">Contact</p>
+      <h1 style="font-size:2.4rem">Tell us what you want to score.</h1>
+      <p class="lead">Whether you have a dataset ready or just a question about whether this fits, write to us. A real person reads every message and replies.</p>
+
+      <div class="email-box" style="margin-top:32px">
+        <div>
+          <div style="font-size:.85rem;color:var(--muted);margin-bottom:4px">Email</div>
+          <a class="email-address" href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="copy-btn" data-copy="zfu126@gmail.com">Copy address</button>
+          <a class="btn btn-primary" href="mailto:zfu126@gmail.com?subject=predictivelayer.io%20enquiry">Send an email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" style="padding-top:20px">
+    <div class="wrap narrow">
+      <h2 style="font-size:1.35rem">Or fill this in</h2>
+      <p style="color:var(--muted);font-size:.96rem">This opens your own email client with the message ready to send. Nothing is submitted to a server, and nothing is stored.</p>
+
+      <form id="contact-form" style="margin-top:24px">
+        <div class="grid grid-2" style="gap:16px">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization">
+          </div>
+        </div>
+        <div class="field">
+          <label for="usecase">What do you want to predict?</label>
+          <input id="usecase" name="usecase" type="text" placeholder="e.g. which accounts in our list are worth a call">
+        </div>
+        <div class="field">
+          <label for="message">Anything else</label>
+          <textarea id="message" name="message" placeholder="Size of your dataset, how you label today, what you have tried."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Open in my email app</button>
+        <p class="form-note">Prefer to write directly? <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 predictivelayer.io</div>
+    <div class="footer-links">
+      <a href="product.html">Product</a>
+      <a href="resources.html">Resources</a>
+      <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

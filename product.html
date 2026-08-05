@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product — predictivelayer.io</title>
+<meta name="description" content="Drop in two datasets and get a predicted column back. How the predictive layer works, what it handles, and where its limits are.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html"><span class="mark"></span>predictivelayer.io</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+    <nav class="nav-links">
+      <a href="product.html" class="active">Product</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap narrow">
+      <p class="eyebrow">Product</p>
+      <h1 style="font-size:2.4rem;max-width:20ch">Drop in two datasets. Get predictions back.</h1>
+      <p class="lead">Most useful data work is judgement applied at scale: which leads are worth a call, which claims to review, which rows are wrong. You already make that call. The bottleneck is making it ten thousand times.</p>
+      <p class="lead">predictivelayer.io takes the judgement you have already recorded and extends it across the rest of your rows.</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps.</h2>
+      <div class="grid grid-3" style="margin-top:36px">
+        <div class="card">
+          <span class="step-num">01</span>
+          <h3>Upload labeled examples</h3>
+          <p>A CSV where one column holds the answer: a label, a grade, a score. Everything else is context the model can use.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">02</span>
+          <h3>Upload rows to score</h3>
+          <p>A second CSV with the same feature columns and no answer column. Shared columns are matched automatically; extras are ignored.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">03</span>
+          <h3>Get a predicted column back</h3>
+          <p>Your second file comes back with <code>prediction</code> appended, plus a confidence figure for classification tasks. Preview it, then download the CSV.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <div>
+          <p class="eyebrow">The model</p>
+          <h2>A tabular foundation model, not a training run.</h2>
+          <p>Traditional machine learning needs a training run for every new question: pick an algorithm, fit it, tune it, validate it, do it again when the question changes. That is weeks of work and a person who knows how to do it.</p>
+          <p>A tabular foundation model is pre-trained on millions of synthetic tables. It has already learned the general shapes that turn up in tabular data, so it reads your labeled examples as context and predicts straight away. Nothing is fitted to your data in the usual sense.</p>
+          <p>In practice: seconds instead of weeks, and no penalty for changing your mind about the criteria.</p>
+        </div>
+        <div class="grid" style="gap:16px;align-content:start">
+          <div class="card">
+            <h3>Classification or regression</h3>
+            <p>Text or few-valued targets are treated as classes. Continuous numbers are treated as a regression. Detected automatically, and you can override it.</p>
+          </div>
+          <div class="card">
+            <h3>Confidence on every row</h3>
+            <p>Classification returns class probabilities, so you can sort by certainty and review only the rows that need a human.</p>
+          </div>
+          <div class="card">
+            <h3>Messy CSVs are fine</h3>
+            <p>Missing values, mixed text and numbers, columns that appear in only one file. The app reports exactly what it used.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What it looks like</p>
+      <h2>One column appended.</h2>
+      <p class="lead narrow">Nothing else about your file changes. Row order, column order, and original values stay as they were.</p>
+      <div class="diagram" style="margin-top:32px">
+        <div class="diagram-head">scored_rows.csv</div>
+        <div class="diagram-scroll">
+          <table>
+            <tr>
+              <th>account</th>
+              <th>arr</th>
+              <th>tickets_90d</th>
+              <th>plan</th>
+              <th class="col-new">prediction</th>
+              <th class="col-new">prediction_confidence</th>
+            </tr>
+            <tr><td>Halcyon Group</td><td>48,000</td><td>2</td><td>enterprise</td>
+                <td class="col-new">retain</td><td class="col-new">0.93</td></tr>
+            <tr><td>Bellweather Co</td><td>9,600</td><td>17</td><td>growth</td>
+                <td class="col-new">at risk</td><td class="col-new">0.88</td></tr>
+            <tr><td>Orchard Labs</td><td>22,400</td><td>6</td><td>growth</td>
+                <td class="col-new">retain</td><td class="col-new">0.61</td></tr>
+            <tr><td>Vantage Print</td><td>3,100</td><td>24</td><td>starter</td>
+                <td class="col-new">at risk</td><td class="col-new">0.95</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Where it fits</p>
+      <h2>Anything you can label.</h2>
+      <div class="grid grid-3" style="margin-top:36px">
+        <div class="card">
+          <h3>Lead and account scoring</h3>
+          <p>Label the accounts that closed. Score the rest of the list against the same bar.</p>
+        </div>
+        <div class="card">
+          <h3>Churn and renewal risk</h3>
+          <p>Label who left and who stayed. Flag the accounts heading the same way.</p>
+        </div>
+        <div class="card">
+          <h3>Review triage</h3>
+          <p>Label the cases that turned out to need a look. Rank the queue by how likely each one is to matter.</p>
+        </div>
+        <div class="card">
+          <h3>Data quality flags</h3>
+          <p>Label the rows you know are wrong. Find the ones that look like them.</p>
+        </div>
+        <div class="card">
+          <h3>Category fill-in</h3>
+          <p>Tag part of a catalogue by hand. Let the model finish the rest.</p>
+        </div>
+        <div class="card">
+          <h3>Estimates and grades</h3>
+          <p>Continuous targets work too: price, duration, a numeric quality score.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap narrow">
+      <p class="eyebrow">Honest limits</p>
+      <h2>What it will not do.</h2>
+      <p>The base model works best on datasets up to roughly 10,000 training rows, 500 columns, and 10 classes. Beyond that the app subsamples and tells you, rather than pretending.</p>
+      <p>It needs labels that mean something. Fifty carefully judged rows beat five hundred careless ones, and no model recovers a criterion you have not been consistent about.</p>
+      <p>It reads the columns you give it. If the signal is not in the table, it is not in the prediction.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <a class="btn btn-secondary" href="resources.html">Resources</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 predictivelayer.io</div>
+    <div class="footer-links">
+      <a href="product.html">Product</a>
+      <a href="resources.html">Resources</a>
+      <a href="mailto:zfu126@gmail.com">zfu126@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
