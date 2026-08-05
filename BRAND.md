@@ -5,31 +5,48 @@ Change a value in the `:root` block and it propagates across all five pages.
 
 ## Colour
 
-The site is black and greyscale with one colour: green. It is sampled from
-cartesia.ai, which is the reference we picked.
+The site is a deep warm brown with one colour: sand. Everything is drawn
+from a single warm ramp, so nothing on the page is neutral grey and nothing
+is pure black.
 
-| Token          | Hex       | Use                                                        |
-| -------------- | --------- | ---------------------------------------------------------- |
-| `--green`      | `#309d4b` | Fills. Primary button, logo mark, status dot.               |
-| `--green-2`    | `#277f3d` | Hover state for the primary button.                         |
-| `--green-text` | `#4fbc6c` | Text and links. Lifted so it stays readable on black.       |
-| `--green-deep` | `#1f4d2d` | Reserved. Dark green blocks, if we ever want one.           |
-| `--green-soft` | `#c1e6c6` | Pale tint. Link hover.                                      |
+| Token         | Hex       | Use                                                    |
+| ------------- | --------- | ------------------------------------------------------ |
+| `--sand`      | `#c5b57c` | Fills. Primary button, status dot.                      |
+| `--sand-2`    | `#9a8d5d` | Deeper sand. Held for hover and secondary fills.        |
+| `--sand-text` | `#e2d6a3` | Text and links. The accent word in the headline.        |
+| `--sand-soft` | `#f6e8c3` | Palest. Link hover.                                     |
+| `--sand-deep` | `#5c4a29` | Reserved. Dark sand blocks.                             |
 
-Do not set small text in `--green`. On black it sits near the readable
-limit. That is what `--green-text` is for.
+Primary buttons are sand fill with `#1c0f07` text, not white. Contrast 9.17,
+comfortably past AA.
 
 | Token         | Hex       | Use                                    |
 | ------------- | --------- | -------------------------------------- |
-| `--bg`        | `#000000` | Page                                   |
-| `--bg-2`      | `#060606` | Demo panel                             |
-| `--panel`     | `#0c0c0c` | Cards, nav, table headers              |
-| `--panel-2`   | `#131313` | Hover, inset controls                  |
-| `--line`      | `#1e1e1e` | Borders                                |
-| `--line-soft` | `#161616` | Dividers inside panels                 |
-| `--ink`       | `#ffffff` | Headings                               |
-| `--ink-2`     | `#a3a3a3` | Body text                              |
-| `--muted`     | `#6e6e6e` | Secondary and supporting text          |
+| `--bg`        | `#1c0f07` | Page. Deep warm brown, not black.      |
+| `--bg-2`      | `#22140a` | Demo panel                             |
+| `--panel`     | `#271709` | Cards, nav, table headers              |
+| `--panel-2`   | `#33200f` | Hover, inset controls                  |
+| `--line`      | `#3d2814` | Borders                                |
+| `--line-soft` | `#2c1b0d` | Dividers inside panels                 |
+| `--ink`       | `#f6e8c3` | Headings. Warm cream, never pure white |
+| `--ink-2`     | `#c9bda0` | Body text                              |
+| `--muted`     | `#a2957c` | Secondary and supporting text          |
+
+Supporting colours, each with one job:
+
+| Token     | Hex       | Use                                                        |
+| --------- | --------- | ---------------------------------------------------------- |
+| `--blue`  | `#5b93d6` | Second state. "not yet", low intent. Cool on purpose so it separates from the warm brand. |
+| `--amber` | `#d9962b` | Caution. Low confidence, a subsampled run.                  |
+| `--red`   | `#e5484d` | Errors and destructive actions only. Never a data category. |
+
+Never pair red with the brand colour to mean two categories in a table.
+Blue against sand is the pair we ship.
+
+## Glow
+
+A warm radial gradient sits behind the top of every page, at `.30` opacity
+in the centre. It is deliberately visible, not a subtle wash.
 
 ## Type
 
