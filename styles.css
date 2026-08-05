@@ -2,13 +2,13 @@
    Plain CSS. No frameworks, no external fonts, no trackers. */
 
 :root {
-  /* Warm sand-and-brown ramp. The page is a deep warm brown, not black. */
-  --bg:         #1c0f07;
-  --bg-2:       #22140a;
-  --panel:      #271709;
-  --panel-2:    #33200f;
-  --line:       #3d2814;
-  --line-soft:  #2c1b0d;
+  /* Warm near-black. Enough brown in it to feel warm, not enough to read as brown. */
+  --bg:         #0e0c0a;
+  --bg-2:       #131110;
+  --panel:      #181513;
+  --panel-2:    #221e19;
+  --line:       #2e2822;
+  --line-soft:  #201c18;
 
   --ink:        #f6e8c3;
   --ink-2:      #c9bda0;
@@ -90,10 +90,10 @@ body::before {
   width: 2100px;
   height: 1250px;
   background: radial-gradient(ellipse at center,
-              rgba(197,181,124,.30) 0%,
-              rgba(160,140,88,.15) 30%,
-              rgba(92,74,41,.07) 55%,
-              rgba(28,15,7,0) 74%);
+              rgba(219,206,168,.17) 0%,
+              rgba(197,181,124,.075) 32%,
+              rgba(150,132,90,.03) 56%,
+              rgba(14,12,10,0) 74%);
   pointer-events: none;
   z-index: 0;
 }
@@ -143,7 +143,7 @@ code {
   padding: 0 10px 0 18px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(34,20,10,.74);
+  background: rgba(19,17,16,.76);
   backdrop-filter: saturate(160%) blur(12px);
 }
 
@@ -193,15 +193,15 @@ code {
   white-space: nowrap;
 }
 
-.btn-primary { background: var(--sand); color: #1c0f07; }
-.btn-primary:hover { background: var(--sand-text); color: #1c0f07; }
+.btn-primary { background: var(--sand); color: #14110d; }
+.btn-primary:hover { background: var(--sand-text); color: #14110d; }
 
 .btn-secondary {
   background: var(--panel);
   color: var(--ink);
   border-color: var(--line);
 }
-.btn-secondary:hover { background: var(--panel-2); border-color: #50351d; color: var(--ink); }
+.btn-secondary:hover { background: var(--panel-2); border-color: #3d362e; color: var(--ink); }
 
 .btn-ghost { background: none; color: var(--ink-2); padding: 9px 4px; }
 .btn-ghost:hover { color: var(--ink); }
@@ -264,7 +264,7 @@ br.brk { display: none; }
   color: var(--muted);
 }
 .dots { display: flex; gap: 6px; }
-.dots i { width: 9px; height: 9px; border-radius: 50%; background: #402d1a; display: block; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; background: #332d26; display: block; }
 .demo-bar .spacer { flex: 1; }
 .pill {
   font-size: .72rem;
@@ -333,8 +333,8 @@ br.brk { display: none; }
 .msg-user {
   align-self: flex-end;
   max-width: 78%;
-  background: #33200f;
-  border: 1px solid #452c16;
+  background: #221e19;
+  border: 1px solid #322c25;
   color: var(--ink);
   border-radius: 12px 12px 4px 12px;
   padding: 10px 14px;
@@ -443,7 +443,7 @@ table.data th.col-new { color: var(--accent-ink) !important; }
 .card h3 { margin-bottom: .45em; }
 .card p { margin-bottom: 0; font-size: .95rem; color: var(--muted); }
 .card-link { display: block; color: inherit; }
-.card-link:hover { border-color: #50351d; background: var(--panel-2); color: inherit; }
+.card-link:hover { border-color: #3d362e; background: var(--panel-2); color: inherit; }
 .card-tag {
   font-size: .7rem;
   font-weight: 600;
@@ -490,7 +490,7 @@ table.data th.col-new { color: var(--accent-ink) !important; }
   color: var(--ink);
   cursor: pointer;
 }
-.copy-btn:hover { border-color: #50351d; }
+.copy-btn:hover { border-color: #3d362e; }
 
 .field { margin-bottom: 15px; text-align: left; }
 .field label { display: block; font-size: .85rem; font-weight: 500; color: var(--ink-2); margin-bottom: 6px; }
@@ -668,7 +668,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   left: 50%;
   transform: translateX(-50%) translateY(-4px);
   width: 380px;
-  background: rgba(34,20,10,.96);
+  background: rgba(19,17,16,.96);
   backdrop-filter: saturate(160%) blur(12px);
   border: 1px solid var(--line);
   border-radius: 12px;

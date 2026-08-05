@@ -17,17 +17,17 @@ is pure black.
 | `--sand-soft` | `#f6e8c3` | Palest. Link hover.                                     |
 | `--sand-deep` | `#5c4a29` | Reserved. Dark sand blocks.                             |
 
-Primary buttons are sand fill with `#1c0f07` text, not white. Contrast 9.17,
+Primary buttons are sand fill with `#14110d` text, not white. Contrast 9.17,
 comfortably past AA.
 
 | Token         | Hex       | Use                                    |
 | ------------- | --------- | -------------------------------------- |
-| `--bg`        | `#1c0f07` | Page. Deep warm brown, not black.      |
-| `--bg-2`      | `#22140a` | Demo panel                             |
-| `--panel`     | `#271709` | Cards, nav, table headers              |
-| `--panel-2`   | `#33200f` | Hover, inset controls                  |
-| `--line`      | `#3d2814` | Borders                                |
-| `--line-soft` | `#2c1b0d` | Dividers inside panels                 |
+| `--bg`        | `#0e0c0a` | Page. Warm near-black.                 |
+| `--bg-2`      | `#131110` | Demo panel                             |
+| `--panel`     | `#181513` | Cards, nav, table headers              |
+| `--panel-2`   | `#221e19` | Hover, inset controls                  |
+| `--line`      | `#2e2822` | Borders                                |
+| `--line-soft` | `#201c18` | Dividers inside panels                 |
 | `--ink`       | `#f6e8c3` | Headings. Warm cream, never pure white |
 | `--ink-2`     | `#c9bda0` | Body text                              |
 | `--muted`     | `#a2957c` | Secondary and supporting text          |
