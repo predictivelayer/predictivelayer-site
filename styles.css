@@ -2,32 +2,32 @@
    Plain CSS. No frameworks, no external fonts, no trackers. */
 
 :root {
-  /* Warm near-black. Enough brown in it to feel warm, not enough to read as brown. */
-  --bg:         #0e0c0a;
-  --bg-2:       #131110;
-  --panel:      #181513;
-  --panel-2:    #221e19;
-  --line:       #2e2822;
-  --line-soft:  #201c18;
+  /* True black, greys stepped so panels separate without a visible border. */
+  --bg:         #000;
+  --bg-2:       #080808;
+  --panel:      #0c0c0c;
+  --panel-2:    #131313;
+  --line:       #1e1e1e;
+  --line-soft:  #161616;
 
-  --ink:        #f6e8c3;
-  --ink-2:      #c9bda0;
-  --muted:      #a2957c;
+  --ink:        #fff;
+  --ink-2:      #a3a3a3;
+  --muted:      #808080;
 
-  /* Brand sand. One warm hue against the brown page. --sand is the fill,
-     --sand-text is the lifted version for small text. */
-  --sand-deep:  #5c4a29;
-  --sand:       #c5b57c;
-  --sand-2:     #9a8d5d;
-  --sand-text:  #e2d6a3;
-  --sand-soft:  #f6e8c3;
+  /* Brand green. --sand is the fill, --sand-text the lifted version for
+     small text and links. The names are historical; the hue is green. */
+  --sand-deep:  #1f4d2d;
+  --sand:       #309d4b;
+  --sand-2:     #277f3d;
+  --sand-text:  #4fbc6c;
+  --sand-soft:  #c1e6c6;
 
   /* Supporting spectrum. Blue is the second state and the second data
-     series, cool on purpose so it separates from the warm brand. Amber is
-     caution. Red is errors only, never a data category. */
-  --blue:       #5b93d6;
-  --blue-text:  #8fb6e4;
-  --blue-dim:   rgba(91,147,214,.15);
+     series. Amber is caution. Red is errors only, never a data category.
+     Red and green are never the only thing telling two states apart. */
+  --blue:       #4a86e8;
+  --blue-text:  #7ba8f0;
+  --blue-dim:   rgba(74,134,232,.15);
   --amber:      #d9962b;
   --amber-text: #e9b84a;
   --amber-dim:  rgba(217,150,43,.13);
@@ -37,7 +37,7 @@
 
   --accent:     var(--sand);
   --accent-2:   var(--sand-2);
-  --accent-dim: rgba(197,181,124,.14);
+  --accent-dim: rgba(48,157,75,.16);
   --accent-ink: var(--sand-text);
 
   --radius:     10px;
@@ -80,7 +80,8 @@ body {
   overflow-x: hidden;
 }
 
-/* warm glow behind the top of the page */
+/* Green glow behind the top of the page. Kept low: on true black a wash
+   this size reads as haze long before it reads as colour. */
 body::before {
   content: "";
   position: absolute;
@@ -90,10 +91,10 @@ body::before {
   width: 2100px;
   height: 1250px;
   background: radial-gradient(ellipse at center,
-              rgba(219,206,168,.17) 0%,
-              rgba(197,181,124,.075) 32%,
-              rgba(150,132,90,.03) 56%,
-              rgba(14,12,10,0) 74%);
+              rgba(79,188,108,.13) 0%,
+              rgba(48,157,75,.06) 32%,
+              rgba(31,77,45,.025) 56%,
+              rgba(0,0,0,0) 74%);
   pointer-events: none;
   z-index: 0;
 }
@@ -143,7 +144,7 @@ code {
   padding: 0 10px 0 18px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(19,17,16,.76);
+  background: rgba(10,10,10,.76);
   backdrop-filter: saturate(160%) blur(12px);
 }
 
@@ -193,15 +194,17 @@ code {
   white-space: nowrap;
 }
 
-.btn-primary { background: var(--sand); color: #14110d; }
-.btn-primary:hover { background: var(--sand-text); color: #14110d; }
+/* Quartr-style primary: white fill, black label. The green stays for
+   accents and data, so the one button on a page is the loudest thing. */
+.btn-primary { background: #fff; color: #000; }
+.btn-primary:hover { background: #d9d9d9; color: #000; }
 
 .btn-secondary {
   background: var(--panel);
   color: var(--ink);
   border-color: var(--line);
 }
-.btn-secondary:hover { background: var(--panel-2); border-color: #3d362e; color: var(--ink); }
+.btn-secondary:hover { background: var(--panel-2); border-color: #2e2e2e; color: var(--ink); }
 
 .btn-ghost { background: none; color: var(--ink-2); padding: 9px 4px; }
 .btn-ghost:hover { color: var(--ink); }
@@ -333,8 +336,8 @@ br.brk { display: none; }
 .msg-user {
   align-self: flex-end;
   max-width: 78%;
-  background: #221e19;
-  border: 1px solid #322c25;
+  background: #161616;
+  border: 1px solid #242424;
   color: var(--ink);
   border-radius: 12px 12px 4px 12px;
   padding: 10px 14px;
@@ -443,7 +446,7 @@ table.data th.col-new { color: var(--accent-ink) !important; }
 .card h3 { margin-bottom: .45em; }
 .card p { margin-bottom: 0; font-size: .95rem; color: var(--muted); }
 .card-link { display: block; color: inherit; }
-.card-link:hover { border-color: #3d362e; background: var(--panel-2); color: inherit; }
+.card-link:hover { border-color: #2e2e2e; background: var(--panel-2); color: inherit; }
 .card-tag {
   font-size: .7rem;
   font-weight: 600;
@@ -490,7 +493,7 @@ table.data th.col-new { color: var(--accent-ink) !important; }
   color: var(--ink);
   cursor: pointer;
 }
-.copy-btn:hover { border-color: #3d362e; }
+.copy-btn:hover { border-color: #2e2e2e; }
 
 .field { margin-bottom: 15px; text-align: left; }
 .field label { display: block; font-size: .85rem; font-weight: 500; color: var(--ink-2); margin-bottom: 6px; }
@@ -614,7 +617,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   border-radius: 4px;
   padding: 2px 7px;
 }
-.tag-good { background: rgba(197,181,124,.18); color: var(--sand-text); }
+.tag-good { background: rgba(48,157,75,.18); color: var(--sand-text); }
 .tag-bad  { background: var(--blue-dim); color: var(--blue-text); }
 
 .fix {
@@ -668,7 +671,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   left: 50%;
   transform: translateX(-50%) translateY(-4px);
   width: 380px;
-  background: rgba(19,17,16,.96);
+  background: rgba(10,10,10,.96);
   backdrop-filter: saturate(160%) blur(12px);
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -797,8 +800,8 @@ table.data td.why { color: var(--muted); white-space: normal; }
   padding: 4px 9px;
   text-align: center;
 }
-.lrow.fixed { background: rgba(197,181,124,.06); }
-.lrow.fixed .act { border-color: rgba(197,181,124,.45); color: var(--sand-text); }
+.lrow.fixed { background: rgba(48,157,75,.07); }
+.lrow.fixed .act { border-color: rgba(48,157,75,.5); color: var(--sand-text); }
 .lrow .was {
   font-size: .72rem;
   color: var(--muted);

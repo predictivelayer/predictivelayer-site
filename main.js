@@ -163,11 +163,16 @@
 
   if (reduced) { frame(T_LOOP); return; }
 
+  // Runs once and stops on the last frame. A loop is fine for three seconds
+  // of motion; this is closer to thirty, and watching the same conversation
+  // retype itself while you are reading the page below is a distraction.
+  var T_END = T_BOT2 + 400;
+
   var origin = null;
   function tick(now) {
     if (origin === null) origin = now;
     var t = now - origin;
-    if (t >= T_LOOP) { origin = now; t = 0; }
+    if (t >= T_END) { frame(T_END); return; }
     frame(t);
     requestAnimationFrame(tick);
   }
