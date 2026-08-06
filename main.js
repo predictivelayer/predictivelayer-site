@@ -113,7 +113,10 @@
   var scenes = Array.prototype.slice.call(document.querySelectorAll('[data-scene]'));
   if (!scenes.length) return;
 
-  var MS_CHAR  = 15;    // typing speed
+  // Typing speed. The whole timeline is derived from character counts, and a
+  // Chinese line carries the same meaning in roughly a third of the characters,
+  // so the same value would race through the Chinese demo. Slow it to match.
+  var MS_CHAR  = ZH ? 45 : 15;
   var STEP_GAP = 620;   // between one tick and the next
   var ROW_GAP  = 110;   // between one table row and the next
   var ROLL     = 900;   // how long a scored cell spends settling
@@ -329,8 +332,8 @@
       });
     }
     if (label) {
-      label.textContent = (idx + 1) + ' of ' + scenes.length + '  ·  ' +
-                          (scenes[idx].getAttribute('data-label') || '');
+      label.textContent = (idx + 1) + (ZH ? ' / ' : ' of ') + scenes.length +
+                          '  ·  ' + (scenes[idx].getAttribute('data-label') || '');
     }
   }
 
