@@ -316,16 +316,36 @@ br.brk { display: none; }
 .demo-card.aside.right { transform: rotateY(-9deg) scale(.94); transform-origin: left center; }
 .demo-card.aside .demo { box-shadow: none; }
 
-.scene-tag {
-  display: inline-block;
+.scene-tags {
+  display: flex;
+  gap: 8px;
   margin: 0 0 14px 2px;
+}
+.tag-use, .tag-data {
   font-size: .78rem;
   letter-spacing: .01em;
+  border-radius: 20px;
+  padding: 5px 13px;
+  white-space: nowrap;
+}
+/* What the run is for. */
+.tag-use {
   color: var(--accent-ink);
   background: rgba(48,157,75,.12);
   border: 1px solid rgba(48,157,75,.4);
-  border-radius: 20px;
-  padding: 5px 13px;
+}
+/* Where the data came from. Blue when it is theirs already; amber when we
+   go and find it, because scraped data is the one thing on the page that
+   deserves a caution colour. */
+.tag-data {
+  color: var(--blue-text);
+  background: rgba(74,134,232,.1);
+  border: 1px solid rgba(74,134,232,.38);
+}
+.tag-data.enriched {
+  color: var(--amber-text);
+  background: rgba(217,150,43,.1);
+  border: 1px solid rgba(217,150,43,.4);
 }
 
 .demo-arrow {

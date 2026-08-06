@@ -265,8 +265,10 @@
     });
   }
 
+  // Wraps rather than stops. Past the last card you land on the first, and
+  // left from the first takes you to the last, so the arrows rotate.
   function scrollTo(i) {
-    i = Math.max(0, Math.min(scenes.length - 1, i));
+    i = (i + scenes.length) % scenes.length;
     var card = scenes[i];
     if (!rail) return;
     rail.scrollTo({
@@ -302,8 +304,6 @@
       label.textContent = (idx + 1) + ' of ' + scenes.length + '  ·  ' +
                           (scenes[idx].getAttribute('data-label') || '');
     }
-    if (prev) prev.disabled = idx === 0;
-    if (next) next.disabled = idx === scenes.length - 1;
   }
 
   function activate(i) {
