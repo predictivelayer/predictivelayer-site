@@ -168,6 +168,16 @@ code {
   backdrop-filter: saturate(160%) blur(12px);
 }
 
+/* The mark sits left of the name. Fixed height so it lines up with the
+   cap height of the wordmark rather than the full line box. */
+.wordmark-mark {
+  height: 20px;
+  width: auto;
+  margin-right: 9px;
+  display: block;
+  flex: none;
+}
+
 .wordmark {
   font-family: "Wordmark", var(--font);
   font-size: 1.13rem;
