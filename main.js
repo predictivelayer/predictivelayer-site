@@ -97,10 +97,7 @@
      clock-driven loop: every frame works out the whole scene from elapsed
      time, so background-tab throttling can never put a later beat ahead of
      an earlier one. */
-  var demo = document.getElementById('demo');
-  if (!demo) return;
-
-  var scenes = Array.prototype.slice.call(demo.querySelectorAll('[data-scene]'));
+  var scenes = Array.prototype.slice.call(document.querySelectorAll('[data-scene]'));
   if (!scenes.length) return;
 
   var MS_CHAR = 15;
@@ -240,58 +237,121 @@
     return built[i];
   }
 
-  /* ---------- switching between the three ---------- */
+  /* ---------- which card is centred ----------
+     The browser does the scrolling. We only watch it, so a trackpad swipe,
+     a touch drag and the arrow buttons all end up in the same place. */
 
+  var rail  = document.getElementById('carousel');
   var pips  = document.getElementById('demo-pips');
   var label = document.getElementById('demo-label');
-  var idx = 0, origin = null;
+  var prev  = document.querySelector('[data-demo-prev]');
+  var next  = document.querySelector('[data-demo-next]');
+
+  var reduced = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var idx = 0;
+  var origin = null;
+  var played = [];   // each example animates the first time you land on it
 
   if (pips) {
-    scenes.forEach(function (s, i) {
+    scenes.forEach(function (sc, i) {
       var b = document.createElement('button');
       b.className = 'pip';
       b.type = 'button';
-      b.setAttribute('aria-label', s.getAttribute('data-label') || ('Example ' + (i + 1)));
-      b.addEventListener('click', function () { go(i); });
+      b.setAttribute('aria-label', sc.getAttribute('data-label') || ('Example ' + (i + 1)));
+      b.addEventListener('click', function () { scrollTo(i); });
       pips.appendChild(b);
     });
   }
 
-  function go(i) {
-    idx = (i + scenes.length) % scenes.length;
-    scenes.forEach(function (s, k) { s.hidden = k !== idx; });
+  function scrollTo(i) {
+    i = Math.max(0, Math.min(scenes.length - 1, i));
+    var card = scenes[i];
+    if (!rail) return;
+    rail.scrollTo({
+      left: card.offsetLeft - (rail.clientWidth - card.offsetWidth) / 2,
+      behavior: reduced ? 'auto' : 'smooth'
+    });
+  }
+
+  // Whichever card's centre is nearest the rail's centre is the live one.
+  function nearest() {
+    if (!rail) return 0;
+    var mid = rail.scrollLeft + rail.clientWidth / 2;
+    var best = 0, bestD = Infinity;
+    scenes.forEach(function (c, i) {
+      var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    return best;
+  }
+
+  function paint() {
+    scenes.forEach(function (c, i) {
+      c.classList.toggle('aside', i !== idx);
+      c.classList.toggle('left',  i < idx);
+      c.classList.toggle('right', i > idx);
+    });
     if (pips) {
-      Array.prototype.slice.call(pips.children).forEach(function (b, k) {
-        set(b, 'on', k === idx);
+      Array.prototype.slice.call(pips.children).forEach(function (b, i) {
+        b.classList.toggle('on', i === idx);
       });
     }
     if (label) {
       label.textContent = (idx + 1) + ' of ' + scenes.length + '  ·  ' +
                           (scenes[idx].getAttribute('data-label') || '');
     }
-    origin = null;
-    if (reduced) engine(idx).frame(engine(idx).end);
+    if (prev) prev.disabled = idx === 0;
+    if (next) next.disabled = idx === scenes.length - 1;
   }
 
-  var prev = document.querySelector('[data-demo-prev]');
-  var next = document.querySelector('[data-demo-next]');
-  if (prev) prev.addEventListener('click', function () { go(idx - 1); });
-  if (next) next.addEventListener('click', function () { go(idx + 1); });
+  function activate(i) {
+    if (i === idx) return;
+    idx = i;
+    paint();
+    // A card that has not run yet starts from the top the moment it lands
+    // in the middle. One that has already run keeps its finished state.
+    if (!played[idx] && !reduced) origin = null;
+  }
 
-  var reduced = window.matchMedia &&
-                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (rail) {
+    var pending = null;
+    rail.addEventListener('scroll', function () {
+      if (pending) return;
+      pending = requestAnimationFrame(function () {
+        pending = null;
+        activate(nearest());
+      });
+    }, { passive: true });
+  }
 
-  go(0);
+  if (prev) prev.addEventListener('click', function () { scrollTo(idx - 1); });
+  if (next) next.addEventListener('click', function () { scrollTo(idx + 1); });
+
+  // Every card starts on its last frame, so the two lurking at the edges
+  // look like finished work rather than empty panels.
+  scenes.forEach(function (sc, i) {
+    var e = engine(i);
+    e.frame(e.end);
+    played[i] = true;
+  });
+  played[0] = false;   // except the one you land on, which plays itself in
+  paint();
+
   if (reduced) return;
 
-  // Loops, but the finished table holds for HOLD before it replays, so the
-  // thing worth reading is on screen far longer than the build-up to it.
+  /* Each example runs once and stops on its last frame. It does not loop:
+     thirty seconds of motion replaying beside the text you are reading is a
+     distraction, not a demo. */
   function tick(now) {
-    var e = engine(idx);
-    if (origin === null) origin = now;
-    var t = now - origin;
-    if (t >= e.loop) { origin = now; t = 0; }
-    e.frame(t);
+    if (!played[idx]) {
+      var e = engine(idx);
+      if (origin === null) origin = now;
+      var t = now - origin;
+      if (t >= e.end) { e.frame(e.end); played[idx] = true; }
+      else e.frame(t);
+    }
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);

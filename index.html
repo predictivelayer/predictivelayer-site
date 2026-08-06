@@ -6,7 +6,7 @@
 <title>predictivelayer.io — prediction made easy for businesses and AI agents</title>
 <meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=22">
+<link rel="stylesheet" href="styles.css?v=26">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -51,20 +51,20 @@
       </div>
 
       <div class="hero-visual">
-       <div class="demo-frame">
-        <div class="demo" id="demo">
-          <div class="demo-bar">
-            <span class="dots"><i></i><i></i><i></i></span>
-            <span>predictivelayer</span>
-            <span class="spacer"></span>
-            <span class="pill"><span class="live"></span> connected</span>
-          </div>
-
-          <!-- 1. They already have the rows and the answers -->
-          <div class="scene" data-scene
+        <div class="carousel-wrap">
+          <div class="carousel" id="carousel">
+          <div class="demo-card" data-scene
                data-label="You have the data"
                data-q1="We track 4,000 HVAC and plumbing companies. 84 of them sold in the last two years. Which of the rest are most likely to sell next?"
                data-q2="Both count. Ignore anything under 20 staff.">
+            <span class="scene-tag">You have the data</span>
+            <div class="demo">
+            <div class="demo-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span>predictivelayer</span>
+              <span class="spacer"></span>
+              <span class="pill"><span class="live"></span> connected</span>
+            </div>
             <div class="demo-body">
 
               <div class="chips" data-el="chips">
@@ -121,13 +121,26 @@
               </div>
 
             </div>
+            <div class="demo-foot">
+              <span class="caret">&#9656;</span>
+              <span>Ask for a prediction</span>
+              <span class="spacer"></span>
+              <span class="send">&#8593;</span>
+            </div>
+            </div>
           </div>
-
-          <!-- 2. They have names and nothing else: enrich, then self-label -->
-          <div class="scene" data-scene hidden
+          <div class="demo-card" data-scene
                data-label="You have names and nothing else"
                data-q1="All I have is 1,120 company names and the town each one is in. No headcount, no owner, no accounts. Can you still tell me which ones are worth a call?"
                data-q2="About fifty. I would rather see too many than miss one.">
+            <span class="scene-tag">You have names and nothing else</span>
+            <div class="demo">
+            <div class="demo-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span>predictivelayer</span>
+              <span class="spacer"></span>
+              <span class="pill"><span class="live"></span> connected</span>
+            </div>
             <div class="demo-body">
 
               <div class="chips" data-el="chips">
@@ -184,13 +197,26 @@
               </div>
 
             </div>
+            <div class="demo-foot">
+              <span class="caret">&#9656;</span>
+              <span>Ask for a prediction</span>
+              <span class="spacer"></span>
+              <span class="send">&#8593;</span>
+            </div>
+            </div>
           </div>
-
-          <!-- 3. A number rather than a label -->
-          <div class="scene" data-scene hidden
+          <div class="demo-card" data-scene
                data-label="You need a number, not a label"
                data-q1="Here are 210 deals we have closed or watched close, with the multiple paid on each. What would the twelve on my current list go for?"
                data-q2="Yes, hold out forty and show me how far off you were.">
+            <span class="scene-tag">You need a number, not a label</span>
+            <div class="demo">
+            <div class="demo-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span>predictivelayer</span>
+              <span class="spacer"></span>
+              <span class="pill"><span class="live"></span> connected</span>
+            </div>
             <div class="demo-body">
 
               <div class="chips" data-el="chips">
@@ -248,23 +274,24 @@
               </div>
 
             </div>
+            <div class="demo-foot">
+              <span class="caret">&#9656;</span>
+              <span>Ask for a prediction</span>
+              <span class="spacer"></span>
+              <span class="send">&#8593;</span>
+            </div>
+            </div>
           </div>
-
-          <div class="demo-foot">
-            <span class="caret">&#9656;</span>
-            <span>Ask for a prediction</span>
-            <span class="spacer"></span>
-            <span class="send">&#8593;</span>
           </div>
+          <button class="demo-arrow prev" data-demo-prev aria-label="Previous example">&#8249;</button>
+          <button class="demo-arrow next" data-demo-next aria-label="Next example">&#8250;</button>
         </div>
 
         <div class="demo-nav">
-          <button class="demo-arrow prev" data-demo-prev aria-label="Previous example">&#8249;</button>
-          <button class="demo-arrow next" data-demo-next aria-label="Next example">&#8250;</button>
           <span class="demo-pips" id="demo-pips"></span>
           <span class="demo-label" id="demo-label"></span>
         </div>
-       </div>
+      </div>
       </div>
     </div>
   </section>
@@ -363,6 +390,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=12"></script>
+<script src="main.js?v=13"></script>
 </body>
 </html>
