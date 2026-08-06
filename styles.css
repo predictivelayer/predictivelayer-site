@@ -427,8 +427,63 @@ table.data th, table.data td {
 }
 table.data th { color: var(--muted); font-weight: 400; }
 table.data tr:last-child td { border-bottom: 0; }
-.col-new { background: var(--accent-dim); color: var(--accent-ink) !important; }
-table.data th.col-new { color: var(--accent-ink) !important; }
+/* The two appended columns glow. Everything to their left is data the
+   person already had; these two are the thing they came for. */
+.col-new {
+  background: rgba(48,157,75,.13);
+  color: #8fe0a4 !important;
+  text-shadow: 0 0 6px rgba(120,240,155,.85),
+               0 0 16px rgba(79,188,108,.6),
+               0 0 34px rgba(48,157,75,.45);
+}
+table.data th.col-new {
+  color: #a6ecb7 !important;
+  background: rgba(48,157,75,.2);
+}
+
+/* Light the edges of the block, so the two columns read as one lit panel
+   rather than two tinted cells. The first new column is picked out without
+   a class on it: the cell that follows a cell that is not new. */
+table.data td:not(.col-new) + td.col-new,
+table.data th:not(.col-new) + th.col-new {
+  box-shadow: inset 2px 0 0 rgba(120,240,155,.75),
+              inset 22px 0 30px -20px rgba(120,240,155,.8);
+}
+table.data td.col-new:last-child,
+table.data th.col-new:last-child {
+  box-shadow: inset -2px 0 0 rgba(120,240,155,.75),
+              inset -22px 0 30px -20px rgba(120,240,155,.8);
+}
+/* The block is capped top and bottom by the header and the last row. */
+table.data thead th.col-new { box-shadow: inset 0 2px 0 rgba(120,240,155,.6); }
+table.data thead th:not(.col-new) + th.col-new {
+  box-shadow: inset 2px 0 0 rgba(120,240,155,.75),
+              inset 22px 0 30px -20px rgba(120,240,155,.8),
+              inset 0 2px 0 rgba(120,240,155,.6);
+}
+table.data thead th.col-new:last-child {
+  box-shadow: inset -2px 0 0 rgba(120,240,155,.75),
+              inset -22px 0 30px -20px rgba(120,240,155,.8),
+              inset 0 2px 0 rgba(120,240,155,.6);
+}
+table.data tr:last-child td:not(.col-new) + td.col-new {
+  box-shadow: inset 2px 0 0 rgba(120,240,155,.75),
+              inset 22px 0 30px -20px rgba(120,240,155,.8),
+              inset 0 -2px 0 rgba(120,240,155,.6);
+}
+table.data tr:last-child td.col-new:last-child {
+  box-shadow: inset -2px 0 0 rgba(120,240,155,.75),
+              inset -22px 0 30px -20px rgba(120,240,155,.8),
+              inset 0 -2px 0 rgba(120,240,155,.6);
+}
+
+/* While a cell is still settling it is dimmer and blurrier, so the moment
+   it locks onto its answer is visible rather than merely inferred. */
+.col-new.rolling {
+  color: var(--sand-2) !important;
+  text-shadow: 0 0 12px rgba(48,157,75,.55);
+  opacity: .8;
+}
 
 /* ---------- cards / grids ---------- */
 

@@ -122,8 +122,36 @@
   var GAP     = 620;
   var T_RESULT = T_STEP + steps.length * GAP + 250;
   var ROW_GAP  = 110;
-  var T_BOT2   = T_RESULT + rows.length * ROW_GAP + 550;
-  var T_LOOP   = T_BOT2 + 7000;
+  var ROLL     = 900;   // how long a scored cell spends settling
+  var T_BOT2   = T_RESULT + rows.length * ROW_GAP + ROLL + 550;
+  var T_HOLD   = 16000; // the finished table sits this long before replaying
+  var T_LOOP   = T_BOT2 + T_HOLD;
+
+  /* The two appended columns count themselves in before they settle.
+     Values are read out of the HTML once, so the markup stays the source
+     of truth and the animation is only ever presentation. */
+  var cells = [];
+  rows.forEach(function (r, ri) {
+    Array.prototype.slice.call(r.querySelectorAll('td.col-new')).forEach(function (el, ci) {
+      var final = el.textContent.trim();
+      cells.push({
+        el: el, row: ri, final: final,
+        num: /^-?\d*\.?\d+$/.test(final) ? parseFloat(final) : null,
+        dp: (final.split('.')[1] || '').length,
+        seed: ri * 31 + ci * 7 + 3
+      });
+    });
+  });
+  // Every distinct word in a text column, so the flicker only ever shows
+  // values that could really have come back.
+  var WORDS = cells.filter(function (c) { return c.num === null; })
+                   .map(function (c) { return c.final; })
+                   .filter(function (v, i, a) { return a.indexOf(v) === i; });
+
+  function noise(n) {
+    var x = Math.sin(n * 12.9898) * 43758.5453;
+    return x - Math.floor(x);
+  }
 
   var asks = [
     { msg: pick('ask1'), span: pick('typed1'), cur: pick('cur1'), text: Q1, start: T_Q1, end: E_Q1 },
@@ -155,6 +183,35 @@
 
     set(result, 'show', t >= T_RESULT);
     rows.forEach(function (r, i) { set(r, 'in', t >= T_RESULT + i * ROW_GAP); });
+
+    cells.forEach(function (c) {
+      var at = T_RESULT + c.row * ROW_GAP;
+      var p = t - at;
+      var txt, rolling;
+
+      if (p < 0) {
+        txt = ''; rolling = false;
+      } else if (p >= ROLL) {
+        txt = c.final; rolling = false;
+      } else {
+        rolling = true;
+        var step = Math.floor(p / 55);
+        var r = noise(step * 3.7 + c.seed);
+        if (c.num === null) {
+          txt = WORDS[Math.floor(r * WORDS.length) % WORDS.length];
+        } else {
+          // The spread narrows towards zero, so the number closes in on its
+          // answer instead of jumping to it.
+          var left = 1 - p / ROLL;
+          var v = c.num + (r - 0.5) * 1.6 * left * left;
+          txt = Math.min(0.99, Math.max(0.01, v)).toFixed(c.dp);
+        }
+      }
+
+      if (c.el.textContent !== txt) c.el.textContent = txt;
+      set(c.el, 'rolling', rolling);
+    });
+
     set(bot2, 'show', t >= T_BOT2);
   }
 
@@ -163,16 +220,13 @@
 
   if (reduced) { frame(T_LOOP); return; }
 
-  // Runs once and stops on the last frame. A loop is fine for three seconds
-  // of motion; this is closer to thirty, and watching the same conversation
-  // retype itself while you are reading the page below is a distraction.
-  var T_END = T_BOT2 + 400;
-
+  // Loops, but the finished table holds for T_HOLD before it replays, so the
+  // thing worth reading is on screen far longer than the build-up to it.
   var origin = null;
   function tick(now) {
     if (origin === null) origin = now;
     var t = now - origin;
-    if (t >= T_END) { frame(T_END); return; }
+    if (t >= T_LOOP) { origin = now; t = 0; }
     frame(t);
     requestAnimationFrame(tick);
   }
