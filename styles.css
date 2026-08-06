@@ -207,6 +207,12 @@ code {
 
 .nav-right { justify-self: end; display: flex; align-items: center; gap: 12px; }
 
+/* Sign in. Sends people to the app on app.predictivelayer.io, which is a
+   different host from this static site. Kept as a plain text link so the
+   one primary button in the header stays "Get in touch". */
+.nav-signin { color: var(--ink-2); font-size: .92rem; font-weight: 450; white-space: nowrap; }
+.nav-signin:hover { color: var(--ink); }
+
 .nav-toggle {
   display: none;
   background: var(--panel);
@@ -805,8 +811,12 @@ table.data tr:last-child td.col-new:last-child {
   section { padding: 64px 0; }
   .drops { grid-template-columns: 1fr; }
 
-  .nav { grid-template-columns: 1fr auto; height: 64px; }
-  .nav-right { display: none; }
+  /* Sign in and the language switch stay reachable on a phone. Only the
+     "Get in touch" button drops out, and Contact is already in the menu. */
+  .nav { grid-template-columns: 1fr auto auto; height: 64px; }
+  .nav-right { gap: 10px; }
+  .nav-right .btn { display: none; }
+  .lang-switch { margin-left: 0; }
   .nav-toggle { display: block; justify-self: end; }
   .nav-links {
     display: none;
