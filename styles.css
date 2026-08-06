@@ -61,6 +61,18 @@
   font-display: swap;
 }
 
+/* The Chinese wordmark, same trick: Alibaba PuHuiTi 3.0 SemiBold subset to
+   the four characters of 普微智能. 1.4KB, so it costs the same as the Latin
+   one and looks identical on every machine instead of falling back to
+   whatever CJK font the visitor happens to have. Free for commercial use. */
+@font-face {
+  font-family: "WordmarkZH";
+  src: url("wordmark-zh.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -174,8 +186,8 @@ code {
    Chinese wordmark its own system CJK stack, and drop the Latin tracking,
    which reads as mis-kerned on Chinese characters. */
 :lang(zh) .wordmark {
-  font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", var(--font);
-  letter-spacing: 0;
+  font-family: "WordmarkZH", "PingFang SC", "Microsoft YaHei", "Heiti SC", var(--font);
+  letter-spacing: .02em;
 }
 
 .nav-links { display: flex; align-items: center; gap: 30px; justify-self: center; }
