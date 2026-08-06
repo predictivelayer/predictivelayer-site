@@ -6,7 +6,7 @@
 <title>predictivelayer.io — prediction made easy for businesses and AI agents</title>
 <meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=27">
+<link rel="stylesheet" href="styles.css?v=29">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -54,10 +54,8 @@
         <div class="carousel-wrap">
           <div class="carousel" id="carousel">
           <div class="demo-card" data-scene
-               data-label="Deal Origination"
-               data-q1="We track 4,000 HVAC and plumbing companies. 84 of them sold in the last two years. Which of the rest are most likely to sell next?"
-               data-q2="Both count. Ignore anything under 20 staff.">
-            <span class="scene-tags"><span class="tag-use">Deal Origination</span><span class="tag-data">Data available</span></span>
+               data-label="Deal Origination">
+            <span class="scene-tags"><span class="tag-use">Deal Origination</span><span class="tag-data">You have the data</span><span class="tag-verdict">Predictable</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
@@ -67,27 +65,27 @@
             </div>
             <div class="demo-body">
 
-              <div class="chips" data-el="chips">
+              <div class="chips">
                 <span class="chip"><span class="ic">&#9679;</span> tracked_companies.csv <span class="sz">4,012 rows</span></span>
               </div>
 
-              <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+              <div class="msg msg-user" data-q="We track 4,000 HVAC and plumbing companies. 84 of them sold in the last two years. Which of the rest are most likely to sell next?"><span data-typed></span><span class="cursor"></span></div>
 
-              <div class="msg msg-bot" data-el="bot1">
+              <div class="msg msg-bot">
                 I will treat those 84 owners as your examples of someone who sold, and score everyone else against them.
                 <span class="q">Two things before I start. Does a sale to a strategic buyer count the same as a sale to a fund? And is there a size you stop caring below?</span>
               </div>
 
-              <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+              <div class="msg msg-user" data-q="Both count. Ignore anything under 20 staff."><span data-typed></span><span class="cursor"></span></div>
 
               <div class="steps">
-                <div class="step" data-el="s1"><span class="tick">&#10003;</span>Read your list <span class="val">4,012 companies, 84 marked sold</span></div>
-                <div class="step" data-el="s2"><span class="tick">&#10003;</span>Kept the ones in range <span class="val">3,180 with 20 staff or more</span></div>
-                <div class="step" data-el="s3"><span class="tick">&#10003;</span>Found what the 84 had in common <span class="val">owner age, years held, flat headcount</span></div>
-                <div class="step" data-el="s4"><span class="tick">&#10003;</span>Scored everyone else <span class="val">3,096 companies in 7.4s</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Read your list <span class="val">4,012 companies, 84 marked sold</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Kept the ones in range <span class="val">3,180 with 20 staff or more</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Found what the 84 had in common <span class="val">owner age, years held, flat headcount</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Scored everyone else <span class="val">3,096 companies in 7.4s</span></div>
               </div>
 
-              <div class="result" data-el="result">
+              <div class="result">
                 <div class="tbl-wrap">
                   <div class="tbl-head"><span>tracked_companies_scored.csv</span><span class="dl">sorted by sell intent</span></div>
                   <div class="tbl-scroll">
@@ -116,7 +114,7 @@
                 <div class="demo-cta"><span class="dl">Download CSV</span><span>Your original rows, untouched. Two columns added.</span></div>
               </div>
 
-              <div class="msg msg-bot" data-el="bot2">
+              <div class="msg msg-bot">
                 <b>214 companies score above 0.80.</b> That is your call list for the quarter. Ask me why any one of them scored the way it did, or tell me I got one wrong and I will take it into account.
               </div>
 
@@ -130,10 +128,8 @@
             </div>
           </div>
           <div class="demo-card" data-scene
-               data-label="Market Mapping"
-               data-q1="All I have is 1,120 company names and the town each one is in. No headcount, no owner, no accounts. Can you still tell me which ones are worth a call?"
-               data-q2="About fifty. I would rather see too many than miss one.">
-            <span class="scene-tags"><span class="tag-use">Market Mapping</span><span class="tag-data enriched">We find the data</span></span>
+               data-label="Lead Scoring">
+            <span class="scene-tags"><span class="tag-use">Lead Scoring</span><span class="tag-data missing">You do not have the data</span><span class="tag-verdict">Predictable</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
@@ -143,27 +139,27 @@
             </div>
             <div class="demo-body">
 
-              <div class="chips" data-el="chips">
+              <div class="chips">
                 <span class="chip"><span class="ic">&#9679;</span> names_only.csv <span class="sz">1,120 rows &middot; 2 columns</span></span>
               </div>
 
-              <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+              <div class="msg msg-user" data-q="All I have is 1,120 company names and the town each one is in. No headcount, no owner, no accounts. Can you still tell me which ones are worth a call?"><span data-typed></span><span class="cursor"></span></div>
 
-              <div class="msg msg-bot" data-el="bot1">
+              <div class="msg msg-bot">
                 Yes, but I have to go and find the data first. For each name I will pull what is public: headcount, how long it has traded, hiring activity, reviews, licence records. Then I will label a sample myself, in writing, and you correct the ones I got wrong.
                 <span class="q">That data is scraped, so it is right most of the time and not all of the time. How many companies do you want to end up ringing?</span>
               </div>
 
-              <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+              <div class="msg msg-user" data-q="About fifty. I would rather see too many than miss one."><span data-typed></span><span class="cursor"></span></div>
 
               <div class="steps">
-                <div class="step" data-el="s1"><span class="tick">&#10003;</span>Matched your names to a public record <span class="val">1,043 of 1,120</span></div>
-                <div class="step" data-el="s2"><span class="tick">&#10003;</span>Enriched every one <span class="val">14 fields per company, from filings, job posts and reviews</span></div>
-                <div class="step" data-el="s3"><span class="tick">&#10003;</span>Labeled a sample itself <span class="val">60 rows, each with a written reason</span></div>
-                <div class="step" data-el="s4"><span class="tick">&#10003;</span>You changed 7, then it scored the rest <span class="val">983 companies in 4.1s</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Matched your names to a public record <span class="val">1,043 of 1,120</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Enriched every one <span class="val">14 fields per company, from filings, job posts and reviews</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Labeled a sample itself <span class="val">60 rows, each with a written reason</span></div>
+                <div class="step"><span class="tick">&#10003;</span>You changed 7, then it scored the rest <span class="val">983 companies in 4.1s</span></div>
               </div>
 
-              <div class="result" data-el="result">
+              <div class="result">
                 <div class="tbl-wrap">
                   <div class="tbl-head"><span>enriched_and_scored.csv</span><span class="dl">five columns it found, two it predicted</span></div>
                   <div class="tbl-scroll">
@@ -192,7 +188,7 @@
                 <div class="demo-cta"><span class="dl">Download CSV</span><span>Your two columns, plus the fourteen it found and the two it predicted.</span></div>
               </div>
 
-              <div class="msg msg-bot" data-el="bot2">
+              <div class="msg msg-bot">
                 <b>Your top 50 are ready.</b> Three fields in ten came from a guess rather than a filing, so treat this as who to ring first, not as a fact about the business. Ask me where any number came from and I will show you the source.
               </div>
 
@@ -206,10 +202,8 @@
             </div>
           </div>
           <div class="demo-card" data-scene
-               data-label="Valuation"
-               data-q1="Here are 210 deals we have closed or watched close, with the multiple paid on each. What would the twelve on my current list go for?"
-               data-q2="Yes, hold out forty and show me how far off you were.">
-            <span class="scene-tags"><span class="tag-use">Valuation</span><span class="tag-data">Data available</span></span>
+               data-label="Pattern recognition">
+            <span class="scene-tags"><span class="tag-use">Pattern recognition</span><span class="tag-data complex">Predict a complex value</span><span class="tag-verdict">Predictable</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
@@ -219,28 +213,35 @@
             </div>
             <div class="demo-body">
 
-              <div class="chips" data-el="chips">
-                <span class="chip"><span class="ic">&#9679;</span> past_deals.csv <span class="sz">210 rows</span></span>
+              <div class="chips">
+                <span class="chip"><span class="ic">&#9679;</span> past_deals.csv <span class="sz">210 rows &middot; 9 columns</span></span>
                 <span class="chip"><span class="ic">&#9679;</span> current_pipeline.csv <span class="sz">12 rows</span></span>
               </div>
 
-              <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+              <div class="msg msg-user" data-q="Here are 210 deals we have closed or watched close, with what was paid and the earnings at the time. What would the twelve on my current list go for?"><span data-typed></span><span class="cursor"></span></div>
 
-              <div class="msg msg-bot" data-el="bot1">
-                That is a number rather than a category, so I will predict the multiple itself and put a range around each one. Two hundred and ten examples is thin, so the range will be wide wherever a company does not look like anything you have bought before.
-                <span class="q">Do you want me to hold some of your deals back and predict them blind, so you can see how close I get?</span>
+              <div class="msg msg-bot">
+                Your file has price paid and it has earnings, but there is no column for the multiple, and the multiple is the thing you are asking me to predict.
+                <span class="q">I can work it out: price divided by earnings, on every row where both are filled. Two of your deals have no earnings and would drop out. Shall I derive it?</span>
               </div>
 
-              <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+              <div class="msg msg-user" data-q="Yes, derive it."><span data-typed></span><span class="cursor"></span></div>
+
+              <div class="msg msg-bot">
+                Done. 208 deals now carry a multiple, from 3.1x to 8.4x.
+                <span class="q">That is thin for a number spread that wide. I can keep some of your deals back and price them blind, so you see how far off I am before you trust the twelve. How many should I hold?</span>
+              </div>
+
+              <div class="msg msg-user" data-q="Hold forty."><span data-typed></span><span class="cursor"></span></div>
 
               <div class="steps">
-                <div class="step" data-el="s1"><span class="tick">&#10003;</span>Read your deals <span class="val">210 closed, multiple paid on each</span></div>
-                <div class="step" data-el="s2"><span class="tick">&#10003;</span>Held 40 back and predicted them blind <span class="val">never saw the price</span></div>
-                <div class="step" data-el="s3"><span class="tick">&#10003;</span>Checked itself against what was actually paid <span class="val">off by 0.4x on average</span></div>
-                <div class="step" data-el="s4"><span class="tick">&#10003;</span>Priced your current list <span class="val">12 companies in 1.2s</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Derived the multiple <span class="val">price &divide; earnings, on 208 of 210 deals</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Held 40 back and priced them blind <span class="val">never saw what was paid</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Checked itself against the real price <span class="val">off by 0.4x on average</span></div>
+                <div class="step"><span class="tick">&#10003;</span>Priced your current list <span class="val">12 companies in 1.2s</span></div>
               </div>
 
-              <div class="result" data-el="result">
+              <div class="result">
                 <div class="tbl-wrap">
                   <div class="tbl-head"><span>current_pipeline_priced.csv</span><span class="dl">sorted by multiple</span></div>
                   <div class="tbl-scroll">
@@ -269,8 +270,8 @@
                 <div class="demo-cta"><span class="dl">Download CSV</span><span>A multiple and a range on every row in your pipeline.</span></div>
               </div>
 
-              <div class="msg msg-bot" data-el="bot2">
-                <b>Median 5.1x across your twelve.</b> Two sit above anything you have paid before, which usually means the model has no close comparison rather than that the business is special. On the forty deals it had never seen, it was off by 0.4x.
+              <div class="msg msg-bot">
+                <b>Median 5.1x across your twelve.</b> Two sit above anything you have paid before, which usually means I have no close comparison rather than that the business is special. On the forty deals I never saw, I was off by 0.4x.
               </div>
 
             </div>
@@ -390,6 +391,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=14"></script>
+<script src="main.js?v=15"></script>
 </body>
 </html>

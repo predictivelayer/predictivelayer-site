@@ -100,9 +100,10 @@
   var scenes = Array.prototype.slice.call(document.querySelectorAll('[data-scene]'));
   if (!scenes.length) return;
 
-  var MS_CHAR = 15;
-  var ROLL    = 900;    // how long a scored cell spends settling
-  var HOLD    = 16000;  // how long the finished table sits before replaying
+  var MS_CHAR  = 15;    // typing speed
+  var STEP_GAP = 620;   // between one tick and the next
+  var ROW_GAP  = 110;   // between one table row and the next
+  var ROLL     = 900;   // how long a scored cell spends settling
 
   function set(el, cls, on) {
     if (el) el.classList[on ? 'add' : 'remove'](cls);
@@ -115,87 +116,103 @@
     return x - Math.floor(x);
   }
 
-  /* Everything a single scene needs to draw itself at time t. Built once per
-     scene, lazily, and kept. */
+  /* Everything a single scene needs to draw itself at time t.
+
+     The timeline is read out of the DOM in document order rather than
+     hard-coded, so a scene can have two turns of conversation or five and
+     nothing here has to change. Add a message to the HTML and it gets a
+     beat. */
   function build(scene) {
-    var pick = function (n) { return scene.querySelector('[data-el="' + n + '"]'); };
-
-    var chips  = pick('chips');
-    var bot1   = pick('bot1');
-    var bot2   = pick('bot2');
-    var result = pick('result');
-    var steps  = ['s1', 's2', 's3', 's4'].map(pick).filter(Boolean);
-    var rows   = Array.prototype.slice.call(scene.querySelectorAll('tbody tr'));
-
-    var Q1 = scene.getAttribute('data-q1') || '';
-    var Q2 = scene.getAttribute('data-q2') || '';
-
-    var T_CHIPS  = 300;
-    var T_Q1     = 900;
-    var E_Q1     = T_Q1 + Q1.length * MS_CHAR;
-    var T_BOT1   = E_Q1 + 750;
-    var T_Q2     = T_BOT1 + 2300;
-    var E_Q2     = Q2 ? T_Q2 + Q2.length * MS_CHAR : T_BOT1;
-    var T_STEP   = E_Q2 + 550;
-    var GAP      = 620;
-    var T_RESULT = T_STEP + steps.length * GAP + 250;
-    var ROW_GAP  = 110;
-    var T_BOT2   = T_RESULT + rows.length * ROW_GAP + ROLL + 550;
-    var T_LOOP   = T_BOT2 + HOLD;
-
-    /* The appended columns count themselves in before they settle. Values
-       are read out of the HTML once, so the markup stays the source of
-       truth and the animation is only ever presentation. */
+    var body = scene.querySelector('.demo-body');
+    var items = [];
     var cells = [];
     var wordsByCol = {};
-    rows.forEach(function (r, ri) {
-      Array.prototype.slice.call(r.querySelectorAll('td.col-new')).forEach(function (el, ci) {
-        var final = el.textContent.trim();
-        var num = /^-?\d*\.?\d+$/.test(final) ? parseFloat(final) : null;
-        cells.push({
-          el: el, row: ri, col: ci, final: final, num: num,
-          dp: (final.split('.')[1] || '').length,
-          seed: ri * 31 + ci * 7 + 3
+    var t = 0;
+    var seed = 0;
+
+    Array.prototype.slice.call(body.children).forEach(function (el) {
+      if (el.classList.contains('chips')) {
+        t += 300;
+        items.push({ kind: 'show', el: el, at: t });
+        t += 620;
+
+      } else if (el.classList.contains('msg-user')) {
+        var text = el.getAttribute('data-q') || '';
+        items.push({
+          kind: 'type', el: el, at: t,
+          span: el.querySelector('[data-typed]'),
+          cur:  el.querySelector('.cursor'),
+          text: text, end: t + text.length * MS_CHAR
         });
-        // A text column only ever flickers through its own values, so the
-        // scramble shows things that could really have come back.
-        if (num === null) {
-          if (!wordsByCol[ci]) wordsByCol[ci] = [];
-          if (wordsByCol[ci].indexOf(final) === -1) wordsByCol[ci].push(final);
-        }
-      });
+        t += text.length * MS_CHAR + 700;
+
+      } else if (el.classList.contains('msg-bot')) {
+        items.push({ kind: 'show', el: el, at: t });
+        // Long answers hold longer, so a wall of text is not replaced before
+        // anyone could have read it.
+        t += 1000 + Math.min(3600, el.textContent.trim().length * 12);
+
+      } else if (el.classList.contains('steps')) {
+        t += 200;
+        var steps = Array.prototype.slice.call(el.querySelectorAll('.step'));
+        steps.forEach(function (st, i) { items.push({ kind: 'step', el: st, at: t + i * STEP_GAP }); });
+        t += steps.length * STEP_GAP + 200;
+
+      } else if (el.classList.contains('result')) {
+        t += 200;
+        var at = t;
+        items.push({ kind: 'show', el: el, at: at });
+        var rows = Array.prototype.slice.call(el.querySelectorAll('tbody tr'));
+        rows.forEach(function (r, ri) {
+          items.push({ kind: 'row', el: r, at: at + ri * ROW_GAP });
+          Array.prototype.slice.call(r.querySelectorAll('td.col-new')).forEach(function (td, ci) {
+            var final = td.textContent.trim();
+            var num = /^-?\d*\.?\d+$/.test(final) ? parseFloat(final) : null;
+            cells.push({
+              el: td, at: at + ri * ROW_GAP, final: final, num: num, col: ci,
+              dp: (final.split('.')[1] || '').length,
+              seed: (seed += 13)
+            });
+            // A text column only flickers through its own values, so the
+            // scramble shows things that could really have come back.
+            if (num === null) {
+              if (!wordsByCol[ci]) wordsByCol[ci] = [];
+              if (wordsByCol[ci].indexOf(final) === -1) wordsByCol[ci].push(final);
+            }
+          });
+        });
+        t += rows.length * ROW_GAP + ROLL + 500;
+
+      } else {
+        items.push({ kind: 'show', el: el, at: t });
+        t += 400;
+      }
     });
 
-    var asks = [
-      { msg: pick('ask1'), span: pick('typed1'), cur: pick('cur1'), text: Q1, start: T_Q1, end: E_Q1 },
-      { msg: pick('ask2'), span: pick('typed2'), cur: pick('cur2'), text: Q2, start: T_Q2, end: E_Q2 }
-    ].filter(function (a) { return a.msg && a.span && a.text; });
+    var END = t + 500;
 
-    function frame(t) {
-      set(chips, 'show', t >= T_CHIPS);
-
-      asks.forEach(function (a) {
-        set(a.msg, 'show', t >= a.start);
-        var n = t < a.start ? 0 : Math.min(a.text.length, Math.floor((t - a.start) / MS_CHAR));
-        var want = a.text.slice(0, n);
-        if (a.span.textContent !== want) a.span.textContent = want;
-        if (a.cur) a.cur.style.visibility = (t >= a.start && t < a.end) ? 'visible' : 'hidden';
+    function frame(now) {
+      items.forEach(function (it) {
+        if (it.kind === 'type') {
+          set(it.el, 'show', now >= it.at);
+          var n = now < it.at ? 0
+                : Math.min(it.text.length, Math.floor((now - it.at) / MS_CHAR));
+          var want = it.text.slice(0, n);
+          if (it.span && it.span.textContent !== want) it.span.textContent = want;
+          if (it.cur) it.cur.style.visibility =
+            (now >= it.at && now < it.end) ? 'visible' : 'hidden';
+        } else if (it.kind === 'step') {
+          set(it.el, 'show', now >= it.at);
+          set(it.el, 'done', now >= it.at + 380);
+        } else if (it.kind === 'row') {
+          set(it.el, 'in', now >= it.at);
+        } else {
+          set(it.el, 'show', now >= it.at);
+        }
       });
-
-      set(bot1, 'show', t >= T_BOT1);
-
-      steps.forEach(function (el, i) {
-        var at = T_STEP + i * GAP;
-        set(el, 'show', t >= at);
-        set(el, 'done', t >= at + 380);
-      });
-
-      set(result, 'show', t >= T_RESULT);
-      rows.forEach(function (r, i) { set(r, 'in', t >= T_RESULT + i * ROW_GAP); });
 
       cells.forEach(function (c) {
-        var at = T_RESULT + c.row * ROW_GAP;
-        var p = t - at;
+        var p = now - c.at;
         var txt, rolling;
 
         if (p < 0) {
@@ -210,7 +227,7 @@
             txt = w[Math.floor(r * w.length) % w.length];
           } else {
             // The spread narrows towards zero, so the number closes in on
-            // its answer instead of jumping to it. Jitter is scaled to the
+            // its answer instead of jumping to it. Jitter scales with the
             // value, so a 0.92 confidence and a 5.4x multiple both work.
             var left = 1 - p / ROLL;
             var mag = Math.max(Math.abs(c.num), 0.2);
@@ -224,11 +241,9 @@
         if (c.el.textContent !== txt) c.el.textContent = txt;
         set(c.el, 'rolling', rolling);
       });
-
-      set(bot2, 'show', t >= T_BOT2);
     }
 
-    return { frame: frame, loop: T_LOOP, end: T_BOT2 + 400 };
+    return { frame: frame, end: END };
   }
 
   var built = [];

@@ -305,9 +305,15 @@ br.brk { display: none; }
      on a phone instead of letting the table scroll inside itself. */
   min-width: 0;
   scroll-snap-align: center;
+  /* Cards stretch to the tallest one. Pass that height down so the panel
+     fills the card instead of leaving a gap under the shorter examples. */
+  display: flex;
+  flex-direction: column;
   transition: opacity .45s ease, transform .45s ease, filter .45s ease;
   transform-style: preserve-3d;
 }
+.demo-card > .demo { flex: 1; display: flex; flex-direction: column; }
+.demo-card > .demo > .demo-body { flex: 1; }
 .carousel { --card-w: min(1072px, 88vw); }
 
 /* The two that are not centred. */
@@ -318,10 +324,11 @@ br.brk { display: none; }
 
 .scene-tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 0 0 14px 2px;
 }
-.tag-use, .tag-data {
+.tag-use, .tag-data, .tag-verdict {
   font-size: .78rem;
   letter-spacing: .01em;
   border-radius: 20px;
@@ -334,18 +341,34 @@ br.brk { display: none; }
   background: rgba(48,157,75,.12);
   border: 1px solid rgba(48,157,75,.4);
 }
-/* Where the data came from. Blue when it is theirs already; amber when we
-   go and find it, because scraped data is the one thing on the page that
-   deserves a caution colour. */
+/* Where the data stands. Blue when they already hold it, red when they do
+   not, violet when the thing being predicted has to be worked out first. */
 .tag-data {
   color: var(--blue-text);
   background: rgba(74,134,232,.1);
   border: 1px solid rgba(74,134,232,.38);
 }
-.tag-data.enriched {
-  color: var(--amber-text);
-  background: rgba(217,150,43,.1);
-  border: 1px solid rgba(217,150,43,.4);
+.tag-data.missing {
+  color: var(--red-text);
+  background: rgba(229,72,77,.1);
+  border: 1px solid rgba(229,72,77,.4);
+}
+.tag-data.complex {
+  color: #a89bf2;
+  background: rgba(139,123,234,.1);
+  border: 1px solid rgba(139,123,234,.4);
+}
+/* The verdict, same on every card: whatever the starting point, it can be
+   predicted. Stamped rather than tinted, so it does not read as a category. */
+.tag-verdict {
+  color: var(--ink);
+  background: none;
+  border: 1px solid #333;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  padding: 6px 12px;
 }
 
 .demo-arrow {
