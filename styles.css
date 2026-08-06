@@ -247,6 +247,7 @@ br.brk { display: none; }
 /* ---------- animated chat demo ---------- */
 
 .demo {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--bg-2);
@@ -255,6 +256,63 @@ br.brk { display: none; }
   box-shadow: 0 -1px 0 rgba(255,255,255,.03) inset,
               0 30px 90px rgba(0,0,0,.55);
 }
+
+/* Three examples share the panel. Only one is in the document at a time, so
+   the animation never runs against something nobody can see. */
+.scene[hidden] { display: none; }
+
+/* On a wide screen the arrows float over the left and right edges of the
+   panel. On a phone they fall back into the row of pips underneath, where
+   a 40px circle is not covering a column of the table. */
+.demo-frame { position: relative; }
+
+.demo-arrow {
+  position: absolute;
+  top: 44%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(10,10,10,.86);
+  backdrop-filter: blur(6px);
+  color: var(--ink-2);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0 0 3px;
+  font-family: var(--font);
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.demo-arrow:hover { background: var(--panel-2); color: var(--ink); border-color: #3a3a3a; }
+.demo-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.demo-arrow.prev { left: 14px; }
+.demo-arrow.next { right: 14px; }
+
+.demo-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+.demo-pips { display: flex; gap: 7px; }
+.pip {
+  width: 26px;
+  height: 4px;
+  border-radius: 3px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: #2a2a2a;
+  transition: background .15s ease;
+}
+.pip:hover { background: #3d3d3d; }
+.pip.on { background: var(--accent); }
+.pip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.demo-label { font-size: .84rem; color: var(--muted); }
 
 .demo-bar {
   display: flex;
@@ -267,7 +325,7 @@ br.brk { display: none; }
   color: var(--muted);
 }
 .dots { display: flex; gap: 6px; }
-.dots i { width: 9px; height: 9px; border-radius: 50%; background: #332d26; display: block; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; background: #2a2a2a; display: block; }
 .demo-bar .spacer { flex: 1; }
 .pill {
   font-size: .72rem;
@@ -285,7 +343,9 @@ br.brk { display: none; }
 }
 
 .demo-body {
-  padding: 22px;
+  /* Wide side padding so the arrows, which float over the panel edges,
+     never sit on top of a row of the table. */
+  padding: 22px 62px;
   min-height: 890px;
   display: flex;
   flex-direction: column;
@@ -300,7 +360,7 @@ br.brk { display: none; }
   gap: 10px;
   background: var(--panel);
   font-size: .88rem;
-  color: #8a7d64;
+  color: var(--muted);
 }
 .demo-foot .caret { color: var(--accent); }
 .demo-foot .spacer { flex: 1; }
@@ -562,7 +622,7 @@ table.data tr:last-child td.col-new:last-child {
   color: var(--ink);
   background: var(--panel);
 }
-.field input::placeholder, .field textarea::placeholder { color: #8a7d64; }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
 .field textarea { min-height: 128px; resize: vertical; }
 .form-note { font-size: .84rem; color: var(--muted); margin-top: 12px; }
@@ -630,6 +690,11 @@ table.data tr:last-child td.col-new:last-child {
 
   .btn-row .btn { width: 100%; text-align: center; }
   .email-box { flex-direction: column; align-items: flex-start; }
+
+  .demo-body { padding: 18px 16px; min-height: 0; }
+  .demo-arrow { position: static; transform: none; width: 34px; height: 34px; font-size: 1.15rem; }
+  .demo-nav { flex-wrap: wrap; gap: 10px; }
+  .demo-label { flex-basis: 100%; }
 }
 
 /* ---------- run panel (auto prediction) ---------- */

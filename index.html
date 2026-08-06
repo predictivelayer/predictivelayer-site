@@ -6,7 +6,7 @@
 <title>predictivelayer.io — prediction made easy for businesses and AI agents</title>
 <meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=20">
+<link rel="stylesheet" href="styles.css?v=22">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -51,6 +51,7 @@
       </div>
 
       <div class="hero-visual">
+       <div class="demo-frame">
         <div class="demo" id="demo">
           <div class="demo-bar">
             <span class="dots"><i></i><i></i><i></i></span>
@@ -59,61 +60,194 @@
             <span class="pill"><span class="live"></span> connected</span>
           </div>
 
-          <div class="demo-body">
+          <!-- 1. They already have the rows and the answers -->
+          <div class="scene" data-scene
+               data-label="You have the data"
+               data-q1="We track 4,000 HVAC and plumbing companies. 84 of them sold in the last two years. Which of the rest are most likely to sell next?"
+               data-q2="Both count. Ignore anything under 20 staff.">
+            <div class="demo-body">
 
-            <div class="chips" data-el="chips">
-              <span class="chip"><span class="ic">&#9679;</span> tracked_companies.csv <span class="sz">4,012 rows</span></span>
-            </div>
-
-            <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
-
-            <div class="msg msg-bot" data-el="bot1">
-              I will treat those 84 owners as your examples of someone who sold, and score everyone else against them.
-              <span class="q">Two things before I start. Does a sale to a strategic buyer count the same as a sale to a fund? And is there a size you stop caring below?</span>
-            </div>
-
-            <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
-
-            <div class="steps">
-              <div class="step" data-el="s1"><span class="tick">&#10003;</span>Read your list <span class="val">4,012 companies, 84 marked sold</span></div>
-              <div class="step" data-el="s2"><span class="tick">&#10003;</span>Kept the ones in range <span class="val">3,180 with 20 staff or more</span></div>
-              <div class="step" data-el="s3"><span class="tick">&#10003;</span>Found what the 84 had in common <span class="val">owner age, years held, flat headcount</span></div>
-              <div class="step" data-el="s4"><span class="tick">&#10003;</span>Scored everyone else <span class="val">3,096 companies in 7.4s</span></div>
-            </div>
-
-            <div class="result" data-el="result">
-              <div class="tbl-wrap">
-                <div class="tbl-head"><span>tracked_companies_scored.csv</span><span class="dl">sorted by sell intent</span></div>
-                <div class="tbl-scroll">
-                  <table class="data">
-                    <thead>
-                      <tr>
-                        <th>company</th><th>owner age</th><th>years held</th><th>staff</th><th>state</th>
-                        <th class="col-new">sell intent</th><th class="col-new">confidence</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr><td>Northwind Mechanical</td><td>63</td><td>27</td><td>41</td><td>OH</td>
-                          <td class="col-new">high</td><td class="col-new">0.92</td></tr>
-                      <tr><td>Kestrel Heating</td><td>67</td><td>31</td><td>24</td><td>PA</td>
-                          <td class="col-new">high</td><td class="col-new">0.81</td></tr>
-                      <tr><td>Orchard Climate</td><td>59</td><td>22</td><td>63</td><td>NC</td>
-                          <td class="col-new">high</td><td class="col-new">0.64</td></tr>
-                      <tr><td>Vantage Air</td><td>45</td><td>12</td><td>130</td><td>FL</td>
-                          <td class="col-new">low</td><td class="col-new">0.90</td></tr>
-                      <tr><td>Aster Plumbing Co</td><td>38</td><td>6</td><td>88</td><td>TX</td>
-                          <td class="col-new">low</td><td class="col-new">0.87</td></tr>
-                    </tbody>
-                  </table>
-                </div>
+              <div class="chips" data-el="chips">
+                <span class="chip"><span class="ic">&#9679;</span> tracked_companies.csv <span class="sz">4,012 rows</span></span>
               </div>
-              <div class="demo-cta"><span class="dl">Download CSV</span><span>Your original rows, untouched. Two columns added.</span></div>
-            </div>
 
-            <div class="msg msg-bot" data-el="bot2">
-              <b>214 companies score above 0.80.</b> That is your call list for the quarter. Ask me why any one of them scored the way it did, or tell me I got one wrong and I will take it into account.
-            </div>
+              <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
 
+              <div class="msg msg-bot" data-el="bot1">
+                I will treat those 84 owners as your examples of someone who sold, and score everyone else against them.
+                <span class="q">Two things before I start. Does a sale to a strategic buyer count the same as a sale to a fund? And is there a size you stop caring below?</span>
+              </div>
+
+              <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+
+              <div class="steps">
+                <div class="step" data-el="s1"><span class="tick">&#10003;</span>Read your list <span class="val">4,012 companies, 84 marked sold</span></div>
+                <div class="step" data-el="s2"><span class="tick">&#10003;</span>Kept the ones in range <span class="val">3,180 with 20 staff or more</span></div>
+                <div class="step" data-el="s3"><span class="tick">&#10003;</span>Found what the 84 had in common <span class="val">owner age, years held, flat headcount</span></div>
+                <div class="step" data-el="s4"><span class="tick">&#10003;</span>Scored everyone else <span class="val">3,096 companies in 7.4s</span></div>
+              </div>
+
+              <div class="result" data-el="result">
+                <div class="tbl-wrap">
+                  <div class="tbl-head"><span>tracked_companies_scored.csv</span><span class="dl">sorted by sell intent</span></div>
+                  <div class="tbl-scroll">
+                    <table class="data">
+                      <thead>
+                        <tr>
+                          <th>company</th><th>owner age</th><th>years held</th><th>staff</th><th>state</th>
+                          <th class="col-new">sell intent</th><th class="col-new">confidence</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Northwind Mechanical</td><td>63</td><td>27</td><td>41</td><td>OH</td>
+                            <td class="col-new">high</td><td class="col-new">0.92</td></tr>
+                        <tr><td>Kestrel Heating</td><td>67</td><td>31</td><td>24</td><td>PA</td>
+                            <td class="col-new">high</td><td class="col-new">0.81</td></tr>
+                        <tr><td>Orchard Climate</td><td>59</td><td>22</td><td>63</td><td>NC</td>
+                            <td class="col-new">high</td><td class="col-new">0.64</td></tr>
+                        <tr><td>Vantage Air</td><td>45</td><td>12</td><td>130</td><td>FL</td>
+                            <td class="col-new">low</td><td class="col-new">0.90</td></tr>
+                        <tr><td>Aster Plumbing Co</td><td>38</td><td>6</td><td>88</td><td>TX</td>
+                            <td class="col-new">low</td><td class="col-new">0.87</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="demo-cta"><span class="dl">Download CSV</span><span>Your original rows, untouched. Two columns added.</span></div>
+              </div>
+
+              <div class="msg msg-bot" data-el="bot2">
+                <b>214 companies score above 0.80.</b> That is your call list for the quarter. Ask me why any one of them scored the way it did, or tell me I got one wrong and I will take it into account.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 2. They have names and nothing else: enrich, then self-label -->
+          <div class="scene" data-scene hidden
+               data-label="You have names and nothing else"
+               data-q1="All I have is 1,120 company names and the town each one is in. No headcount, no owner, no accounts. Can you still tell me which ones are worth a call?"
+               data-q2="About fifty. I would rather see too many than miss one.">
+            <div class="demo-body">
+
+              <div class="chips" data-el="chips">
+                <span class="chip"><span class="ic">&#9679;</span> names_only.csv <span class="sz">1,120 rows &middot; 2 columns</span></span>
+              </div>
+
+              <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+
+              <div class="msg msg-bot" data-el="bot1">
+                Yes, but I have to go and find the data first. For each name I will pull what is public: headcount, how long it has traded, hiring activity, reviews, licence records. Then I will label a sample myself, in writing, and you correct the ones I got wrong.
+                <span class="q">That data is scraped, so it is right most of the time and not all of the time. How many companies do you want to end up ringing?</span>
+              </div>
+
+              <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+
+              <div class="steps">
+                <div class="step" data-el="s1"><span class="tick">&#10003;</span>Matched your names to a public record <span class="val">1,043 of 1,120</span></div>
+                <div class="step" data-el="s2"><span class="tick">&#10003;</span>Enriched every one <span class="val">14 fields per company, from filings, job posts and reviews</span></div>
+                <div class="step" data-el="s3"><span class="tick">&#10003;</span>Labeled a sample itself <span class="val">60 rows, each with a written reason</span></div>
+                <div class="step" data-el="s4"><span class="tick">&#10003;</span>You changed 7, then it scored the rest <span class="val">983 companies in 4.1s</span></div>
+              </div>
+
+              <div class="result" data-el="result">
+                <div class="tbl-wrap">
+                  <div class="tbl-head"><span>enriched_and_scored.csv</span><span class="dl">five columns it found, two it predicted</span></div>
+                  <div class="tbl-scroll">
+                    <table class="data">
+                      <thead>
+                        <tr>
+                          <th>company</th><th>town</th><th>staff</th><th>years trading</th><th>hiring</th>
+                          <th class="col-new">worth a call</th><th class="col-new">confidence</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Ridgeline Plumbing</td><td>Toledo OH</td><td>31</td><td>24</td><td>none</td>
+                            <td class="col-new">yes</td><td class="col-new">0.74</td></tr>
+                        <tr><td>Bellweather Heating</td><td>Erie PA</td><td>44</td><td>19</td><td>none</td>
+                            <td class="col-new">yes</td><td class="col-new">0.68</td></tr>
+                        <tr><td>Cedar Point Mechanical</td><td>Akron OH</td><td>26</td><td>31</td><td>none</td>
+                            <td class="col-new">yes</td><td class="col-new">0.61</td></tr>
+                        <tr><td>Meridian Air</td><td>Columbus OH</td><td>118</td><td>9</td><td>heavy</td>
+                            <td class="col-new">no</td><td class="col-new">0.83</td></tr>
+                        <tr><td>Talbot Services</td><td>Dayton OH</td><td>12</td><td>5</td><td>steady</td>
+                            <td class="col-new">no</td><td class="col-new">0.79</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="demo-cta"><span class="dl">Download CSV</span><span>Your two columns, plus the fourteen it found and the two it predicted.</span></div>
+              </div>
+
+              <div class="msg msg-bot" data-el="bot2">
+                <b>Your top 50 are ready.</b> Three fields in ten came from a guess rather than a filing, so treat this as who to ring first, not as a fact about the business. Ask me where any number came from and I will show you the source.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 3. A number rather than a label -->
+          <div class="scene" data-scene hidden
+               data-label="You need a number, not a label"
+               data-q1="Here are 210 deals we have closed or watched close, with the multiple paid on each. What would the twelve on my current list go for?"
+               data-q2="Yes, hold out forty and show me how far off you were.">
+            <div class="demo-body">
+
+              <div class="chips" data-el="chips">
+                <span class="chip"><span class="ic">&#9679;</span> past_deals.csv <span class="sz">210 rows</span></span>
+                <span class="chip"><span class="ic">&#9679;</span> current_pipeline.csv <span class="sz">12 rows</span></span>
+              </div>
+
+              <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+
+              <div class="msg msg-bot" data-el="bot1">
+                That is a number rather than a category, so I will predict the multiple itself and put a range around each one. Two hundred and ten examples is thin, so the range will be wide wherever a company does not look like anything you have bought before.
+                <span class="q">Do you want me to hold some of your deals back and predict them blind, so you can see how close I get?</span>
+              </div>
+
+              <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+
+              <div class="steps">
+                <div class="step" data-el="s1"><span class="tick">&#10003;</span>Read your deals <span class="val">210 closed, multiple paid on each</span></div>
+                <div class="step" data-el="s2"><span class="tick">&#10003;</span>Held 40 back and predicted them blind <span class="val">never saw the price</span></div>
+                <div class="step" data-el="s3"><span class="tick">&#10003;</span>Checked itself against what was actually paid <span class="val">off by 0.4x on average</span></div>
+                <div class="step" data-el="s4"><span class="tick">&#10003;</span>Priced your current list <span class="val">12 companies in 1.2s</span></div>
+              </div>
+
+              <div class="result" data-el="result">
+                <div class="tbl-wrap">
+                  <div class="tbl-head"><span>current_pipeline_priced.csv</span><span class="dl">sorted by multiple</span></div>
+                  <div class="tbl-scroll">
+                    <table class="data">
+                      <thead>
+                        <tr>
+                          <th>company</th><th>revenue</th><th>ebitda</th><th>staff</th><th>years trading</th>
+                          <th class="col-new">multiple</th><th class="col-new">likely range</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>Orchard Climate</td><td>$14.2m</td><td>$2.7m</td><td>63</td><td>22</td>
+                            <td class="col-new">6.1</td><td class="col-new">5.2 to 7.3</td></tr>
+                        <tr><td>Vantage Air</td><td>$26.8m</td><td>$4.1m</td><td>130</td><td>12</td>
+                            <td class="col-new">5.9</td><td class="col-new">5.1 to 6.8</td></tr>
+                        <tr><td>Northwind Mechanical</td><td>$9.4m</td><td>$1.6m</td><td>41</td><td>27</td>
+                            <td class="col-new">5.4</td><td class="col-new">4.8 to 6.2</td></tr>
+                        <tr><td>Aster Plumbing Co</td><td>$17.3m</td><td>$2.2m</td><td>88</td><td>6</td>
+                            <td class="col-new">4.9</td><td class="col-new">4.0 to 6.0</td></tr>
+                        <tr><td>Kestrel Heating</td><td>$5.1m</td><td>$0.8m</td><td>24</td><td>31</td>
+                            <td class="col-new">4.6</td><td class="col-new">3.9 to 5.4</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="demo-cta"><span class="dl">Download CSV</span><span>A multiple and a range on every row in your pipeline.</span></div>
+              </div>
+
+              <div class="msg msg-bot" data-el="bot2">
+                <b>Median 5.1x across your twelve.</b> Two sit above anything you have paid before, which usually means the model has no close comparison rather than that the business is special. On the forty deals it had never seen, it was off by 0.4x.
+              </div>
+
+            </div>
           </div>
 
           <div class="demo-foot">
@@ -123,6 +257,14 @@
             <span class="send">&#8593;</span>
           </div>
         </div>
+
+        <div class="demo-nav">
+          <button class="demo-arrow prev" data-demo-prev aria-label="Previous example">&#8249;</button>
+          <button class="demo-arrow next" data-demo-next aria-label="Next example">&#8250;</button>
+          <span class="demo-pips" id="demo-pips"></span>
+          <span class="demo-label" id="demo-label"></span>
+        </div>
+       </div>
       </div>
     </div>
   </section>
@@ -221,6 +363,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=10"></script>
+<script src="main.js?v=12"></script>
 </body>
 </html>
