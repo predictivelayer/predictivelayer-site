@@ -168,6 +168,16 @@ code {
 }
 .wordmark:hover { color: var(--ink); }
 
+/* The self-hosted Wordmark font is a Latin-only subset (see @font-face
+   above) and has no CJK glyphs, so on zh/ pages it silently falls through
+   to the tail of --font instead of getting deliberate treatment. Give the
+   Chinese wordmark its own system CJK stack, and drop the Latin tracking,
+   which reads as mis-kerned on Chinese characters. */
+:lang(zh) .wordmark {
+  font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", var(--font);
+  letter-spacing: 0;
+}
+
 .nav-links { display: flex; align-items: center; gap: 30px; justify-self: center; }
 .nav-links a { color: var(--ink-2); font-size: .94rem; font-weight: 450; }
 .nav-links a:hover { color: var(--ink); }
@@ -1055,3 +1065,25 @@ table.data td.why { color: var(--muted); white-space: normal; }
   .lrow .act { text-align: left; width: fit-content; }
   .stat-row { grid-template-columns: 1fr; gap: 14px; }
 }
+
+/* ---------- language switcher (EN / 中文) ----------
+   Added for the zh/ Chinese pages, starting with zh/index.html, and
+   mirrored on the English index.html so both sides link to each other.
+   Lives inside .nav-right, after the existing primary CTA. Plain <a href>,
+   works with JavaScript disabled. New class names only, none reused from
+   above: .lang-switch, .lang-globe, .lang-link, .lang-current, .lang-sep.
+   Only existing tokens are used here — no new colour is introduced. */
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: 12px;
+  font-size: .86rem;
+  font-family: var(--font);
+}
+.lang-globe { display: block; flex: none; color: var(--muted); }
+.lang-link { color: var(--ink-2); font-weight: 450; }
+.lang-link:hover { color: var(--ink); }
+.lang-current { color: var(--muted); font-weight: 450; cursor: default; }
+.lang-sep { color: var(--line); }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>predictivelayer.io — 让预测对企业和 AI 智能体都变得简单</title>
+<meta name="description" content="说出你想预测什么。它会从你的标注样本中学习，为每一行剩余数据评分，并标出置信度。可以在对话中使用，也可以作为工具供你的智能体调用。">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="../styles.css?v=20">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html">普微智能</a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">产品 <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">自动预测 <span class="menu-tag">旗舰</span></span>
+            <span class="menu-desc">带着一个问题和一份数据列表来。它会帮你查找数据、与你一起标注样本，并为剩余部分评分。</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">快速预测 <span class="menu-tag soft">现已上线</span></span>
+            <span class="menu-desc">已有数据和标签？上传两个 CSV 文件，即可拿到一个预测列。</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="contact.html">联系</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary" href="contact.html">联系我们</a>
+      <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <svg class="lang-globe" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.1"/><path d="M1.75 8h12.5M8 1.75c1.7 1.85 2.65 3.95 2.65 6.25S9.7 12.4 8 14.25C6.3 12.4 5.35 10.3 5.35 8S6.3 3.6 8 1.75z" stroke="currentColor" stroke-width="1.1"/></svg>
+        <a class="lang-link" href="../index.html">EN</a>
+        <span class="lang-sep">|</span>
+        <span class="lang-current" aria-current="true">中文</span>
+      </div>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="菜单">菜单</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1><span class="hl">预测</span>变得简单<br class="brk">面向企业与 AI 智能体</h1>
+      <p class="sub">告诉它你想预测什么。它会从你已标注的行中学习，为其余每一行评分，并标出置信度。可以在对话中使用，也可以作为工具供你的智能体调用。</p>
+      <div class="btn-row center">
+        <a class="btn btn-secondary" href="auto.html">查看工作原理</a>
+        <a class="btn btn-primary" href="contact.html">联系我们</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="demo" id="demo">
+          <div class="demo-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span>predictivelayer</span>
+            <span class="spacer"></span>
+            <span class="pill"><span class="live"></span> 已连接</span>
+          </div>
+
+          <div class="demo-body">
+
+            <div class="chips" data-el="chips">
+              <span class="chip"><span class="ic">&#9679;</span> tracked_companies.csv <span class="sz">4,012 行</span></span>
+            </div>
+
+            <div class="msg msg-user" data-el="ask1"><span data-el="typed1"></span><span class="cursor" data-el="cur1"></span></div>
+
+            <div class="msg msg-bot" data-el="bot1">
+              我会把这 84 位业主当作“已出售”的示例，并据此为其余所有公司评分。
+              <span class="q">开始之前有两个问题：卖给战略买家和卖给基金算不算同一回事？另外，规模小到什么程度你就不再关心了？</span>
+            </div>
+
+            <div class="msg msg-user" data-el="ask2"><span data-el="typed2"></span><span class="cursor" data-el="cur2"></span></div>
+
+            <div class="steps">
+              <div class="step" data-el="s1"><span class="tick">&#10003;</span>读取你的名单 <span class="val">4,012 家公司，其中 84 家已标记为已出售</span></div>
+              <div class="step" data-el="s2"><span class="tick">&#10003;</span>保留符合范围的公司 <span class="val">员工数 20 人及以上，共 3,180 家</span></div>
+              <div class="step" data-el="s3"><span class="tick">&#10003;</span>找出这 84 家的共同点 <span class="val">业主年龄、持有年限、员工数量稳定</span></div>
+              <div class="step" data-el="s4"><span class="tick">&#10003;</span>为其余公司评分 <span class="val">3,096 家公司，用时 7.4 秒</span></div>
+            </div>
+
+            <div class="result" data-el="result">
+              <div class="tbl-wrap">
+                <div class="tbl-head"><span>tracked_companies_scored.csv</span><span class="dl">按出售意向排序</span></div>
+                <div class="tbl-scroll">
+                  <table class="data">
+                    <thead>
+                      <tr>
+                        <th>公司</th><th>业主年龄</th><th>持有年限</th><th>员工数</th><th>州</th>
+                        <th class="col-new">出售意向</th><th class="col-new">置信度</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Northwind Mechanical</td><td>63</td><td>27</td><td>41</td><td>OH</td>
+                          <td class="col-new">高</td><td class="col-new">0.92</td></tr>
+                      <tr><td>Kestrel Heating</td><td>67</td><td>31</td><td>24</td><td>PA</td>
+                          <td class="col-new">高</td><td class="col-new">0.81</td></tr>
+                      <tr><td>Orchard Climate</td><td>59</td><td>22</td><td>63</td><td>NC</td>
+                          <td class="col-new">高</td><td class="col-new">0.64</td></tr>
+                      <tr><td>Vantage Air</td><td>45</td><td>12</td><td>130</td><td>FL</td>
+                          <td class="col-new">低</td><td class="col-new">0.90</td></tr>
+                      <tr><td>Aster Plumbing Co</td><td>38</td><td>6</td><td>88</td><td>TX</td>
+                          <td class="col-new">低</td><td class="col-new">0.87</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="demo-cta"><span class="dl">下载 CSV</span><span>你的原始行保持不变，新增两列。</span></div>
+            </div>
+
+            <div class="msg msg-bot" data-el="bot2">
+              <b>214 家公司的评分超过 0.80。</b> 这就是你这个季度的联系名单。你可以问我任意一家为什么得到这个分数，如果我判断错了，告诉我，我会把它纳入考量。
+            </div>
+
+          </div>
+
+          <div class="demo-foot">
+            <span class="caret">&#9656;</span>
+            <span>发起一次预测</span>
+            <span class="spacer"></span>
+            <span class="send">&#8593;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule" id="how">
+    <div class="wrap">
+      <p class="eyebrow center">工作原理</p>
+      <h2 class="center">只需提问一次，每一行都会被评分。</h2>
+      <p class="sub center">你负责判断，从提问到给出答案之间的一切都交给它处理。</p>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card">
+          <span class="step-num">01</span>
+          <h3>先让它看看什么样的算“好”</h3>
+          <p>只需一小批你已经判断过的行，通常五十行就够了。这是你的判断标准，而不是下拉菜单里的一个选项。</p>
+        </div>
+        <div class="card">
+          <span class="step-num">02</span>
+          <h3>直接用大白话提问</h3>
+          <p>“给这些评分，看看是否合适。”可以在对话里说，也可以由你自己的智能体发起一次工具调用。无需列映射，也无需配置文件。</p>
+        </div>
+        <div class="card">
+          <span class="step-num">03</span>
+          <h3>拿回每一行的评分结果</h3>
+          <p>每一行都会标出置信度，让你清楚哪些可以放心，哪些需要复核。下载下来，或者直接接入下一步流程。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="grid split">
+        <div>
+          <p class="eyebrow">模型</p>
+          <h2>无需训练，无需调参</h2>
+          <p class="lead">底层是一个表格基础模型，已在数百万张合成表格上完成预训练。它已经了解列与列之间的常见关系，因此你提供的示例是作为上下文输入，而不是作为训练集。</p>
+          <p class="lead">一次预测只需几秒钟，而不是一整个开发周期；你可以随时调整判断标准，重新运行，无需从头再来。</p>
+          <p><a href="auto.html">看一次完整运行 &rarr;</a></p>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="card">
+            <h3>你的判断标准，不是固定模板</h3>
+            <p>线索是否合适、风险标记、流失、优先级，或是一个质量等级。只要你能标注 50 行，就能预测剩下的部分。</p>
+          </div>
+          <div class="card">
+            <h3>适用于普通 CSV 文件</h3>
+            <p>数字、文本类别、缺失值都没问题。两个文件之间的列会自动为你匹配。</p>
+          </div>
+          <div class="card">
+            <h3>在本机运行</h3>
+            <p>该应用可在笔记本电脑的 CPU 上本地运行，你的数据无需离开你的网络。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">适用场景</p>
+      <h2 class="center">无论结构化还是非结构化数据，<br class="brk">直接上传即可</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card"><h3>线索与客户评分</h3><p>标注已成交的客户，按同一标准为名单上的其余客户评分。</p></div>
+        <div class="card"><h3>流失与续约风险</h3><p>标注谁流失、谁留存，标记出走向同一结局的客户。</p></div>
+        <div class="card"><h3>意向评分</h3><p>标注已出售的业主，按下一个可能出售的可能性为其余公司排序。</p></div>
+        <div class="card"><h3>数据质量标记</h3><p>标注你已知有误的行，找出与它们相似的行。</p></div>
+        <div class="card"><h3>类别自动补全</h3><p>手动标注目录的一部分，剩下的交给模型完成。</p></div>
+        <div class="card"><h3>数值估算与评级</h3><p>连续型目标同样适用：价格、时长，或一个数值型质量分数。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap narrow center">
+      <h2>在你自己的数据上试一试</h2>
+      <p class="sub center" style="margin-bottom:0">告诉我们你想评分什么，我们会帮你搭建好环境。</p>
+      <div class="btn-row center">
+        <a class="btn btn-primary" href="contact.html">联系我们</a>
+        <button class="btn btn-secondary" data-mail-open>发邮件给我们</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 普微智能</div>
+    <div class="footer-links">
+      <a href="auto.html">自动预测</a>
+      <a href="product.html">快速预测</a>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="#" data-mail-open>发邮件给我们</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../main.js?v=10"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>联系 — predictivelayer.io</title>
+<meta name="description" content="联系普微智能。告诉我们你想预测什么，我们会在一天内回复。">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="../styles.css?v=20">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html">普微智能</a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">产品 <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">自动预测 <span class="menu-tag">旗舰</span></span>
+            <span class="menu-desc">带着一个问题和一份数据列表来。它会帮你查找数据、与你一起标注样本，并为剩余部分评分。</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">快速预测 <span class="menu-tag soft">现已上线</span></span>
+            <span class="menu-desc">已有数据和标签？上传两个 CSV 文件，即可拿到一个预测列。</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="contact.html" class="active">联系</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary" href="auto.html">看一次完整运行</a>
+      <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <svg class="lang-globe" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.1"/><path d="M1.75 8h12.5M8 1.75c1.7 1.85 2.65 3.95 2.65 6.25S9.7 12.4 8 14.25C6.3 12.4 5.35 10.3 5.35 8S6.3 3.6 8 1.75z" stroke="currentColor" stroke-width="1.1"/></svg>
+        <a class="lang-link" href="../contact.html">EN</a>
+        <span class="lang-sep">|</span>
+        <span class="lang-current" aria-current="true">中文</span>
+      </div>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="菜单">菜单</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap narrow">
+      <p class="eyebrow center">联系</p>
+      <h1 style="font-size:3.4rem;max-width:16ch">告诉我们你想评分什么</h1>
+      <p class="sub center">无论你已经准备好数据集，还是只是想确认这是否适合你，都欢迎给我们写信。每一条消息都会有真人阅读并回复。</p>
+
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap narrow">
+      <h2 style="font-size:1.5rem">简单说说你的情况</h2>
+      <p style="color:var(--muted);font-size:.95rem">这会打开你自己的邮件应用，消息已经写好待发送。不会提交到任何服务器，也不会被保存。</p>
+
+      <form id="contact-form" style="margin-top:26px">
+        <div class="grid grid-2" style="gap:15px">
+          <div class="field">
+            <label for="name">姓名</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="company">公司</label>
+            <input id="company" name="company" type="text" autocomplete="organization">
+          </div>
+        </div>
+        <div class="field">
+          <label for="usecase">你想预测什么？</label>
+          <input id="usecase" name="usecase" type="text" placeholder="例如：我们名单中哪些账户值得致电">
+        </div>
+        <div class="field">
+          <label for="message">还有什么想说的</label>
+          <textarea id="message" name="message" placeholder="数据集规模、你现在如何标注、已经尝试过什么方法。"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">在我的邮件应用中打开</button>
+        <p class="form-note">更想直接写信？<a href="#" data-mail-open>给我们发一封空白邮件</a></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 普微智能</div>
+    <div class="footer-links">
+      <a href="auto.html">自动预测</a>
+      <a href="product.html">快速预测</a>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="#" data-mail-open>发邮件给我们</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../main.js?v=10"></script>
+</body>
+</html>

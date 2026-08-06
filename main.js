@@ -2,6 +2,12 @@
 
 (function () {
 
+  /* ---------- locale ----------
+     One shared script for every page in both en/ and zh/. The <html lang>
+     attribute is the only signal we need: "zh-CN" on every page under zh/,
+     "en" everywhere else. */
+  var ZH = /^zh/i.test(document.documentElement.lang || '');
+
   /* ---------- mobile nav ---------- */
   var toggle = document.querySelector('.nav-toggle');
   var links = document.querySelector('.nav-links');
@@ -37,12 +43,13 @@
      The address is never written into the HTML, so a scraper reading the
      page source finds nothing. The buttons still open a normal mail client. */
   var MAIL = ['zfu126', 'gmail.com'].join('@');
+  var SUBJECT = ZH ? '普微智能咨询' : 'Predictive Layer enquiry';
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-mail-open]'), function (el) {
     el.addEventListener('click', function (e) {
       e.preventDefault();
       window.location.href = 'mailto:' + MAIL + '?subject=' +
-        encodeURIComponent('Predictive Layer enquiry');
+        encodeURIComponent(SUBJECT);
     });
   });
 
@@ -78,8 +85,14 @@
         var f = form.elements[n];
         return f ? f.value.trim() : '';
       };
-      var subject = 'Predictive Layer enquiry' + (get('company') ? ', ' + get('company') : '');
-      var body = [
+      var subject = SUBJECT + (get('company') ? (ZH ? '，' : ', ') + get('company') : '');
+      var body = ZH ? [
+        '姓名：' + get('name'),
+        '公司：' + get('company'),
+        '想预测什么：' + get('usecase'),
+        '',
+        get('message')
+      ].join('\n') : [
         'Name: ' + get('name'),
         'Company: ' + get('company'),
         'Use case: ' + get('usecase'),

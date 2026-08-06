@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自动预测 — 智能体为你标注数据行，你负责核查</title>
+<meta name="description" content="智能体逐行阅读数据，按你的判断标准进行标注，并写下理由。你修正它判断错误的地方，你的修正就成为新的判断标准。然后它会为其余所有数据评分。">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="../styles.css?v=20">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html">普微智能</a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger active" aria-expanded="false" aria-haspopup="true">产品 <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">自动预测 <span class="menu-tag">旗舰</span></span>
+            <span class="menu-desc">带着一个问题和一份数据列表来。它会帮你查找数据、与你一起标注样本，并为剩余部分评分。</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">快速预测 <span class="menu-tag soft">现已上线</span></span>
+            <span class="menu-desc">已有数据和标签？上传两个 CSV 文件，即可拿到一个预测列。</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="contact.html">联系</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary" href="contact.html">联系我们</a>
+      <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <svg class="lang-globe" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.1"/><path d="M1.75 8h12.5M8 1.75c1.7 1.85 2.65 3.95 2.65 6.25S9.7 12.4 8 14.25C6.3 12.4 5.35 10.3 5.35 8S6.3 3.6 8 1.75z" stroke="currentColor" stroke-width="1.1"/></svg>
+        <a class="lang-link" href="../auto.html">EN</a>
+        <span class="lang-sep">|</span>
+        <span class="lang-current" aria-current="true">中文</span>
+      </div>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="菜单">菜单</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">自动预测（Auto Prediction）</p>
+      <h1>数据行由智能体标注。<br class="brk"> <span class="hl">你只需核查结果。</span></h1>
+      <p class="sub">标注环节是预测项目最容易夭折的地方。问题不在模型，而在于没人有时间用一个下午手工判断四百行数据。自动预测把这项工作交给智能体来做，让它写下判断依据，并允许你随时推翻它的判断。</p>
+      <div class="btn-row center">
+        <a class="btn btn-primary" href="contact.html">联系我们</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="demo">
+          <div class="demo-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span>run &nbsp;/&nbsp; who-is-worth-a-call</span>
+            <span class="spacer"></span>
+            <span class="pill"><span class="live"></span> 用时 4 分 12 秒完成</span>
+          </div>
+
+          <div class="demo-body" style="min-height:0;gap:0">
+
+            <div class="run-stage">
+              <div class="run-head"><span class="run-num">01</span> 采集数据 <span class="tick">11 个数据信号 · 3 个数据来源</span></div>
+              <div class="chips show">
+                <span class="chip">员工人数 <span class="sz">近 12 个月变化</span></span>
+                <span class="chip">在招职位 <span class="sz">按职能划分</span></span>
+                <span class="chip">融资阶段</span>
+                <span class="chip">技术栈</span>
+                <span class="chip">评论数量</span>
+                <span class="chip">网站流量区间</span>
+                <span class="chip">办公地点数量</span>
+              </div>
+              <p class="run-meta">你给了它 <b>4,120 个公司名称</b>。它自己判断出哪些数据信号能区分出值得联系和不值得联系的公司，采集回这些数据，并为你的数据行写入了 <b>38,400 个字段</b>。每个字段都标明了数据来源。</p>
+            </div>
+
+            <div class="run-stage">
+              <div class="run-head"><span class="run-num">02</span> 标注样本 <span class="tick">200 行</span></div>
+              <div class="tbl-wrap">
+                <div class="tbl-head"><span>sample_labeled.csv</span><span class="dl">4,120 行中的 200 行</span></div>
+                <div class="tbl-scroll">
+                  <table class="data">
+                    <tr><th>公司</th><th>标签</th><th>理由</th></tr>
+                    <tr class="in"><td>Northwind Ltd</td><td><span class="tag-good">值得联系</span></td>
+                        <td class="why">正在招聘三个运营岗位，员工人数一年内增长 40%</td></tr>
+                    <tr class="in"><td>Aster Health</td><td><span class="tag-bad">暂不值得</span></td>
+                        <td class="why">仅有 8 名员工，没有可对接的运营部门</td></tr>
+                    <tr class="in"><td>Kestrel Robotics</td><td><span class="tag-good">值得联系</span></td>
+                        <td class="why">自 3 月以来新开两个仓库，技术栈也匹配</td></tr>
+                    <tr class="in"><td>Vantage Print</td><td><span class="tag-bad">暂不值得</span></td>
+                        <td class="why">员工人数没有变化，未招聘，技术栈老旧</td></tr>
+                  </table>
+                </div>
+              </div>
+              <span class="fix"><span class="n">6</span> 处你修正的标签，已被纳入判断标准</span>
+              <p class="run-meta">它按照你的判断标准逐行标注，并每次写下理由。你只需浏览、修正判断有误的地方，你的修正就会成为新的判断标准。只需十分钟的关注，而不是一个下午。</p>
+            </div>
+
+            <div class="run-stage">
+              <div class="run-head"><span class="run-num">03</span> 为其余数据评分 <span class="tick">3,920 行</span></div>
+              <div class="tbl-wrap">
+                <div class="tbl-head"><span>companies_scored.csv</span><span class="dl">下载 CSV</span></div>
+                <div class="tbl-scroll">
+                  <table class="data">
+                    <tr><th>公司</th><th>员工人数</th><th>在招职位</th><th>阶段</th>
+                        <th class="col-new">预测列</th><th class="col-new">置信度</th></tr>
+                    <tr class="in"><td>Halcyon Group</td><td>310</td><td>7</td><td>B轮</td>
+                        <td class="col-new">值得联系</td><td class="col-new">0.94</td></tr>
+                    <tr class="in"><td>Bellweather Co</td><td>44</td><td>0</td><td>种子轮</td>
+                        <td class="col-new">暂不值得</td><td class="col-new">0.89</td></tr>
+                    <tr class="in"><td>Orchard Labs</td><td>1,180</td><td>21</td><td>D轮</td>
+                        <td class="col-new">值得联系</td><td class="col-new">0.86</td></tr>
+                    <tr class="in"><td>Merrow Freight</td><td>96</td><td>2</td><td>自筹资金</td>
+                        <td class="col-new">值得联系</td><td class="col-new">0.58</td></tr>
+                  </table>
+                </div>
+              </div>
+              <p class="run-meta">剩余的每一行都完成了评分，并标出置信度。按置信度排序，你就知道哪些行可以放心，哪些需要自己看一遍。</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow">从未被自动化的部分</p>
+      <h2>标注工作，由会写判断依据的智能体完成</h2>
+      <p class="sub" style="max-width:66ch">市面上几乎所有预测工具，第一步都是让你提供标注样本，却没有人问这些样本是从哪来的。它们来自一个人逐行阅读数据、亲手判断，这正是大多数预测项目在模型真正运行之前就搁浅的原因。</p>
+      <p class="sub" style="max-width:66ch">智能体可以像你一样阅读一行数据——不只是列里的数字，还包括公开文件、招聘信息、公司网站。所以我们让它来做标注这件事，并要求它为每一行都写下判断理由。正是这个理由，让核查工作只需几分钟，而不是几个小时。</p>
+
+      <div class="label-demo" style="margin-top:40px">
+        <div class="cap">
+          <span>智能体标注 &nbsp;/&nbsp; 这家公司是否值得联系</span>
+          <span class="spacer"></span>
+          <span>从 4,120 行中抽样 200 行</span>
+        </div>
+
+        <div class="lrow">
+          <span class="co">Northwind Ltd</span>
+          <span><span class="tag-good">值得联系</span></span>
+          <span class="why">正在招聘三个运营岗位，员工人数一年内增长 40%</span>
+          <span class="act">同意</span>
+        </div>
+        <div class="lrow">
+          <span class="co">Aster Health</span>
+          <span><span class="tag-bad">暂不值得</span></span>
+          <span class="why">仅有 8 名员工，没有可对接的运营部门</span>
+          <span class="act">同意</span>
+        </div>
+        <div class="lrow fixed">
+          <span class="co">Kestrel Robotics</span>
+          <span><span class="tag-good">值得联系</span><span class="was">暂不值得</span></span>
+          <span class="why">你说：两个新仓库的分量超过老旧技术栈</span>
+          <span class="act">你修正了这条</span>
+        </div>
+        <div class="lrow">
+          <span class="co">Vantage Print</span>
+          <span><span class="tag-bad">暂不值得</span></span>
+          <span class="why">员工人数没有变化，未招聘，技术栈老旧</span>
+          <span class="act">同意</span>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="n">200</div><div class="l">由智能体标注的行数，每行都附有书面理由</div></div>
+        <div class="stat"><div class="n">6</div><div class="l">你不认同并修正的行数，这就是你真正要做的全部工作</div></div>
+        <div class="stat"><div class="n">10 分钟</div><div class="l">核查全部所需时间，而不是花一下午从零判断</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">理由为何重要</p>
+      <h2 class="center">无法核查的标签毫无价值</h2>
+      <p class="sub" style="max-width:66ch">如果智能体只是甩给你四百个标签，那只是把问题挪了个地方，并没有真正解决。你要么盲目信任，要么重新做一遍。正是“理由”这一列，才让结果变得真正可以被你接受。</p>
+      <div class="grid grid-3" style="margin-top:44px">
+        <div class="card">
+          <h3>它读取的不只是列里的数字</h3>
+          <p>公开文件、招聘信息、公司网站——第一步中采集到的一切，它都会用上。它依据的是和人一样的证据，而不是表格里的四个数字。</p>
+        </div>
+        <div class="card">
+          <h3>每一行一句判断依据</h3>
+          <p>大白话，一眼就能看完。哪怕标签碰巧是对的，错误的理由也一眼可见——这正是其他工具都藏起来的失误。</p>
+        </div>
+        <div class="card">
+          <h3>你的修正即为定论</h3>
+          <p>一旦你推翻它的判断，这一行就此定案。它会按照你刚刚给出的标准重新标注样本中的其余行，所以一次修正就能带动所有类似的行。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="grid split">
+        <div>
+          <p class="eyebrow">差距</p>
+          <h2>模型从来都不是难点</h2>
+          <p class="lead">问问任何真正上线过预测项目的人，那几个月时间都花在哪了。答案几乎都不是模型本身，而是花在寻找表格里没有的数据、争论标签到底该怎么定义，以及手工标注数据行——直到有人失去耐心，干脆改用一条规则草草了事。</p>
+          <p class="lead">自动预测把这三件事都接过来做。你只需说出你想知道什么，它会判断需要哪些数据、自己去采集，标注一份样本，和你一起核对这些标签，再为其余数据评分。</p>
+        </div>
+        <ul class="plain">
+          <li><b>查找数据</b>一份名单不是一份数据集。它会判断哪些数据信号能区分出你要的结果，然后自己去采集。</li>
+          <li><b>对齐标签</b>你的判断标准只存在于你脑子里。它先写出一版草稿，你来修正，修正后的版本才是最终使用的标准。</li>
+          <li><b>为其余数据评分</b>表格基础模型把你的样本作为上下文来读取，为其余每一行评分。只需几秒钟，无需训练过程。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">工作原理</p>
+      <h2 class="center">只需说一次，看它自己完成。</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card">
+          <span class="step-num">01</span>
+          <h3>它会查找数据</h3>
+          <p>你手头可能只有名单，别的什么都没有。它会判断哪些数据信号对你的问题重要，并从公开网页、公开文件、招聘信息、点评网站以及你自己的系统中采集这些数据。它新增的每个字段都标明数据来源。</p>
+        </div>
+        <div class="card">
+          <span class="step-num">02</span>
+          <h3>它会标注样本</h3>
+          <p>它会阅读一份样本，按你的判断标准逐行标注，并附上一句理由。你只需浏览、修正判断有误之处，此后你的修正将优先于它自己的猜测。</p>
+        </div>
+        <div class="card">
+          <span class="step-num">03</span>
+          <h3>它会预测剩余部分</h3>
+          <p>剩余的每一行都会完成评分，并标出置信度。你可以下载结果、推送回 CRM，或者让你的智能体直接从工具中读取。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="grid split">
+        <div>
+          <p class="eyebrow">可控</p>
+          <h2>没有任何环节发生在幕后</h2>
+          <p class="lead">一个你无法查看的自动化流程，不过是带着进度条的传闻。每一次运行的每个阶段，都会被记录下来并向你开放。</p>
+          <p class="lead">改变判断标准后，重新运行一次即可。整个过程只需几分钟，所以你完全可以对“什么样的行才算好”这件事更挑剔一些。</p>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="card"><h3>每个字段都标明数据来源</h3><p>点击任意采集到的值，即可查看它来自哪个网页、文件或系统，以及采集的时间。</p></div>
+          <div class="card"><h3>每个标签都附有理由</h3><p>每行一句大白话说明。如果理由是错的，标签也就是错的，你一眼就能看出来。</p></div>
+          <div class="card"><h3>你的修正说了算</h3><p>你已经判断过的行，永远不会被它自己猜的结果覆盖。你的修改定义了判断标准。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">在哪里提问</p>
+      <h2 class="center">在你工作的任何地方提问</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card"><h3>在对话中</h3><p>用一句话描述你想预测什么，它会返回完整的运行过程、标注结果和评分后的数据。</p></div>
+        <div class="card"><h3>通过你的智能体</h3><p>通过 MCP，作为你的智能体在执行任务过程中调用的工具。返回的是一个数值和置信度，而不是一段文字说明。</p></div>
+        <div class="card"><h3>在浏览器中</h3><p>实时查看运行过程，手动修正标签，并下载结果。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap narrow center">
+      <h2>告诉我们你想知道什么</h2>
+      <p class="sub center" style="margin-bottom:0">带上你的问题和一份数据列表，我们会向你展示在你自己的数据上运行是什么样子。</p>
+      <div class="btn-row center">
+        <a class="btn btn-primary" href="contact.html">联系我们</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 普微智能</div>
+    <div class="footer-links">
+      <a href="auto.html">自动预测</a>
+      <a href="product.html">快速预测</a>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="#" data-mail-open>发邮件给我们</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../main.js?v=10"></script>
+</body>
+</html>

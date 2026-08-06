@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>快速预测 — predictivelayer.io</title>
+<meta name="description" content="上传两份数据集，即可拿到一个预测列。了解预测层的工作原理、能处理什么，以及边界在哪里。">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="../styles.css?v=20">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html">普微智能</a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger active" aria-expanded="false" aria-haspopup="true">产品 <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="auto.html">
+            <span class="menu-title">自动预测 <span class="menu-tag">旗舰</span></span>
+            <span class="menu-desc">带着一个问题和一份数据列表来。它会帮你查找数据、与你一起标注样本，并为剩余部分评分。</span>
+          </a>
+          <a class="menu-item" href="product.html">
+            <span class="menu-title">快速预测 <span class="menu-tag soft">现已上线</span></span>
+            <span class="menu-desc">已有数据和标签？上传两个 CSV 文件，即可拿到一个预测列。</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="contact.html">联系</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary" href="contact.html">联系我们</a>
+      <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <svg class="lang-globe" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.1"/><path d="M1.75 8h12.5M8 1.75c1.7 1.85 2.65 3.95 2.65 6.25S9.7 12.4 8 14.25C6.3 12.4 5.35 10.3 5.35 8S6.3 3.6 8 1.75z" stroke="currentColor" stroke-width="1.1"/></svg>
+        <a class="lang-link" href="../product.html">EN</a>
+        <span class="lang-sep">|</span>
+        <span class="lang-current" aria-current="true">中文</span>
+      </div>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="菜单">菜单</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap">
+      <p class="eyebrow">快速预测</p>
+      <h1 style="font-size:3.4rem;max-width:19ch">数据你已经有了，直接上传</h1>
+      <p class="sub" style="max-width:56ch">如果你的数据已经收集齐全、也已经标注好，你并不需要一整条流水线。上传你判断过的行，再上传还没判断的行，就能拿回一个评分列。如果缺的是数据或标签，请改用<a href="auto.html">自动预测</a>。</p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow center">工作原理</p>
+      <h2 class="center">两份文件进，一列结果出</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card">
+          <span class="step-num">01</span>
+          <h3>上传标注样本</h3>
+          <p>一份 CSV 文件，其中一列就是答案：标签、等级或分数。其余列都是模型可以参考的上下文。</p>
+        </div>
+        <div class="card">
+          <span class="step-num">02</span>
+          <h3>上传待评分数据</h3>
+          <p>第二份 CSV 文件包含相同的特征列，但没有答案列。共有列会自动为你匹配，多余的列会被忽略。</p>
+        </div>
+        <div class="card">
+          <span class="step-num">03</span>
+          <h3>拿回一个预测列</h3>
+          <p>第二份文件会附加上 <code>prediction</code> 列返回，分类任务还会附带一个置信度数值。先预览，再下载 CSV。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <div class="grid split">
+        <div>
+          <p class="eyebrow">模型</p>
+          <h2>是基础模型，不是一次训练过程</h2>
+          <p class="lead">传统机器学习每换一个新问题，都要重新走一遍训练过程：选算法、拟合、调参、验证，问题一变又要从头再来。这意味着数周的工作量，还得有人懂得怎么做。</p>
+          <p class="lead">表格基础模型已经在数百万张合成表格上完成预训练，提前学会了表格数据中常见的规律，因此它把你的标注样本当作上下文直接读取，随即给出预测。</p>
+          <p class="lead">实际效果是：以秒计而不是以周计，判断标准变了也不用重新来过。</p>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="card">
+            <h3>分类或回归</h3>
+            <p>文本或少量取值的目标会被归为分类，连续数值则按回归处理。系统会自动识别，你也可以手动修改。</p>
+          </div>
+          <div class="card">
+            <h3>每一行都有置信度</h3>
+            <p>分类任务会返回每个类别的概率，你可以按确定性排序，只复核真正需要人工判断的行。</p>
+          </div>
+          <div class="card">
+            <h3>CSV 乱一点也没关系</h3>
+            <p>缺失值、文本和数字混杂、只出现在一个文件里的列，都没问题。应用会准确告诉你它实际用到了哪些数据。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">你会拿到什么</p>
+      <h2 class="center">只多出一列</h2>
+      <p class="sub center">其他一切都不会变。行的顺序、列的顺序、原始数值都保持原样。</p>
+
+      <div class="tbl-wrap" style="margin-top:44px">
+        <div class="tbl-head"><span>accounts_scored.csv</span><span class="dl">下载 CSV</span></div>
+        <div class="tbl-scroll">
+          <table class="data">
+            <tr>
+              <th>客户</th><th>ARR</th><th>90天工单</th><th>套餐</th>
+              <th class="col-new">prediction</th><th class="col-new">prediction_confidence</th>
+            </tr>
+            <tr><td>Halcyon Group</td><td>48,000</td><td>2</td><td>企业版</td>
+                <td class="col-new">留存</td><td class="col-new">0.93</td></tr>
+            <tr><td>Bellweather Co</td><td>9,600</td><td>17</td><td>成长版</td>
+                <td class="col-new">流失风险</td><td class="col-new">0.88</td></tr>
+            <tr><td>Orchard Labs</td><td>22,400</td><td>6</td><td>成长版</td>
+                <td class="col-new">留存</td><td class="col-new">0.61</td></tr>
+            <tr><td>Vantage Print</td><td>3,100</td><td>24</td><td>入门版</td>
+                <td class="col-new">流失风险</td><td class="col-new">0.95</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap">
+      <p class="eyebrow center">适用场景</p>
+      <h2 class="center">只要你能标注，就能预测</h2>
+      <div class="grid grid-3" style="margin-top:52px">
+        <div class="card"><h3>线索与客户评分</h3><p>标注已成交的客户，按同一标准为名单上的其余客户评分。</p></div>
+        <div class="card"><h3>流失与续约风险</h3><p>标注谁流失、谁留存，标记出走向同一结局的客户。</p></div>
+        <div class="card"><h3>复核排序</h3><p>标注需要人工复核的案例，按重要程度为待处理队列排序。</p></div>
+        <div class="card"><h3>数据质量标记</h3><p>标注你已知有误的行，找出与它们相似的行。</p></div>
+        <div class="card"><h3>类别自动补全</h3><p>手动标注目录的一部分，剩下的交给模型完成。</p></div>
+        <div class="card"><h3>数值估算与评级</h3><p>连续型目标同样适用：价格、时长，或一个数值型质量分数。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule">
+    <div class="wrap narrow">
+      <p class="eyebrow">诚实边界</p>
+      <h2>它做不到什么</h2>
+      <p class="lead">基础模型在训练行数约 10,000 行、列数 500 列、类别数 10 个以内表现最好。超出这个范围，应用会做子采样并明确告知你，而不是假装什么都没发生。</p>
+      <p class="lead">它需要真正有意义的标签。五十行认真判断过的数据胜过五百行随意标注的数据，如果你的判断标准本身不一致，任何模型都无法替你找回一致性。</p>
+      <p class="lead">它只能读取你给出的列。如果数据信号本不在表里，预测结果里也不会凭空出现。</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="contact.html">联系我们</a>
+        <a class="btn btn-secondary" href="auto.html">自动预测</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>&copy; 2026 普微智能</div>
+    <div class="footer-links">
+      <a href="auto.html">自动预测</a>
+      <a href="product.html">快速预测</a>
+      <a href="index.html#how">工作原理</a>
+      <a href="resources.html">资源</a>
+      <a href="#" data-mail-open>发邮件给我们</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../main.js?v=10"></script>
+</body>
+</html>
