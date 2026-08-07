@@ -53,30 +53,32 @@
     });
   });
 
+  function copyText(btn, text) {
+    var old = btn.textContent;
+    var done = function () {
+      btn.textContent = ZH ? '已复制' : 'Copied';
+      setTimeout(function () { btn.textContent = old; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, done);
+    } else {
+      var el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(el);
+      done();
+    }
+  }
+
   var copy = document.querySelector('[data-mail-copy]');
   if (copy) {
-    copy.addEventListener('click', function () {
-      var text = MAIL;
-      var done = function () {
-        var old = copy.textContent;
-        copy.textContent = 'Copied';
-        setTimeout(function () { copy.textContent = old; }, 1600);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, done);
-      } else {
-        var el = document.createElement('textarea');
-        el.value = text;
-        document.body.appendChild(el);
-        el.select();
-        try { document.execCommand('copy'); } catch (e) {}
-        document.body.removeChild(el);
-        done();
-      }
-    });
+    copy.addEventListener('click', function () { copyText(copy, MAIL); });
   }
 
   /* ---------- contact form -> pre-filled mailto (no backend) ---------- */
+  var lastMessage = '';
   var form = document.querySelector('#contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -99,6 +101,34 @@
         '',
         get('message')
       ].join('\n');
+      // A mailto: link does nothing at all on a machine with no mail app
+      // registered, which is most browsers on a fresh laptop and every
+      // browser where webmail was never made the handler. So show the same
+      // message in a panel first, with a webmail link and a copy button,
+      // and only then try the mail app. Whichever works, the person has a
+      // way to send it.
+      var panel = document.querySelector('#mail-fallback');
+      if (panel) {
+        var gmail = panel.querySelector('[data-mail-gmail]');
+        if (gmail) {
+          gmail.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' +
+            encodeURIComponent(MAIL) + '&su=' + encodeURIComponent(subject) +
+            '&body=' + encodeURIComponent(body);
+        }
+        Array.prototype.forEach.call(panel.querySelectorAll('[data-mail-address]'), function (el) {
+          el.textContent = MAIL;
+        });
+        // Read through the variable at click time, not at wiring time, so
+        // editing a field and submitting again copies the new text.
+        lastMessage = MAIL + '\n' + subject + '\n\n' + body;
+        var cm = panel.querySelector('[data-mail-copy-message]');
+        if (cm && !cm.dataset.wired) {
+          cm.dataset.wired = '1';
+          cm.addEventListener('click', function () { copyText(cm, lastMessage); });
+        }
+        panel.hidden = false;
+      }
+
       window.location.href =
         'mailto:' + MAIL + '?subject=' + encodeURIComponent(subject) +
         '&body=' + encodeURIComponent(body);

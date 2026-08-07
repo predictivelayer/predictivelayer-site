@@ -6,7 +6,7 @@
 <title>Contact — predictivelayer.io</title>
 <meta name="description" content="Get in touch about Predictive Layer. Tell us what you want to predict and we will reply within a day.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=32">
+<link rel="stylesheet" href="styles.css?v=33">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -84,6 +84,14 @@
         <button class="btn btn-primary" type="submit">Open in my email app</button>
         <p class="form-note">Prefer to write directly? <a href="#" data-mail-open>Open a blank email to us</a></p>
       </form>
+
+      <div class="form-fallback" id="mail-fallback" hidden>
+        <p>Your email app should have opened with the message ready. If nothing happened, this browser has no mail app set up for it. Send the same message from Gmail, or copy it and write to <span class="addr" data-mail-address></span> yourself.</p>
+        <div class="btn-row">
+          <a class="btn btn-secondary" data-mail-gmail target="_blank" rel="noopener">Open in Gmail</a>
+          <button class="btn btn-secondary" type="button" data-mail-copy-message>Copy the message</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -102,6 +110,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=15"></script>
+<script src="main.js?v=16"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>联系 — predictivelayer.io</title>
 <meta name="description" content="联系普微智能。告诉我们你想预测什么，我们会在一天内回复。">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="../styles.css?v=32">
+<link rel="stylesheet" href="../styles.css?v=33">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -84,6 +84,14 @@
         <button class="btn btn-primary" type="submit">在我的邮件应用中打开</button>
         <p class="form-note">更想直接写信？<a href="#" data-mail-open>给我们发一封空白邮件</a></p>
       </form>
+
+      <div class="form-fallback" id="mail-fallback" hidden>
+        <p>你的邮件应用应该已经打开，内容也已经写好。如果没有任何反应，说明这台电脑没有设置默认邮件应用。你可以在 Gmail 中发送同样的内容，或者复制下来，自己写信到 <span class="addr" data-mail-address></span>。</p>
+        <div class="btn-row">
+          <button class="btn btn-secondary" type="button" data-mail-copy-message>复制这条消息</button>
+          <a class="btn btn-secondary" data-mail-gmail target="_blank" rel="noopener">在 Gmail 中打开</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -102,6 +110,6 @@
   </div>
 </footer>
 
-<script src="../main.js?v=15"></script>
+<script src="../main.js?v=16"></script>
 </body>
 </html>

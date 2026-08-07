@@ -579,8 +579,14 @@ br.brk { display: none; }
 
 .result { margin-top: 2px; }
 .result .tbl-wrap { background: var(--panel); }
-table.data tbody tr { opacity: 0; }
-table.data tbody tr.in { opacity: 1; transition: opacity .3s ease; }
+/* Rows fade in one by one, but only inside a demo card that has a script
+   driving it. A table sitting in the page with no animation behind it must
+   never start invisible: a missing "in" class then hides the whole table,
+   which is what happened to the results table on the product page. A <tr>
+   with no <tbody> around it is still in an implicit tbody, so the header
+   row was disappearing too. */
+[data-scene] table.data tbody tr { opacity: 0; }
+[data-scene] table.data tbody tr.in { opacity: 1; transition: opacity .3s ease; }
 
 .demo-cta {
   display: flex;
@@ -599,7 +605,7 @@ table.data tbody tr.in { opacity: 1; transition: opacity .3s ease; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .step, .msg, .chips, .result, table.data tbody tr { opacity: 1 !important; transform: none !important; }
+  .step, .msg, .chips, .result, [data-scene] table.data tbody tr { opacity: 1 !important; transform: none !important; }
   .msg-user .cursor { display: none; }
 }
 
@@ -771,6 +777,22 @@ table.data tr:last-child td.col-new:last-child {
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
 .field textarea { min-height: 128px; resize: vertical; }
 .form-note { font-size: .84rem; color: var(--muted); margin-top: 12px; }
+
+/* Shown after the form is submitted. A mailto: link only opens something if
+   this machine has a mail app registered for it, and plenty do not: on those
+   the button looked broken because nothing at all happened. This panel gives
+   the same message a webmail link and a copy button instead. */
+.form-fallback[hidden] { display: none; }
+.form-fallback {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.form-fallback p { font-size: .9rem; color: var(--ink-2); margin: 0 0 12px; }
+.form-fallback .addr { font-family: var(--mono); color: var(--ink); }
+.form-fallback .btn-row { margin-top: 0; }
 
 /* ---------- footer ---------- */
 

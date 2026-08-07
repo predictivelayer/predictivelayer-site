@@ -6,7 +6,7 @@
 <title>快速预测 — predictivelayer.io</title>
 <meta name="description" content="上传两份数据集，即可拿到一个预测列。了解预测层的工作原理、能处理什么，以及边界在哪里。">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="../styles.css?v=32">
+<link rel="stylesheet" href="../styles.css?v=33">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -53,6 +53,10 @@
       <p class="eyebrow">快速预测</p>
       <h1 style="font-size:3.4rem;max-width:19ch">数据你已经有了，直接上传</h1>
       <p class="sub" style="max-width:56ch">如果你的数据已经收集齐全、也已经标注好，你并不需要一整条流水线。上传你判断过的行，再上传还没判断的行，就能拿回一个评分列。如果缺的是数据或标签，请改用<a href="auto.html">自动预测</a>。</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://app.predictivelayer.io?lang=zh">立即试用</a>
+        <a class="btn btn-secondary" href="#how">工作原理</a>
+      </div>
     </div>
   </section>
 
@@ -111,27 +115,35 @@
   <section class="rule">
     <div class="wrap">
       <p class="eyebrow center">你会拿到什么</p>
-      <h2 class="center">只多出一列</h2>
-      <p class="sub center">其他一切都不会变。行的顺序、列的顺序、原始数值都保持原样。</p>
+      <h2 class="center">返回预测结果和置信度</h2>
+      <p class="sub center">在你的数据后追加两列：模型的判断，以及它有多确定。其他一切都不会变。行的顺序、列的顺序、原始数值都保持原样。</p>
 
       <div class="tbl-wrap" style="margin-top:44px">
         <div class="tbl-head"><span>accounts_scored.csv</span><span class="dl">下载 CSV</span></div>
         <div class="tbl-scroll">
           <table class="data">
-            <tr>
-              <th>客户</th><th>ARR</th><th>90天工单</th><th>套餐</th>
-              <th class="col-new">prediction</th><th class="col-new">prediction_confidence</th>
-            </tr>
-            <tr><td>Halcyon Group</td><td>48,000</td><td>2</td><td>企业版</td>
-                <td class="col-new">留存</td><td class="col-new">0.93</td></tr>
-            <tr><td>Bellweather Co</td><td>9,600</td><td>17</td><td>成长版</td>
-                <td class="col-new">流失风险</td><td class="col-new">0.88</td></tr>
-            <tr><td>Orchard Labs</td><td>22,400</td><td>6</td><td>成长版</td>
-                <td class="col-new">留存</td><td class="col-new">0.61</td></tr>
-            <tr><td>Vantage Print</td><td>3,100</td><td>24</td><td>入门版</td>
-                <td class="col-new">流失风险</td><td class="col-new">0.95</td></tr>
+            <thead>
+              <tr>
+                <th>客户</th><th>ARR</th><th>90天工单</th><th>套餐</th>
+                <th class="col-new">prediction</th><th class="col-new">prediction_confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Halcyon Group</td><td>48,000</td><td>2</td><td>企业版</td>
+                  <td class="col-new">留存</td><td class="col-new">0.93</td></tr>
+              <tr><td>Bellweather Co</td><td>9,600</td><td>17</td><td>成长版</td>
+                  <td class="col-new">流失风险</td><td class="col-new">0.88</td></tr>
+              <tr><td>Orchard Labs</td><td>22,400</td><td>6</td><td>成长版</td>
+                  <td class="col-new">留存</td><td class="col-new">0.61</td></tr>
+              <tr><td>Vantage Print</td><td>3,100</td><td>24</td><td>入门版</td>
+                  <td class="col-new">流失风险</td><td class="col-new">0.95</td></tr>
+            </tbody>
           </table>
         </div>
+      </div>
+
+      <div class="btn-row center" style="margin-top:36px">
+        <a class="btn btn-primary" href="https://app.predictivelayer.io?lang=zh">立即试用</a>
       </div>
     </div>
   </section>
@@ -159,7 +171,8 @@
       <p class="lead">它需要真正有意义的标签。五十行认真判断过的数据胜过五百行随意标注的数据，如果你的判断标准本身不一致，任何模型都无法替你找回一致性。</p>
       <p class="lead">它只能读取你给出的列。如果数据信号本不在表里，预测结果里也不会凭空出现。</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="contact.html">联系我们</a>
+        <a class="btn btn-primary" href="https://app.predictivelayer.io?lang=zh">立即试用</a>
+        <a class="btn btn-secondary" href="contact.html">联系我们</a>
         <a class="btn btn-secondary" href="auto.html">自动预测</a>
       </div>
     </div>
@@ -180,6 +193,6 @@
   </div>
 </footer>
 
-<script src="../main.js?v=15"></script>
+<script src="../main.js?v=16"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>Quick Prediction — predictivelayer.io</title>
 <meta name="description" content="Drop in two datasets and get a predicted column back. How the predictive layer works, what it handles, and where its limits are.">
 <meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=32">
+<link rel="stylesheet" href="styles.css?v=33">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -53,6 +53,10 @@
       <p class="eyebrow">Quick Prediction</p>
       <h1 style="font-size:3.4rem;max-width:19ch">You already have the rows. Drop them in.</h1>
       <p class="sub" style="max-width:56ch">When your data is already collected and already labeled, you do not need a pipeline. Upload the rows you have judged, upload the rows you have not, and get a scored column back. If the data or the labels are the missing part, use <a href="auto.html">Auto Prediction</a> instead.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://app.predictivelayer.io">Try it now</a>
+        <a class="btn btn-secondary" href="#how">How it works</a>
+      </div>
     </div>
   </section>
 
@@ -111,27 +115,35 @@
   <section class="rule">
     <div class="wrap">
       <p class="eyebrow center">What you get back</p>
-      <h2 class="center">One column appended</h2>
-      <p class="sub center">Nothing else changes. Row order, column order, and original values stay as they were.</p>
+      <h2 class="center">Prediction and confidence returned</h2>
+      <p class="sub center">Two columns are appended to your rows: what the model thinks, and how sure it is. Nothing else changes. Row order, column order, and original values stay as they were.</p>
 
       <div class="tbl-wrap" style="margin-top:44px">
         <div class="tbl-head"><span>accounts_scored.csv</span><span class="dl">Download CSV</span></div>
         <div class="tbl-scroll">
           <table class="data">
-            <tr>
-              <th>account</th><th>arr</th><th>tickets_90d</th><th>plan</th>
-              <th class="col-new">prediction</th><th class="col-new">prediction_confidence</th>
-            </tr>
-            <tr><td>Halcyon Group</td><td>48,000</td><td>2</td><td>enterprise</td>
-                <td class="col-new">retain</td><td class="col-new">0.93</td></tr>
-            <tr><td>Bellweather Co</td><td>9,600</td><td>17</td><td>growth</td>
-                <td class="col-new">at risk</td><td class="col-new">0.88</td></tr>
-            <tr><td>Orchard Labs</td><td>22,400</td><td>6</td><td>growth</td>
-                <td class="col-new">retain</td><td class="col-new">0.61</td></tr>
-            <tr><td>Vantage Print</td><td>3,100</td><td>24</td><td>starter</td>
-                <td class="col-new">at risk</td><td class="col-new">0.95</td></tr>
+            <thead>
+              <tr>
+                <th>account</th><th>arr</th><th>tickets_90d</th><th>plan</th>
+                <th class="col-new">prediction</th><th class="col-new">prediction_confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Halcyon Group</td><td>48,000</td><td>2</td><td>enterprise</td>
+                  <td class="col-new">retain</td><td class="col-new">0.93</td></tr>
+              <tr><td>Bellweather Co</td><td>9,600</td><td>17</td><td>growth</td>
+                  <td class="col-new">at risk</td><td class="col-new">0.88</td></tr>
+              <tr><td>Orchard Labs</td><td>22,400</td><td>6</td><td>growth</td>
+                  <td class="col-new">retain</td><td class="col-new">0.61</td></tr>
+              <tr><td>Vantage Print</td><td>3,100</td><td>24</td><td>starter</td>
+                  <td class="col-new">at risk</td><td class="col-new">0.95</td></tr>
+            </tbody>
           </table>
         </div>
+      </div>
+
+      <div class="btn-row center" style="margin-top:36px">
+        <a class="btn btn-primary" href="https://app.predictivelayer.io">Try it now</a>
       </div>
     </div>
   </section>
@@ -159,7 +171,8 @@
       <p class="lead">It needs labels that mean something. Fifty carefully judged rows beat five hundred careless ones, and no model recovers a criterion you have not been consistent about.</p>
       <p class="lead">It reads the columns you give it. If the signal is not in the table, it is not in the prediction.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <a class="btn btn-primary" href="https://app.predictivelayer.io">Try it now</a>
+        <a class="btn btn-secondary" href="contact.html">Get in touch</a>
         <a class="btn btn-secondary" href="auto.html">Auto Prediction</a>
       </div>
     </div>
@@ -180,6 +193,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=15"></script>
+<script src="main.js?v=16"></script>
 </body>
 </html>
