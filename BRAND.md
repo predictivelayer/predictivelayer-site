@@ -5,75 +5,75 @@ Change a value in the `:root` block and it propagates across all five pages.
 
 ## Colour
 
-Black page, neutral greys, one colour: green. The green is for accents,
+Cool light page, navy ink, one accent: deep teal. The teal is for accents,
 links and data. It is never the primary button.
 
 | Token         | Hex       | Use                                              |
 | ------------- | --------- | ------------------------------------------------ |
-| `--sand`      | `#309d4b` | Fills. Status dot, tick marks, scored column.    |
-| `--sand-2`    | `#277f3d` | Deeper green. Hover and secondary fills.         |
-| `--sand-text` | `#4fbc6c` | Text and links. The accent word in the headline. |
-| `--sand-soft` | `#c1e6c6` | Palest. Link hover.                              |
-| `--sand-deep` | `#1f4d2d` | Reserved. Dark green blocks.                     |
+| `--sand`      | `#0f6b5c` | Fills. Status dot, tick marks, scored column.    |
+| `--sand-2`    | `#0c574b` | Deeper teal. Hover and secondary fills.          |
+| `--sand-text` | `#0a5c4f` | Text and links. The accent word in the headline. |
+| `--sand-soft` | `#1a8a78` | Lifted teal. Rolling cells, soft emphasis.       |
+| `--sand-deep` | `#0a3d34` | Reserved. Dark teal blocks.                      |
 
-The token names say sand and the values are green. That is history, not
+The token names say sand and the values are teal-green. That is history, not
 intent: the palette moved and the names did not. Renaming them touches every
 file, so it is a job for the next big change rather than a patch.
 
-Primary buttons are **white fill with black text**, not green. One button per
-page is the loudest thing on it, and green is doing work elsewhere.
+Primary buttons are **navy fill with white text**, not teal. One button per
+page is the loudest thing on it, and teal is doing work elsewhere.
 
 | Token         | Hex       | Use                                       |
 | ------------- | --------- | ----------------------------------------- |
-| `--bg`        | `#000`    | Page. True black.                         |
-| `--bg-2`      | `#080808` | Demo panel                                |
-| `--panel`     | `#0c0c0c` | Cards, nav, table headers                 |
-| `--panel-2`   | `#131313` | Hover, inset controls                     |
-| `--line`      | `#1e1e1e` | Borders                                   |
-| `--line-soft` | `#161616` | Dividers inside panels                    |
-| `--ink`       | `#fff`    | Headings                                  |
-| `--ink-2`     | `#a3a3a3` | Body text                                 |
-| `--muted`     | `#808080` | Secondary and supporting text             |
+| `--bg`        | `#eef1f5` | Page. Cool slate.                         |
+| `--bg-2`      | `#f7f8fb` | Soft inset surfaces                       |
+| `--panel`     | `#ffffff` | Cards, nav, table headers                 |
+| `--panel-2`   | `#e8ecf2` | Hover, inset controls                     |
+| `--line`      | `#cfd6e0` | Borders                                   |
+| `--line-soft` | `#e2e7ee` | Dividers inside panels                    |
+| `--ink`       | `#0b1628` | Headings                                  |
+| `--ink-2`     | `#3a4658` | Body text                                 |
+| `--muted`     | `#667385` | Secondary and supporting text             |
 
 Supporting colours, each with one job:
 
 | Token     | Hex       | Use                                                        |
 | --------- | --------- | ---------------------------------------------------------- |
-| `--blue`  | `#4a86e8` | Second state. "not yet", low intent.                        |
-| `--amber` | `#d9962b` | Caution. Low confidence, a subsampled run.                  |
-| `--red`   | `#e5484d` | Errors and destructive actions only. Never a data category. |
+| `--blue`  | `#2f5fbf` | Second state. "not yet", low intent.                        |
+| `--amber` | `#b7791f` | Caution. Low confidence, a subsampled run.                  |
+| `--red`   | `#c43c42` | Errors and destructive actions only. Never a data category. |
 
 Never pair red with green to mean two categories in a table. Red and green is
-the pair roughly one man in twelve cannot separate. Blue against green is the
+the pair roughly one man in twelve cannot separate. Blue against teal is the
 pair we ship, and the word is always there as well as the colour.
 
 ## Contrast, measured
 
 | Pair                            | Ratio | AA normal text |
 | ------------------------------- | ----- | -------------- |
-| `--sand-text` on `--bg`         | 8.74  | pass           |
-| `--sand-text` on `--panel`      | 8.14  | pass           |
-| `--ink-2` on `--bg`             | 8.33  | pass           |
-| `--muted` on `--panel`          | 4.95  | pass           |
-| `--muted` on `--panel-2`        | 4.70  | pass           |
-| black on the white button       | 21.0  | pass           |
-| black on the button hover       | 14.9  | pass           |
+| `--sand-text` on `--bg`         | 5.9+  | pass           |
+| `--sand-text` on `--panel`      | 6.3+  | pass           |
+| `--ink-2` on `--bg`             | 7.0+  | pass           |
+| `--muted` on `--panel`          | 4.6+  | pass           |
+| white on the navy button        | 16.0+ | pass           |
 
-`--muted` is the tightest pair on the site. Anything darker than `#808080`
-fails AA on a panel, so treat that value as a floor rather than a preference.
+`--muted` is the tightest pair on the site. Anything lighter than `#667385`
+fails AA on a white panel, so treat that value as a floor rather than a
+preference.
 
-## Glow
+## Atmosphere
 
-A green radial gradient sits behind the top of every page, `.13` opacity in
-the centre falling to nothing by 74%. On true black anything stronger reads as
-a smear rather than a light source.
+A soft teal–navy radial wash sits behind the top of every page, plus a faint
+diagonal grain. Opacity stays low so it reads as depth, not decoration.
 
 ## Type
 
 - **Wordmark**: Space Grotesk 600, self-hosted at `wordmark.woff2`. Subset to
   the sixteen characters of "Predictive Layer", so it weighs 1.4KB. SIL Open
   Font License. To change the wordmark text you must re-subset the font.
-- **Everything else**: the system stack. No webfont, no third-party request.
+- **Headings**: IBM Plex Serif 500, self-hosted under `fonts/`. SIL OFL.
+- **Body / UI**: IBM Plex Sans 400/500/600, self-hosted under `fonts/`. SIL OFL.
+- No third-party font requests at runtime.
 - Headings are weight 500, not bold. `h1` 3.2rem, `h2` 2.1rem.
 - Letter-spacing on headings is `-0.022em`.
 
