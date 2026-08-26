@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 30" role="img" aria-label="Predictive Layer">
   <title>Predictive Layer</title>
-  <!-- Five nested half-discs, flat edge left, each one larger and lighter than
-       the last. Drawn largest first so the smaller ones sit on top. -->
-  <path d="M13 0 A15 15 0 0 1 13 30 Z" fill="#c1e6c6"/>
-  <path d="M9.8 3.1 A11.9 11.9 0 0 1 9.8 26.9 Z" fill="#8ecf9c"/>
-  <path d="M6.3 7.1 A7.9 7.9 0 0 1 6.3 22.9 Z" fill="#5cb374"/>
-  <path d="M2.7 10.3 A4.7 4.7 0 0 1 2.7 19.7 Z" fill="#34894d"/>
-  <path d="M0 12.5 A2.5 2.5 0 0 1 0 17.5 Z" fill="#1f4d2d"/>
+  <!-- Forge-inspired: cream → yellow → forest green mark. -->
+  <path d="M13 0 A15 15 0 0 1 13 30 Z" fill="#edede2"/>
+  <path d="M9.8 3.1 A11.9 11.9 0 0 1 9.8 26.9 Z" fill="#f9f637"/>
+  <path d="M6.3 7.1 A7.9 7.9 0 0 1 6.3 22.9 Z" fill="#1c3f36"/>
+  <path d="M2.7 10.3 A4.7 4.7 0 0 1 2.7 19.7 Z" fill="#154339"/>
+  <path d="M0 12.5 A2.5 2.5 0 0 1 0 17.5 Z" fill="#0f2f28"/>
 </svg>
