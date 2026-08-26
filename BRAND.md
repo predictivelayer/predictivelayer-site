@@ -5,33 +5,32 @@ Change a value in the `:root` block and it propagates across all five pages.
 
 ## Colour
 
-Cool light page, navy ink, one accent: deep teal. The teal is for accents,
-links and data. It is never the primary button.
+Cool institutional paper, navy ink, one accent: muted gold. Aimed at PE and
+diligence readers. Gold is for accents, links and scored data — never the
+primary button.
 
 | Token         | Hex       | Use                                              |
 | ------------- | --------- | ------------------------------------------------ |
-| `--sand`      | `#0f6b5c` | Fills. Status dot, tick marks, scored column.    |
-| `--sand-2`    | `#0c574b` | Deeper teal. Hover and secondary fills.          |
-| `--sand-text` | `#0a5c4f` | Text and links. The accent word in the headline. |
-| `--sand-soft` | `#1a8a78` | Lifted teal. Rolling cells, soft emphasis.       |
-| `--sand-deep` | `#0a3d34` | Reserved. Dark teal blocks.                      |
+| `--sand`      | `#8f7340` | Fills. Status dot, tick marks, scored column.    |
+| `--sand-2`    | `#735c33` | Deeper gold. Hover and secondary fills.          |
+| `--sand-text` | `#6a542d` | Text and links. The accent word in the headline. |
+| `--sand-soft` | `#a8894c` | Lifted gold. Rolling cells, soft emphasis.       |
+| `--sand-deep` | `#3f3118` | Reserved. Dark gold blocks.                      |
 
-The token names say sand and the values are teal-green. That is history, not
-intent: the palette moved and the names did not. Renaming them touches every
-file, so it is a job for the next big change rather than a patch.
+The token names say sand; the values are gold. That is history, not intent.
 
-Primary buttons are **navy fill with white text**, not teal. One button per
-page is the loudest thing on it, and teal is doing work elsewhere.
+Primary buttons are **navy fill with white text**. One button per page is the
+loudest thing on it; gold does work elsewhere.
 
 | Token         | Hex       | Use                                       |
 | ------------- | --------- | ----------------------------------------- |
-| `--bg`        | `#eef1f5` | Page. Cool slate.                         |
-| `--bg-2`      | `#f7f8fb` | Soft inset surfaces                       |
+| `--bg`        | `#f4f5f7` | Page. Cool institutional paper.           |
+| `--bg-2`      | `#eef0f3` | Soft inset surfaces                       |
 | `--panel`     | `#ffffff` | Cards, nav, table headers                 |
-| `--panel-2`   | `#e8ecf2` | Hover, inset controls                     |
-| `--line`      | `#cfd6e0` | Borders                                   |
-| `--line-soft` | `#e2e7ee` | Dividers inside panels                    |
-| `--ink`       | `#0b1628` | Headings                                  |
+| `--panel-2`   | `#e8ebf0` | Hover, inset controls                     |
+| `--line`      | `#c8ced8` | Borders                                   |
+| `--line-soft` | `#e1e4ea` | Dividers inside panels                    |
+| `--ink`       | `#0a1628` | Headings                                  |
 | `--ink-2`     | `#3a4658` | Body text                                 |
 | `--muted`     | `#667385` | Secondary and supporting text             |
 
@@ -39,48 +38,34 @@ Supporting colours, each with one job:
 
 | Token     | Hex       | Use                                                        |
 | --------- | --------- | ---------------------------------------------------------- |
-| `--blue`  | `#2f5fbf` | Second state. "not yet", low intent.                        |
-| `--amber` | `#b7791f` | Caution. Low confidence, a subsampled run.                  |
-| `--red`   | `#c43c42` | Errors and destructive actions only. Never a data category. |
+| `--blue`  | `#2a4a7a` | Second state. "not yet", low intent.                        |
+| `--amber` | `#a06b1a` | Caution. Low confidence, a subsampled run.                  |
+| `--red`   | `#b03a3f` | Errors and destructive actions only. Never a data category. |
 
-Never pair red with green to mean two categories in a table. Red and green is
-the pair roughly one man in twelve cannot separate. Blue against teal is the
-pair we ship, and the word is always there as well as the colour.
-
-## Contrast, measured
-
-| Pair                            | Ratio | AA normal text |
-| ------------------------------- | ----- | -------------- |
-| `--sand-text` on `--bg`         | 5.9+  | pass           |
-| `--sand-text` on `--panel`      | 6.3+  | pass           |
-| `--ink-2` on `--bg`             | 7.0+  | pass           |
-| `--muted` on `--panel`          | 4.6+  | pass           |
-| white on the navy button        | 16.0+ | pass           |
-
-`--muted` is the tightest pair on the site. Anything lighter than `#667385`
-fails AA on a white panel, so treat that value as a floor rather than a
-preference.
+Never pair red with green to mean two categories in a table. Steel blue
+against gold is the pair we ship, and the word is always there as well as
+the colour.
 
 ## Atmosphere
 
-A soft teal–navy radial wash sits behind the top of every page, plus a faint
-diagonal grain. Opacity stays low so it reads as depth, not decoration.
+A faint navy radial behind the top of the page only. No coloured glow, no
+grain. Restraint reads as trust.
 
 ## Type
 
 - **Wordmark**: Space Grotesk 600, self-hosted at `wordmark.woff2`. Subset to
   the sixteen characters of "Predictive Layer", so it weighs 1.4KB. SIL Open
   Font License. To change the wordmark text you must re-subset the font.
-- **Headings**: IBM Plex Serif 500, self-hosted under `fonts/`. SIL OFL.
-- **Body / UI**: IBM Plex Sans 400/500/600, self-hosted under `fonts/`. SIL OFL.
+- **Everything else**: IBM Plex Sans 400/500/600, self-hosted under `fonts/`.
+  SIL OFL. No decorative serif — deal-memo clarity over editorial flourish.
 - No third-party font requests at runtime.
 - Headings are weight 500, not bold. `h1` 3.2rem, `h2` 2.1rem.
-- Letter-spacing on headings is `-0.022em`.
+- Letter-spacing on headings is `-0.025em`.
 
 ## Layout
 
 - Everything is left-aligned. Container is 1120px.
-- The nav is a floating rounded pill, inset 18px from the top.
+- The nav is a floating bar, inset 18px from the top, 6px radius.
 - One accent phrase per headline, in `--sand-text`, using `.hl`.
 
 ## Motion
