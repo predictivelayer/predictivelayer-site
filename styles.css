@@ -2,29 +2,29 @@
    Plain CSS. No frameworks, no third-party font requests, no trackers. */
 
 :root {
-  /* Institutional paper — PE / diligence tone. Cool white, not cream.
-     Panels stay white so structure comes from hairlines, not colour blocks. */
-  --bg:         #f4f5f7;
-  --bg-2:       #eef0f3;
+  /* Forge Origination–inspired palette (from their Webflow tokens).
+     Cream paper, charcoal ink, forest brand, bright yellow accent. */
+  --bg:         #f8f8f3;
+  --bg-2:       #f3f3ec;
   --panel:      #ffffff;
-  --panel-2:    #e8ebf0;
-  --line:       #c8ced8;
-  --line-soft:  #e1e4ea;
+  --panel-2:    #edede2;
+  --line:       #d4d4c8;
+  --line-soft:  #e6e6da;
 
-  --ink:        #0a1628;
-  --ink-2:      #3a4658;
-  --muted:      #667385;
+  --ink:        #3b3b33;
+  --ink-2:      #5c5c52;
+  --muted:      #7a7a6e;
 
-  /* Brand accent is muted gold — the PE cue. --sand names are historical;
-     values are gold. Dark enough for AA body links on white. */
-  --sand-deep:  #3f3118;
-  --sand:       #8f7340;
-  --sand-2:     #735c33;
-  --sand-text:  #6a542d;
-  --sand-soft:  #a8894c;
+  /* Brand = forest green. Accent cue = Forge yellow on buttons/tags.
+     --sand* names are historical. */
+  --sand-deep:  #0f2f28;
+  --sand:       #154339;
+  --sand-2:     #10362e;
+  --sand-text:  #154339;
+  --sand-soft:  #1c3f36;
 
-  /* Supporting spectrum. Steel blue is the second state / second series.
-     Amber is caution. Red is errors only, never a data category. */
+  /* Supporting spectrum. Steel blue is second state. Amber/caution stays
+     distinct from the yellow CTA. Red is errors only. */
   --blue:       #2a4a7a;
   --blue-text:  #1e3a66;
   --blue-dim:   rgba(42,74,122,.12);
@@ -37,15 +37,18 @@
 
   --accent:     var(--sand);
   --accent-2:   var(--sand-2);
-  --accent-dim: rgba(143,115,64,.12);
+  --accent-dim: rgba(21,67,57,.12);
   --accent-ink: var(--sand-text);
+
+  /* Forge yellow — CTAs and tag fills, not body links (contrast). */
+  --forge-yellow: #f9f637;
+  --forge-yellow-ink: #3b3b33;
 
   --radius:     6px;
   --radius-lg:  8px;
   --maxw:       1120px;
 
-  /* IBM Plex Sans only — deal-memo clarity, no decorative serif.
-     Self-hosted under OFL; no third-party request at runtime. */
+  /* IBM Plex Sans — deal-memo clarity. Self-hosted OFL. */
   --font: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display: var(--font);
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
@@ -123,7 +126,7 @@ body {
   overflow-x: clip;
 }
 
-/* Quiet navy depth at the top — no tinted glow. PE pages stay calm. */
+/* Soft forest wash — Forge green, very low opacity on cream. */
 body::before {
   content: "";
   position: absolute;
@@ -133,9 +136,9 @@ body::before {
   width: 1800px;
   height: 900px;
   background: radial-gradient(ellipse at center,
-              rgba(10,22,40,.05) 0%,
-              rgba(10,22,40,.02) 42%,
-              rgba(244,245,247,0) 72%);
+              rgba(21,67,57,.07) 0%,
+              rgba(21,67,57,.03) 42%,
+              rgba(248,248,243,0) 72%);
   pointer-events: none;
   z-index: 0;
 }
@@ -188,7 +191,7 @@ code {
   border-radius: 6px;
   background: rgba(255,255,255,.94);
   box-shadow: 0 1px 0 rgba(255,255,255,.8) inset,
-              0 8px 24px rgba(10,22,40,.04);
+              0 8px 24px rgba(59,59,51,.04);
 }
 
 /* The mark sits left of the name. Fixed height so it lines up with the
@@ -263,16 +266,16 @@ code {
   white-space: nowrap;
 }
 
-/* Primary: navy fill, white label. Gold stays for accents and scored data. */
-.btn-primary { background: var(--ink); color: #fff; }
-.btn-primary:hover { background: #15243a; color: #fff; }
+/* Primary: Forge yellow fill, charcoal label — matches their CTA cue. */
+.btn-primary { background: var(--forge-yellow); color: var(--forge-yellow-ink); }
+.btn-primary:hover { background: #ece52a; color: var(--forge-yellow-ink); }
 
 .btn-secondary {
   background: var(--panel);
   color: var(--ink);
   border-color: var(--line);
 }
-.btn-secondary:hover { background: var(--panel-2); border-color: #b0bac8; color: var(--ink); }
+.btn-secondary:hover { background: var(--panel-2); border-color: #c0c0b4; color: var(--ink); }
 
 .btn-ghost { background: none; color: var(--ink-2); padding: 9px 4px; }
 .btn-ghost:hover { color: var(--ink); }
@@ -322,7 +325,7 @@ br.brk { display: none; }
   overflow: hidden;
   text-align: left;
   box-shadow: 0 1px 0 rgba(255,255,255,.9) inset,
-              0 16px 40px rgba(10,22,40,.07);
+              0 16px 40px rgba(59,59,51,.07);
 }
 
 /* Three examples share the panel. Only one is in the document at a time, so
@@ -397,9 +400,9 @@ br.brk { display: none; }
 }
 /* What the run is for. */
 .tag-use {
-  color: var(--accent-ink);
-  background: rgba(143,115,64,.10);
-  border: 1px solid rgba(143,115,64,.32);
+  color: var(--forge-yellow-ink);
+  background: var(--forge-yellow);
+  border: 1px solid #e6e22e;
 }
 /* Where the data stands. Blue when they already hold it, red when they do
    not, violet when the thing being predicted has to be worked out first. */
@@ -451,9 +454,9 @@ br.brk { display: none; }
   padding: 0 0 3px;
   font-family: var(--font);
   transition: background .15s ease, color .15s ease, border-color .15s ease, opacity .2s ease;
-  box-shadow: 0 8px 24px rgba(11,22,40,.08);
+  box-shadow: 0 8px 24px rgba(59,59,51,.08);
 }
-.demo-arrow:hover { background: var(--panel-2); color: var(--ink); border-color: #b0bac8; }
+.demo-arrow:hover { background: var(--panel-2); color: var(--ink); border-color: #c0c0b4; }
 .demo-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .demo-arrow[disabled] { opacity: .25; cursor: default; }
 .demo-arrow.prev { left: max(10px, calc(50vw - var(--card-w) / 2 - 58px)); }
@@ -564,9 +567,9 @@ br.brk { display: none; }
 .msg-user {
   align-self: flex-end;
   max-width: 78%;
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  color: #fff;
+  background: var(--sand);
+  border: 1px solid var(--sand);
+  color: #f8f8f3;
   border-radius: 12px 12px 4px 12px;
   padding: 10px 14px;
   font-size: .92rem;
@@ -665,14 +668,14 @@ table.data tr:last-child td { border-bottom: 0; }
    person already had; these two are the thing they came for. Soft wash —
    no neon glow on a light page. */
 .col-new {
-  background: rgba(143,115,64,.10);
+  background: rgba(21,67,57,.10);
   color: var(--sand-text) !important;
   text-shadow: none;
   font-weight: 500;
 }
 table.data th.col-new {
   color: var(--sand-2) !important;
-  background: rgba(143,115,64,.14);
+  background: rgba(21,67,57,.14);
 }
 
 /* Light the edges of the block, so the two columns read as one lit panel
@@ -680,35 +683,35 @@ table.data th.col-new {
    a class on it: the cell that follows a cell that is not new. */
 table.data td:not(.col-new) + td.col-new,
 table.data th:not(.col-new) + th.col-new {
-  box-shadow: inset 2px 0 0 rgba(143,115,64,.45),
-              inset 18px 0 24px -18px rgba(143,115,64,.18);
+  box-shadow: inset 2px 0 0 rgba(21,67,57,.45),
+              inset 18px 0 24px -18px rgba(21,67,57,.18);
 }
 table.data td.col-new:last-child,
 table.data th.col-new:last-child {
-  box-shadow: inset -2px 0 0 rgba(143,115,64,.45),
-              inset -18px 0 24px -18px rgba(143,115,64,.18);
+  box-shadow: inset -2px 0 0 rgba(21,67,57,.45),
+              inset -18px 0 24px -18px rgba(21,67,57,.18);
 }
 /* The block is capped top and bottom by the header and the last row. */
-table.data thead th.col-new { box-shadow: inset 0 2px 0 rgba(143,115,64,.4); }
+table.data thead th.col-new { box-shadow: inset 0 2px 0 rgba(21,67,57,.4); }
 table.data thead th:not(.col-new) + th.col-new {
-  box-shadow: inset 2px 0 0 rgba(143,115,64,.45),
-              inset 18px 0 24px -18px rgba(143,115,64,.18),
-              inset 0 2px 0 rgba(143,115,64,.4);
+  box-shadow: inset 2px 0 0 rgba(21,67,57,.45),
+              inset 18px 0 24px -18px rgba(21,67,57,.18),
+              inset 0 2px 0 rgba(21,67,57,.4);
 }
 table.data thead th.col-new:last-child {
-  box-shadow: inset -2px 0 0 rgba(143,115,64,.45),
-              inset -18px 0 24px -18px rgba(143,115,64,.18),
-              inset 0 2px 0 rgba(143,115,64,.4);
+  box-shadow: inset -2px 0 0 rgba(21,67,57,.45),
+              inset -18px 0 24px -18px rgba(21,67,57,.18),
+              inset 0 2px 0 rgba(21,67,57,.4);
 }
 table.data tr:last-child td:not(.col-new) + td.col-new {
-  box-shadow: inset 2px 0 0 rgba(143,115,64,.45),
-              inset 18px 0 24px -18px rgba(143,115,64,.18),
-              inset 0 -2px 0 rgba(143,115,64,.4);
+  box-shadow: inset 2px 0 0 rgba(21,67,57,.45),
+              inset 18px 0 24px -18px rgba(21,67,57,.18),
+              inset 0 -2px 0 rgba(21,67,57,.4);
 }
 table.data tr:last-child td.col-new:last-child {
-  box-shadow: inset -2px 0 0 rgba(143,115,64,.45),
-              inset -18px 0 24px -18px rgba(143,115,64,.18),
-              inset 0 -2px 0 rgba(143,115,64,.4);
+  box-shadow: inset -2px 0 0 rgba(21,67,57,.45),
+              inset -18px 0 24px -18px rgba(21,67,57,.18),
+              inset 0 -2px 0 rgba(21,67,57,.4);
 }
 
 /* While a cell is still settling it is dimmer, so the moment it locks onto
@@ -735,7 +738,7 @@ table.data tr:last-child td.col-new:last-child {
 .card h3 { margin-bottom: .45em; }
 .card p { margin-bottom: 0; font-size: .95rem; color: var(--muted); }
 .card-link { display: block; color: inherit; }
-.card-link:hover { border-color: #b0bac8; background: var(--panel-2); color: inherit; }
+.card-link:hover { border-color: #c0c0b4; background: var(--panel-2); color: inherit; }
 .card-tag {
   font-size: .7rem;
   font-weight: 600;
@@ -782,7 +785,7 @@ table.data tr:last-child td.col-new:last-child {
   color: var(--ink);
   cursor: pointer;
 }
-.copy-btn:hover { border-color: #b0bac8; }
+.copy-btn:hover { border-color: #c0c0b4; }
 
 .field { margin-bottom: 15px; text-align: left; }
 .field label { display: block; font-size: .85rem; font-weight: 500; color: var(--ink-2); margin-bottom: 6px; }
@@ -933,7 +936,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   border-radius: 4px;
   padding: 2px 7px;
 }
-.tag-good { background: rgba(143,115,64,.14); color: var(--sand-text); }
+.tag-good { background: rgba(21,67,57,.14); color: var(--sand-text); }
 .tag-bad  { background: var(--blue-dim); color: var(--blue-text); }
 
 .fix {
@@ -992,7 +995,7 @@ table.data td.why { color: var(--muted); white-space: normal; }
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 8px;
-  box-shadow: 0 20px 50px rgba(11,22,40,.12);
+  box-shadow: 0 20px 50px rgba(59,59,51,.12);
   opacity: 0;
   visibility: hidden;
   transition: opacity .15s ease, transform .15s ease, visibility .15s;
@@ -1116,8 +1119,8 @@ table.data td.why { color: var(--muted); white-space: normal; }
   padding: 4px 9px;
   text-align: center;
 }
-.lrow.fixed { background: rgba(143,115,64,.07); }
-.lrow.fixed .act { border-color: rgba(143,115,64,.45); color: var(--sand-text); }
+.lrow.fixed { background: rgba(21,67,57,.07); }
+.lrow.fixed .act { border-color: rgba(21,67,57,.45); color: var(--sand-text); }
 .lrow .was {
   font-size: .72rem;
   color: var(--muted);

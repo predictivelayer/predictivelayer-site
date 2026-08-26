@@ -5,34 +5,35 @@ Change a value in the `:root` block and it propagates across all five pages.
 
 ## Colour
 
-Cool institutional paper, navy ink, one accent: muted gold. Aimed at PE and
-diligence readers. Gold is for accents, links and scored data — never the
-primary button.
+Demo pass inspired by [Forge Origination](https://forgeorigination.com/) Webflow
+tokens: cream paper, charcoal ink, forest brand, yellow CTA.
 
-| Token         | Hex       | Use                                              |
-| ------------- | --------- | ------------------------------------------------ |
-| `--sand`      | `#8f7340` | Fills. Status dot, tick marks, scored column.    |
-| `--sand-2`    | `#735c33` | Deeper gold. Hover and secondary fills.          |
-| `--sand-text` | `#6a542d` | Text and links. The accent word in the headline. |
-| `--sand-soft` | `#a8894c` | Lifted gold. Rolling cells, soft emphasis.       |
-| `--sand-deep` | `#3f3118` | Reserved. Dark gold blocks.                      |
+| Token              | Hex       | Use                                              |
+| ------------------ | --------- | ------------------------------------------------ |
+| `--sand`           | `#154339` | Forest brand fills, status, scored column.       |
+| `--sand-2`         | `#10362e` | Deeper forest. Hover.                            |
+| `--sand-text`      | `#154339` | Links and the accent word in the headline.       |
+| `--sand-soft`      | `#1c3f36` | Soft forest emphasis.                            |
+| `--sand-deep`      | `#0f2f28` | Darkest forest.                                  |
+| `--forge-yellow`   | `#f9f637` | Primary buttons and highlight tags.              |
+| `--forge-yellow-ink` | `#3b3b33` | Label on yellow buttons.                       |
 
-The token names say sand; the values are gold. That is history, not intent.
+`--sand*` names are historical; values follow Forge’s brand green.
 
-Primary buttons are **navy fill with white text**. One button per page is the
-loudest thing on it; gold does work elsewhere.
+Primary buttons are **yellow fill with charcoal text** (Forge CTA). Forest
+green does work on links, ticks, and scored data.
 
 | Token         | Hex       | Use                                       |
 | ------------- | --------- | ----------------------------------------- |
-| `--bg`        | `#f4f5f7` | Page. Cool institutional paper.           |
-| `--bg-2`      | `#eef0f3` | Soft inset surfaces                       |
+| `--bg`        | `#f8f8f3` | Page. Cream paper.                        |
+| `--bg-2`      | `#f3f3ec` | Soft inset surfaces                       |
 | `--panel`     | `#ffffff` | Cards, nav, table headers                 |
-| `--panel-2`   | `#e8ebf0` | Hover, inset controls                     |
-| `--line`      | `#c8ced8` | Borders                                   |
-| `--line-soft` | `#e1e4ea` | Dividers inside panels                    |
-| `--ink`       | `#0a1628` | Headings                                  |
-| `--ink-2`     | `#3a4658` | Body text                                 |
-| `--muted`     | `#667385` | Secondary and supporting text             |
+| `--panel-2`   | `#edede2` | Hover, inset controls                     |
+| `--line`      | `#d4d4c8` | Borders                                   |
+| `--line-soft` | `#e6e6da` | Dividers inside panels                    |
+| `--ink`       | `#3b3b33` | Headings                                  |
+| `--ink-2`     | `#5c5c52` | Body text                                 |
+| `--muted`     | `#7a7a6e` | Secondary and supporting text             |
 
 Supporting colours, each with one job:
 
@@ -42,37 +43,20 @@ Supporting colours, each with one job:
 | `--amber` | `#a06b1a` | Caution. Low confidence, a subsampled run.                  |
 | `--red`   | `#b03a3f` | Errors and destructive actions only. Never a data category. |
 
-Never pair red with green to mean two categories in a table. Steel blue
-against gold is the pair we ship, and the word is always there as well as
-the colour.
-
-## Atmosphere
-
-A faint navy radial behind the top of the page only. No coloured glow, no
-grain. Restraint reads as trust.
+Yellow is not used as the only cue for a data category — forest vs steel blue
+carries state, with the word always present.
 
 ## Type
 
-- **Wordmark**: Space Grotesk 600, self-hosted at `wordmark.woff2`. Subset to
-  the sixteen characters of "Predictive Layer", so it weighs 1.4KB. SIL Open
-  Font License. To change the wordmark text you must re-subset the font.
-- **Everything else**: IBM Plex Sans 400/500/600, self-hosted under `fonts/`.
-  SIL OFL. No decorative serif — deal-memo clarity over editorial flourish.
+- **Wordmark**: Space Grotesk 600, self-hosted at `wordmark.woff2`.
+- **Everything else**: IBM Plex Sans 400/500/600 under `fonts/`. SIL OFL.
 - No third-party font requests at runtime.
-- Headings are weight 500, not bold. `h1` 3.2rem, `h2` 2.1rem.
-- Letter-spacing on headings is `-0.025em`.
 
 ## Layout
 
-- Everything is left-aligned. Container is 1120px.
-- The nav is a floating bar, inset 18px from the top, 6px radius.
-- One accent phrase per headline, in `--sand-text`, using `.hl`.
-
-## Motion
-
-The hero demo plays once on load and stops on its last frame. It does not
-loop. Under `prefers-reduced-motion` it renders the finished state straight
-away and never animates.
+- Left-aligned. Container 1120px.
+- Nav floating bar, 6px radius.
+- One accent phrase per headline in `--sand-text` via `.hl`.
 
 ## Rules we have been keeping
 
