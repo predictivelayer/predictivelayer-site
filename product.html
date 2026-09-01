@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Drop and Predict — predictivelayer.io</title>
 <meta name="description" content="Drop in two datasets and get a predicted column back. How the predictive layer works, what it handles, and where its limits are.">
-<meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=33">
+<meta name="theme-color" content="#f8f8f3">
+<link rel="stylesheet" href="styles.css?v=45">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -48,13 +48,17 @@
 
 <main>
 
-  <section class="hero" style="padding-bottom:0">
+  <section class="hero page-hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <div class="grid-veil"></div>
+    </div>
     <div class="wrap">
       <p class="eyebrow">Drop and Predict</p>
-      <h1 style="font-size:3.4rem;max-width:19ch">You already have the rows. Drop them in.</h1>
-      <p class="sub" style="max-width:56ch">When your data is already collected and already labeled, you do not need a pipeline. Upload the rows you have judged, upload the rows you have not, and get a scored column back. If the data or the labels are the missing part, use <a href="auto.html">One-click</a> instead.</p>
+      <h1>You already have the rows. Drop them in.</h1>
+      <p class="sub">When your data is already collected and already labeled, you do not need a pipeline. Upload the rows you have judged, upload the rows you have not, and get a scored column back. If the data or the labels are the missing part, use <a href="auto.html">One-click</a> instead.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://app.predictivelayer.io">Try it now</a>
+        <a class="btn btn-accent" href="https://app.predictivelayer.io">Try it now</a>
         <a class="btn btn-secondary" href="#how">How it works</a>
       </div>
     </div>
@@ -143,7 +147,7 @@
       </div>
 
       <div class="btn-row center" style="margin-top:36px">
-        <a class="btn btn-primary" href="https://app.predictivelayer.io">Try it now</a>
+        <a class="btn btn-accent" href="https://app.predictivelayer.io">Try it now</a>
       </div>
     </div>
   </section>
@@ -171,7 +175,7 @@
       <p class="lead">It needs labels that mean something. Fifty carefully judged rows beat five hundred careless ones, and no model recovers a criterion you have not been consistent about.</p>
       <p class="lead">It reads the columns you give it. If the signal is not in the table, it is not in the prediction.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://app.predictivelayer.io">Try it now</a>
+        <a class="btn btn-accent" href="https://app.predictivelayer.io">Try it now</a>
         <a class="btn btn-secondary" href="contact.html">Get in touch</a>
         <a class="btn btn-secondary" href="auto.html">One-click</a>
       </div>
@@ -193,6 +197,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=16"></script>
+<script src="main.js?v=20"></script>
 </body>
 </html>

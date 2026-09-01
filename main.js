@@ -136,12 +136,12 @@
   }
 
   /* ---------- hero demo ----------
-     Three examples in one panel. Arrows switch between them. Each one is a
-     clock-driven loop: every frame works out the whole scene from elapsed
-     time, so background-tab throttling can never put a later beat ahead of
-     an earlier one. */
+     Three stacked windows on the landing page. Each scene animates on its
+     own timeline when the page loads (or when using the legacy carousel). */
   var scenes = Array.prototype.slice.call(document.querySelectorAll('[data-scene]'));
   if (!scenes.length) return;
+
+  var isStack = !!document.getElementById('demo-stack');
 
   // Typing speed. The whole timeline is derived from character counts, and a
   // Chinese line carries the same meaning in roughly a third of the characters,
@@ -298,22 +298,51 @@
     return built[i];
   }
 
-  /* ---------- which card is centred ----------
-     The browser does the scrolling. We only watch it, so a trackpad swipe,
-     a touch drag and the arrow buttons all end up in the same place. */
+  var reduced = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (isStack) {
+    /* All three windows play in parallel. */
+    var origins = scenes.map(function () { return null; });
+    var played = scenes.map(function () { return false; });
+
+    scenes.forEach(function (sc, i) {
+      var e = engine(i);
+      e.frame(e.end);
+    });
+    played = scenes.map(function () { return false; });
+
+    if (reduced) return;
+
+    function tickStack(now) {
+      scenes.forEach(function (sc, i) {
+        if (played[i]) return;
+        var e = engine(i);
+        if (origins[i] === null) origins[i] = now + i * 400;
+        var t = now - origins[i];
+        if (t >= e.end) { e.frame(e.end); played[i] = true; }
+        else e.frame(t);
+      });
+      requestAnimationFrame(tickStack);
+    }
+    requestAnimationFrame(tickStack);
+    return;
+  }
+
+  /* ---------- carousel (horizontal scroll in #demos) ---------- */
 
   var rail  = document.getElementById('carousel');
   var pips  = document.getElementById('demo-pips');
   var label = document.getElementById('demo-label');
   var prev  = document.querySelector('[data-demo-prev]');
   var next  = document.querySelector('[data-demo-next]');
-
-  var reduced = window.matchMedia &&
-                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var demosEl = document.getElementById('demos');
 
   var idx = 0;
   var origin = null;
-  var played = [];   // each example animates the first time you land on it
+  var finished = [];
+  var primed = [];   // sitting on last frame as a preview, not yet played
+  var demosReady = false;
 
   if (pips) {
     scenes.forEach(function (sc, i) {
@@ -326,14 +355,21 @@
     });
   }
 
+  function cardScrollLeft(card) {
+    if (!rail || !card) return 0;
+    return rail.scrollLeft + card.getBoundingClientRect().left -
+           rail.getBoundingClientRect().left;
+  }
+
   // Wraps rather than stops. Past the last card you land on the first, and
   // left from the first takes you to the last, so the arrows rotate.
   function scrollTo(i) {
     i = (i + scenes.length) % scenes.length;
     var card = scenes[i];
     if (!rail) return;
+    activate(i);
     rail.scrollTo({
-      left: card.offsetLeft - (rail.clientWidth - card.offsetWidth) / 2,
+      left: cardScrollLeft(card) - (rail.clientWidth - card.offsetWidth) / 2,
       behavior: reduced ? 'auto' : 'smooth'
     });
   }
@@ -344,7 +380,8 @@
     var mid = rail.scrollLeft + rail.clientWidth / 2;
     var best = 0, bestD = Infinity;
     scenes.forEach(function (c, i) {
-      var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+      var left = cardScrollLeft(c);
+      var d = Math.abs(left + c.offsetWidth / 2 - mid);
       if (d < bestD) { bestD = d; best = i; }
     });
     return best;
@@ -371,9 +408,17 @@
     if (i === idx) return;
     idx = i;
     paint();
-    // A card that has not run yet starts from the top the moment it lands
-    // in the middle. One that has already run keeps its finished state.
-    if (!played[idx] && !reduced) origin = null;
+    if (reduced) return;
+    // A preview card has been sitting on its last frame; play it in when
+    // it becomes the live one. Finished cards keep their last frame.
+    if (primed[idx]) {
+      engine(idx).frame(0);
+      primed[idx] = false;
+      finished[idx] = false;
+      origin = null;
+    } else if (!finished[idx]) {
+      origin = null;
+    }
   }
 
   if (rail) {
@@ -390,15 +435,37 @@
   if (prev) prev.addEventListener('click', function () { scrollTo(idx - 1); });
   if (next) next.addEventListener('click', function () { scrollTo(idx + 1); });
 
-  // Every card starts on its last frame, so the two lurking at the edges
-  // look like finished work rather than empty panels.
+  // The live card starts empty; the others show a finished preview so the
+  // edges never look like blank panels.
   scenes.forEach(function (sc, i) {
     var e = engine(i);
-    e.frame(e.end);
-    played[i] = true;
+    if (i === idx) {
+      e.frame(0);
+      finished[i] = false;
+      primed[i] = false;
+    } else {
+      e.frame(e.end);
+      finished[i] = true;
+      primed[i] = true;
+    }
   });
-  played[0] = false;   // except the one you land on, which plays itself in
   paint();
+
+  function markDemosReady() {
+    if (demosReady) return;
+    demosReady = true;
+    if (!reduced && !finished[idx]) origin = null;
+  }
+
+  if (demosEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) markDemosReady();
+      });
+    }, { threshold: 0.15 }).observe(demosEl);
+  } else {
+    markDemosReady();
+  }
 
   if (reduced) return;
 
@@ -406,11 +473,11 @@
      thirty seconds of motion replaying beside the text you are reading is a
      distraction, not a demo. */
   function tick(now) {
-    if (!played[idx]) {
+    if (demosReady && !finished[idx]) {
       var e = engine(idx);
       if (origin === null) origin = now;
       var t = now - origin;
-      if (t >= e.end) { e.frame(e.end); played[idx] = true; }
+      if (t >= e.end) { e.frame(e.end); finished[idx] = true; }
       else e.frame(t);
     }
     requestAnimationFrame(tick);
