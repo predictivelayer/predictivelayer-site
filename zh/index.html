@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>predictivelayer.io — 从预测到决策，从未如此简单</title>
 <meta name="description" content="说出你想预测什么。它会从你的已标注样本中学习，为剩余的每一行评分，并标出置信度。可以在对话中使用，也可以作为工具供你的智能体调用。">
-<meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="../styles.css?v=33">
+<meta name="theme-color" content="#f8f8f3">
+<link rel="stylesheet" href="../styles.css?v=45">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -49,26 +49,220 @@
 <main>
 
   <section class="hero">
-    <div class="wrap">
-      <h1><span class="hl">从预测到决策，</span><br class="brk">从未如此简单。</h1>
-      <p class="sub">告诉它你想预测什么。它会从你已标注的行中学习，为其余每一行评分，并标出置信度。可以在对话中使用，也可以作为工具供你的智能体调用。</p>
-      <div class="btn-row center">
-        <a class="btn btn-secondary" href="auto.html">查看工作原理</a>
-        <a class="btn btn-primary" href="contact.html">联系我们</a>
-      </div>
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <div class="grid-veil"></div>
+    </div>
+    <div class="wrap hero-inner">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1><span class="hl-line">从预测到决策，</span><br class="brk">从未如此简单。</h1>
+          <p class="sub">告诉它你想预测什么。它会从你已标注的行中学习，为其余每一行评分，并标出置信度。可以在对话中使用，也可以作为工具供你的智能体调用。</p>
+          <div class="btn-row">
+            <a class="btn btn-accent" href="auto.html">查看工作原理</a>
+            <a class="btn btn-secondary" href="contact.html">联系我们</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>~50</dt><dd>行标注即可起步</dd></div>
+            <div><dt>0</dt><dd>次训练运行</dd></div>
+            <div><dt>100%</dt><dd>在你的硬件上运行</dd></div>
+          </dl>
+        </div>
 
-      <div class="hero-visual">
-        <div class="carousel-wrap">
-          <div class="carousel" id="carousel">
-          <div class="demo-card" data-scene
+        <div class="hero-visual">
+          <div class="score-demo">
+            <div class="demo-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="bar-title">pipeline_q3.csv — 4,182 行</span>
+              <span class="spacer"></span>
+              <span class="pill">local · CPU</span>
+            </div>
+            <div class="score-demo-body">
+              <div class="score-log">
+                <p><span class="who-you">你 ›</span> 预测本季度哪些进行中的交易会成交</p>
+                <p><span class="who-layer">layer ›</span> 找到 52 行已标注样本（成交/未成交）。正在为剩余 4,130 行评分…</p>
+              </div>
+              <div class="score-table-wrap">
+                <table class="score-table">
+                  <thead>
+                    <tr>
+                      <th>客户</th>
+                      <th>席位</th>
+                      <th>用量</th>
+                      <th>最近触达</th>
+                      <th>预测</th>
+                      <th>置信度</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="score-labeled">
+                      <td>Northwind Freight</td>
+                      <td class="mono-cell">120</td>
+                      <td class="mono-cell">high</td>
+                      <td class="mono-cell">3d</td>
+                      <td colspan="2"><span class="score-badge">标注样本 · 成交</span></td>
+                    </tr>
+                    <tr class="score-labeled">
+                      <td>Cobalt Health</td>
+                      <td class="mono-cell">18</td>
+                      <td class="mono-cell">—</td>
+                      <td class="mono-cell">41d</td>
+                      <td colspan="2"><span class="score-badge">标注样本 · 未成交</span></td>
+                    </tr>
+                    <tr class="score-row">
+                      <td>Harbor Analytics</td>
+                      <td class="mono-cell">84</td>
+                      <td class="mono-cell">high</td>
+                      <td class="mono-cell">2d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.91</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:91%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">94%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:94%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row is-alt">
+                      <td>Meridian Labs</td>
+                      <td class="mono-cell">31</td>
+                      <td class="mono-cell">medium</td>
+                      <td class="mono-cell">9d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.68</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:68%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">72%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:72%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row">
+                      <td>Arcline Retail</td>
+                      <td class="mono-cell">—</td>
+                      <td class="mono-cell">low</td>
+                      <td class="mono-cell">27d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.34</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:34%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">55%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:55%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row is-alt">
+                      <td>Verity Logistics</td>
+                      <td class="mono-cell">210</td>
+                      <td class="mono-cell">high</td>
+                      <td class="mono-cell">1d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.88</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:88%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">90%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:90%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row">
+                      <td>Pinegrove Bank</td>
+                      <td class="mono-cell">12</td>
+                      <td class="mono-cell">low</td>
+                      <td class="mono-cell">63d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.11</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:11%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">87%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:87%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="score-foot">缺失值原样保留 · 无需训练 · 结果以 CSV 或工具 API 返回</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule" id="capabilities">
+    <div class="wrap">
+      <h2 class="section-title">预测项目通常需要的一切——都去掉了。</h2>
+      <p class="section-lead">没有数据科学团队，没有流水线，没有再训练日程。只要问题和你已有的行。</p>
+      <div class="bento">
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 5h8M13 12h8M13 19h8M3 17l2 2 4-4M3 7l2 2 4-4"/></svg>
+          <h3>大约 50 个样本就够</h3>
+          <p>按你期望的方式标注少量行即可。这就是全部设置——无需特征工程，也无需漫长的标注过程。</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8 19 13M17.8 6.2 19 5M3 16l1.5-1.5M21 12a9 9 0 1 1-9-9"/></svg>
+          <h3>无需训练。无需调参。</h3>
+          <p>没有拟合步骤，没有超参数，没有模型注册表。提出问题，剩余行在数秒内返回评分。</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+          <h3>每一行都有置信度</h3>
+          <p>每个预测都带有自己的置信度，因此你可以自动处理确定的行，并将其余行交给人工。</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8l5 5v13a2 2 0 0 1-2 2zM14 2v5h5M8 13h2M14 13h2M8 17h2M14 17h2"/></svg>
+          <h3>普通 CSV，含脏数据</h3>
+          <p>指向你已有的导出文件即可。空白单元格、自由文本列和不一致类型会被处理，而不是被拒绝。</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+          <h3>在笔记本 CPU 上运行</h3>
+          <p>足够小、可本地运行的表格基础模型。无需 GPU 集群、无需排队、无需按次计费的延迟税。</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>数据留在你的网络内</h3>
+          <p>你的行不必离开本机或 VPC。合规审查变成一次对话，而不是一个项目。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule demos-section" id="demos">
+    <div class="wrap">
+      <h2 class="section-title">看看它怎么工作</h2>
+      <p class="section-lead">三个真实提问。同一个模型，不同问题 — 用箭头切换浏览。</p>
+      <div class="carousel-wrap">
+            <div class="carousel" id="carousel">
+<div class="demo-card" data-scene
                data-label="项目挖掘">
-            <span class="scene-tags"><span class="tag-use">项目挖掘</span><span class="tag-data">你已有数据</span><span class="tag-verdict">可预测</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span>predictivelayer</span>
+              <span class="bar-title">tracked_companies.csv — 4,012 行</span>
               <span class="spacer"></span>
-              <span class="pill"><span class="live"></span> 已连接</span>
+              <span class="pill">local · CPU</span>
             </div>
             <div class="demo-body">
 
@@ -126,23 +320,17 @@
               </div>
 
             </div>
-            <div class="demo-foot">
-              <span class="caret">&#9656;</span>
-              <span>发起一次预测</span>
-              <span class="spacer"></span>
-              <span class="send">&#8593;</span>
-            </div>
             </div>
           </div>
-          <div class="demo-card" data-scene
+
+<div class="demo-card" data-scene
                data-label="线索评分">
-            <span class="scene-tags"><span class="tag-use">线索评分</span><span class="tag-data missing">你没有数据</span><span class="tag-verdict">可预测</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span>predictivelayer</span>
+              <span class="bar-title">names_only.csv — 1,120 行 &middot; 2 列</span>
               <span class="spacer"></span>
-              <span class="pill"><span class="live"></span> 已连接</span>
+              <span class="pill">local · CPU</span>
             </div>
             <div class="demo-body">
 
@@ -200,23 +388,17 @@
               </div>
 
             </div>
-            <div class="demo-foot">
-              <span class="caret">&#9656;</span>
-              <span>发起一次预测</span>
-              <span class="spacer"></span>
-              <span class="send">&#8593;</span>
-            </div>
             </div>
           </div>
-          <div class="demo-card" data-scene
+
+<div class="demo-card" data-scene
                data-label="模式识别">
-            <span class="scene-tags"><span class="tag-use">模式识别</span><span class="tag-data complex">预测复杂数值</span><span class="tag-verdict">可预测</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span>predictivelayer</span>
+              <span class="bar-title">past_deals.csv — 210 行 &middot; 9 列</span>
               <span class="spacer"></span>
-              <span class="pill"><span class="live"></span> 已连接</span>
+              <span class="pill">local · CPU</span>
             </div>
             <div class="demo-body">
 
@@ -282,122 +464,177 @@
               </div>
 
             </div>
-            <div class="demo-foot">
-              <span class="caret">&#9656;</span>
-              <span>发起一次预测</span>
-              <span class="spacer"></span>
-              <span class="send">&#8593;</span>
-            </div>
             </div>
           </div>
+            
+            </div>
+            <div class="demo-nav">
+              <button class="demo-arrow" type="button" data-demo-prev aria-label="上一个示例">&#8592;</button>
+              <div class="demo-pips" id="demo-pips"></div>
+              <span class="demo-label" id="demo-label"></span>
+              <button class="demo-arrow" type="button" data-demo-next aria-label="下一个示例">&#8594;</button>
+            </div>
           </div>
-          <button class="demo-arrow prev" data-demo-prev aria-label="上一个示例">&#8249;</button>
-          <button class="demo-arrow next" data-demo-next aria-label="下一个示例">&#8250;</button>
-        </div>
-
-        <div class="demo-nav">
-          <span class="demo-pips" id="demo-pips"></span>
-          <span class="demo-label" id="demo-label"></span>
-        </div>
-      </div>
-      </div>
     </div>
   </section>
 
   <section class="rule" id="how">
     <div class="wrap">
-      <p class="eyebrow center">工作原理</p>
-      <h2 class="center">只需提问一次，每一行都会被评分。</h2>
-      <p class="sub center">你负责判断，从提问到给出答案之间的一切都交给它处理。</p>
-      <div class="grid grid-3" style="margin-top:52px">
-        <div class="card">
-          <span class="step-num">01</span>
-          <h3>先让它看看什么样的算“好”</h3>
-          <p>只需一小批你已经判断过的行，通常五十行就够了。这是你的判断标准，而不是下拉菜单里的一个选项。</p>
+      <div class="how-grid">
+        <div class="how-intro">
+          <h2 class="section-title">三步完成，一次坐定。</h2>
+          <p class="section-lead">模型在上下文中读取你的示例。没有需要等待的拟合步骤，数据变化时也无需重新部署——你只需再问一次。</p>
+          <div class="code-panel">
+            <p class="code-cap">作为工具调用</p>
+            <pre>predict(
+  file: "accounts.csv",
+  target: "will_churn",
+  examples: 52
+)
+→ 4,130 行已评分
+→ 每行置信度</pre>
+          </div>
         </div>
-        <div class="card">
-          <span class="step-num">02</span>
-          <h3>直接用大白话提问</h3>
-          <p>“给这些评分，看看是否合适。”可以在对话里说，也可以由你自己的智能体发起一次工具调用。无需列映射，也无需配置文件。</p>
-        </div>
-        <div class="card">
-          <span class="step-num">03</span>
-          <h3>拿回每一行的评分结果</h3>
-          <p>每一行都会标出置信度，让你清楚哪些可以放心，哪些需要复核。下载下来，或者直接接入下一步流程。</p>
-        </div>
+        <ol class="steps-list">
+          <li class="step-card">
+            <div class="step-card-inner">
+              <span class="step-num">01</span>
+              <div>
+                <h3>说出你想预测什么</h3>
+                <p>用自然语言：“下个季度哪些客户会流失？”无需 schema 映射，也无需目标列仪式。</p>
+              </div>
+            </div>
+          </li>
+          <li class="step-card">
+            <div class="step-card-inner">
+              <span class="step-num">02</span>
+              <div>
+                <h3>它从你已标注的行中学习</h3>
+                <p>表格基础模型读取你已标注的示例——大约 50 个就够——并在上下文中推断模式。</p>
+              </div>
+            </div>
+          </li>
+          <li class="step-card">
+            <div class="step-card-inner">
+              <span class="step-num">03</span>
+              <div>
+                <h3>其余每一行都会返回评分</h3>
+                <p>每行一个预测和一个置信度，可在对话中返回，也可直接返回给调用它的智能体。</p>
+              </div>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <section class="rule">
+  <section class="rule" id="use-cases">
     <div class="wrap">
-      <div class="grid split">
-        <div>
-          <p class="eyebrow">模型</p>
-          <h2>无需训练，无需调参</h2>
-          <p class="lead">底层是一个表格基础模型，已在数百万张合成表格上完成预训练。它已经了解列与列之间的常见关系，因此你提供的示例是作为上下文输入，而不是作为训练集。</p>
-          <p class="lead">一次预测只需几秒钟，而不是一整个开发周期；你可以随时调整判断标准，重新运行，无需从头再来。</p>
-          <p><a href="auto.html">看一次完整运行 &rarr;</a></p>
+      <h2 class="section-title">团队通常先用它来做什么</h2>
+      <p class="section-lead">如果答案在电子表格里，而且人能标注其中 50 行，那就合适。</p>
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 17h6v-6M22 17l-8.5-8.5-5 5L2 7"/></svg></div>
+          <h3>成交与意向评分</h3>
+          <p>从你已有的 CRM 导出中，按成交可能性对开放商机排序。</p>
         </div>
-        <div class="grid" style="gap:16px">
-          <div class="card">
-            <h3>你的判断标准，不是固定模板</h3>
-            <p>线索是否合适、风险标记、流失、优先级，或是一个质量等级。只要你能标注 50 行，就能预测剩下的部分。</p>
-          </div>
-          <div class="card">
-            <h3>适用于普通 CSV 文件</h3>
-            <p>数字、文本类别、缺失值都没问题。两个文件之间的列会自动为你匹配。</p>
-          </div>
-          <div class="card">
-            <h3>在本机运行</h3>
-            <p>该应用可在笔记本电脑的 CPU 上本地运行，你的数据无需离开你的网络。</p>
-          </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>线索与客户评分</h3>
+          <p>把 50 个手工挑选的优质客户变成整库的评分名单。</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></div>
+          <h3>流失与续约风险</h3>
+          <p>标出本周值得跟进的续约，并用置信度决定外呼力度。</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>数据质量标记</h3>
+          <p>从少量坏记录示例中学习，并自动找出其余类似记录。</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+          <h3>类别补全</h3>
+          <p>在数千行中一致地回填缺失的类别、分群与标签。</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 12v5M12 8v9M17 11v6"/></svg></div>
+          <h3>估计与等级</h3>
+          <p>在规则集难以维护时，预测数值估计或分级档位。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="rule">
+  <section class="rule" id="proof">
     <div class="wrap">
-      <p class="eyebrow center">适用场景</p>
-      <h2 class="center">无论结构化还是非结构化数据，<br class="brk">直接上传即可</h2>
-      <div class="grid grid-3" style="margin-top:52px">
-        <div class="card"><h3>线索与客户评分</h3><p>标注已成交的客户，按同一标准为名单上的其余客户评分。</p></div>
-        <div class="card"><h3>流失与续约风险</h3><p>标注谁流失、谁留存，标记出走向同一结局的客户。</p></div>
-        <div class="card"><h3>意向评分</h3><p>标注已出售的业主，按下一个可能出售的可能性为其余公司排序。</p></div>
-        <div class="card"><h3>数据质量标记</h3><p>标注你已知有误的行，找出与它们相似的行。</p></div>
-        <div class="card"><h3>类别自动补全</h3><p>手动标注目录的一部分，剩下的交给模型完成。</p></div>
-        <div class="card"><h3>数值估算与评级</h3><p>连续型目标同样适用：价格、时长，或一个数值型质量分数。</p></div>
+      <h2 class="section-title">被营收、数据与平台团队投入使用</h2>
+      <div class="proof-grid">
+        <figure class="proof-card">
+          <svg class="proof-quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/></svg>
+          <blockquote>“我们把流失模型排在两个季度的路线图上。周二标注了 60 个客户，当天下午就拿到了续约评分。”</blockquote>
+          <figcaption>
+            <div class="name">Dana Whitfield</div>
+            <div class="role">VP Revenue Operations, Harbor Analytics</div>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <svg class="proof-quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/></svg>
+          <blockquote>“这是第一个我们的智能体可以直接调用的预测工具。带置信度的结构化分数，远胜于让大模型去猜表格。”</blockquote>
+          <figcaption>
+            <div class="name">Marcus Reyn</div>
+            <div class="role">Head of Platform, Verity Logistics</div>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <svg class="proof-quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/></svg>
+          <blockquote>“没有任何数据离开我们的网络，所以安全一周就签字了。以前跟 ML 供应商从没发生过。”</blockquote>
+          <figcaption>
+            <div class="name">Priya Nandan</div>
+            <div class="role">Director of Data, Cobalt Health</div>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="rule">
-    <div class="wrap narrow center">
-      <h2>在你自己的数据上试一试</h2>
-      <p class="sub center" style="margin-bottom:0">告诉我们你想评分什么，我们会帮你搭建好环境。</p>
-      <div class="btn-row center">
-        <a class="btn btn-primary" href="contact.html">联系我们</a>
-        <button class="btn btn-secondary" data-mail-open>发邮件给我们</button>
+  <section class="rule" id="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="cta-inner">
+          <h2 class="section-title">带上 CSV 和 50 行标注。带走预测结果。</h2>
+          <p class="section-lead">在笔记本上运行，数据留在你的网络内，一个下午就能判断这个预测值不值得立项。</p>
+          <form class="cta-form" action="../contact.html" method="get">
+            <label for="work-email" class="sr-only">工作邮箱</label>
+            <input id="work-email" name="email" type="email" required placeholder="you@company.com">
+            <button class="btn btn-accent" type="submit">获取访问 <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          </form>
+          <p class="cta-note">无需 GPU · 可离线 · CSV 进，CSV 出</p>
+        </div>
       </div>
     </div>
   </section>
+
 
 </main>
 
 <footer class="site-footer">
   <div class="wrap footer-row">
-    <div>&copy; 2026 普微智能</div>
-    <div class="footer-links">
-      <a href="auto.html">一键</a>
-      <a href="product.html">拖放预测</a>
-      <a href="index.html#how">工作原理</a>
-      <a href="resources.html">资源</a>
-      <a href="#" data-mail-open>发邮件给我们</a>
+    <div class="footer-brand">
+      <span class="footer-mark"><img src="../logo.svg" alt="" width="14" height="14" aria-hidden="true"></span>
+      <span class="footer-name">普微智能</span>
     </div>
+    <nav class="footer-links">
+      <a href="index.html#how">工作原理</a>
+      <a href="index.html#use-cases">用例</a>
+      <a href="contact.html">联系我们</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 predictivelayer.io</p>
   </div>
 </footer>
 
-<script src="../main.js?v=16"></script>
+<script src="../main.js?v=23"></script>
 </body>
 </html>

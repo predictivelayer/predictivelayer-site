@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>predictivelayer.io — predictive decision-making, never been easier</title>
 <meta name="description" content="Say what you want to predict. It learns from your labeled examples and scores every remaining row, with a confidence figure on each. In chat, or as a tool your agents call.">
-<meta name="theme-color" content="#000000">
-<link rel="stylesheet" href="styles.css?v=33">
+<meta name="theme-color" content="#f8f8f3">
+<link rel="stylesheet" href="styles.css?v=45">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
 </head>
 <body>
@@ -49,26 +49,220 @@
 <main>
 
   <section class="hero">
-    <div class="wrap">
-      <h1><span class="hl">Predictive decision-making.</span><br class="brk"> Never been easier.</h1>
-      <p class="sub">Tell it what you want to predict. It learns from the rows you have already judged, scores every remaining one, and puts a confidence figure on each. In chat, or as a tool your agents call.</p>
-      <div class="btn-row center">
-        <a class="btn btn-secondary" href="auto.html">See how it works</a>
-        <a class="btn btn-primary" href="contact.html">Get in touch</a>
-      </div>
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <div class="grid-veil"></div>
+    </div>
+    <div class="wrap hero-inner">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Predictive decision-making.<span class="hl-line">Never been easier.</span></h1>
+          <p class="sub">Tell it what you want to predict. It learns from the rows you have already judged, scores every remaining one, and puts a confidence figure on each. In chat, or as a tool your agents call.</p>
+          <div class="btn-row">
+            <a class="btn btn-accent" href="auto.html">See how it works</a>
+            <a class="btn btn-secondary" href="contact.html">Get in touch</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>~50</dt><dd>labeled rows to start</dd></div>
+            <div><dt>0</dt><dd>training runs</dd></div>
+            <div><dt>100%</dt><dd>on your hardware</dd></div>
+          </dl>
+        </div>
 
-      <div class="hero-visual">
-        <div class="carousel-wrap">
-          <div class="carousel" id="carousel">
-          <div class="demo-card" data-scene
+        <div class="hero-visual">
+          <div class="score-demo">
+            <div class="demo-bar">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="bar-title">pipeline_q3.csv — 4,182 rows</span>
+              <span class="spacer"></span>
+              <span class="pill">local · CPU</span>
+            </div>
+            <div class="score-demo-body">
+              <div class="score-log">
+                <p><span class="who-you">you ›</span> predict which open deals will close this quarter</p>
+                <p><span class="who-layer">layer ›</span> found 52 labeled rows (Won/Lost). Scoring 4,130 remaining rows…</p>
+              </div>
+              <div class="score-table-wrap">
+                <table class="score-table">
+                  <thead>
+                    <tr>
+                      <th>Account</th>
+                      <th>Seats</th>
+                      <th>Usage</th>
+                      <th>Last touch</th>
+                      <th>Prediction</th>
+                      <th>Confidence</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="score-labeled">
+                      <td>Northwind Freight</td>
+                      <td class="mono-cell">120</td>
+                      <td class="mono-cell">high</td>
+                      <td class="mono-cell">3d</td>
+                      <td colspan="2"><span class="score-badge">labeled example · Won</span></td>
+                    </tr>
+                    <tr class="score-labeled">
+                      <td>Cobalt Health</td>
+                      <td class="mono-cell">18</td>
+                      <td class="mono-cell">—</td>
+                      <td class="mono-cell">41d</td>
+                      <td colspan="2"><span class="score-badge">labeled example · Lost</span></td>
+                    </tr>
+                    <tr class="score-row">
+                      <td>Harbor Analytics</td>
+                      <td class="mono-cell">84</td>
+                      <td class="mono-cell">high</td>
+                      <td class="mono-cell">2d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.91</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:91%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">94%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:94%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row is-alt">
+                      <td>Meridian Labs</td>
+                      <td class="mono-cell">31</td>
+                      <td class="mono-cell">medium</td>
+                      <td class="mono-cell">9d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.68</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:68%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">72%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:72%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row">
+                      <td>Arcline Retail</td>
+                      <td class="mono-cell">—</td>
+                      <td class="mono-cell">low</td>
+                      <td class="mono-cell">27d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.34</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:34%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">55%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:55%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row is-alt">
+                      <td>Verity Logistics</td>
+                      <td class="mono-cell">210</td>
+                      <td class="mono-cell">high</td>
+                      <td class="mono-cell">1d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.88</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:88%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">90%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:90%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="score-row">
+                      <td>Pinegrove Bank</td>
+                      <td class="mono-cell">12</td>
+                      <td class="mono-cell">low</td>
+                      <td class="mono-cell">63d</td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">0.11</span>
+                          <span class="score-bar is-primary" aria-hidden="true"><i style="width:11%"></i></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="score-metric">
+                          <span class="num">87%</span>
+                          <span class="score-bar is-accent" aria-hidden="true"><i style="width:87%"></i></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="score-foot">Missing values kept as-is · no training run · results returned as CSV or over the tool API</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule" id="capabilities">
+    <div class="wrap">
+      <h2 class="section-title">Everything a prediction project usually needs — removed.</h2>
+      <p class="section-lead">No data science team, no pipeline, no retraining schedule. Just the question and the rows you already have.</p>
+      <div class="bento">
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 5h8M13 12h8M13 19h8M3 17l2 2 4-4M3 7l2 2 4-4"/></svg>
+          <h3>~50 examples is enough</h3>
+          <p>Label a handful of rows the way you'd want them labeled. That's the whole setup — no feature engineering, no labeling marathon.</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8 19 13M17.8 6.2 19 5M3 16l1.5-1.5M21 12a9 9 0 1 1-9-9"/></svg>
+          <h3>No training. No tuning.</h3>
+          <p>There's no fit step, no hyperparameters, no model registry. Ask, and the remaining rows come back scored in seconds.</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 14 4-4M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+          <h3>Confidence on every row</h3>
+          <p>Each prediction carries its own confidence, so you can auto-act on the certain rows and route the rest to a human.</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8l5 5v13a2 2 0 0 1-2 2zM14 2v5h5M8 13h2M14 13h2M8 17h2M14 17h2"/></svg>
+          <h3>Plain CSVs, messy included</h3>
+          <p>Point it at the export you already have. Blank cells, free-text columns and inconsistent types are handled, not rejected.</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+          <h3>Runs on a laptop CPU</h3>
+          <p>A tabular foundation model small enough to run locally. No GPU cluster, no queue, no per-prediction latency tax.</p>
+        </div>
+        <div class="bento-cell">
+          <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Data stays on your network</h3>
+          <p>Your rows never have to leave your machine or your VPC. Compliance review becomes a conversation, not a project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rule demos-section" id="demos">
+    <div class="wrap">
+      <h2 class="section-title">See it work</h2>
+      <p class="section-lead">Three real prompts. Same model, different questions — browse with the arrows.</p>
+      <div class="carousel-wrap">
+            <div class="carousel" id="carousel">
+<div class="demo-card" data-scene
                data-label="Deal Origination">
-            <span class="scene-tags"><span class="tag-use">Deal Origination</span><span class="tag-data">You have the data</span><span class="tag-verdict">Predictable</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span>predictivelayer</span>
+              <span class="bar-title">tracked_companies.csv — 4,012 rows</span>
               <span class="spacer"></span>
-              <span class="pill"><span class="live"></span> connected</span>
+              <span class="pill">local · CPU</span>
             </div>
             <div class="demo-body">
 
@@ -126,23 +320,17 @@
               </div>
 
             </div>
-            <div class="demo-foot">
-              <span class="caret">&#9656;</span>
-              <span>Ask for a prediction</span>
-              <span class="spacer"></span>
-              <span class="send">&#8593;</span>
-            </div>
             </div>
           </div>
-          <div class="demo-card" data-scene
+
+<div class="demo-card" data-scene
                data-label="Lead Scoring">
-            <span class="scene-tags"><span class="tag-use">Lead Scoring</span><span class="tag-data missing">You do not have the data</span><span class="tag-verdict">Predictable</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span>predictivelayer</span>
+              <span class="bar-title">names_only.csv — 1,120 rows &middot; 2 columns</span>
               <span class="spacer"></span>
-              <span class="pill"><span class="live"></span> connected</span>
+              <span class="pill">local · CPU</span>
             </div>
             <div class="demo-body">
 
@@ -200,23 +388,17 @@
               </div>
 
             </div>
-            <div class="demo-foot">
-              <span class="caret">&#9656;</span>
-              <span>Ask for a prediction</span>
-              <span class="spacer"></span>
-              <span class="send">&#8593;</span>
-            </div>
             </div>
           </div>
-          <div class="demo-card" data-scene
+
+<div class="demo-card" data-scene
                data-label="Pattern recognition">
-            <span class="scene-tags"><span class="tag-use">Pattern recognition</span><span class="tag-data complex">Predict a complex value</span><span class="tag-verdict">Predictable</span></span>
             <div class="demo">
             <div class="demo-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span>predictivelayer</span>
+              <span class="bar-title">past_deals.csv — 210 rows &middot; 9 columns</span>
               <span class="spacer"></span>
-              <span class="pill"><span class="live"></span> connected</span>
+              <span class="pill">local · CPU</span>
             </div>
             <div class="demo-body">
 
@@ -282,122 +464,177 @@
               </div>
 
             </div>
-            <div class="demo-foot">
-              <span class="caret">&#9656;</span>
-              <span>Ask for a prediction</span>
-              <span class="spacer"></span>
-              <span class="send">&#8593;</span>
-            </div>
             </div>
           </div>
+            
+            </div>
+            <div class="demo-nav">
+              <button class="demo-arrow" type="button" data-demo-prev aria-label="Previous demo">&#8592;</button>
+              <div class="demo-pips" id="demo-pips"></div>
+              <span class="demo-label" id="demo-label"></span>
+              <button class="demo-arrow" type="button" data-demo-next aria-label="Next demo">&#8594;</button>
+            </div>
           </div>
-          <button class="demo-arrow prev" data-demo-prev aria-label="Previous example">&#8249;</button>
-          <button class="demo-arrow next" data-demo-next aria-label="Next example">&#8250;</button>
-        </div>
-
-        <div class="demo-nav">
-          <span class="demo-pips" id="demo-pips"></span>
-          <span class="demo-label" id="demo-label"></span>
-        </div>
-      </div>
-      </div>
     </div>
   </section>
 
   <section class="rule" id="how">
     <div class="wrap">
-      <p class="eyebrow center">How it works</p>
-      <h2 class="center">Ask once. Every row scored.</h2>
-      <p class="sub center">You bring the judgement. It handles everything between the question and the answer.</p>
-      <div class="grid grid-3" style="margin-top:52px">
-        <div class="card">
-          <span class="step-num">01</span>
-          <h3>Show it what good looks like</h3>
-          <p>A handful of rows you have already judged. Fifty is often enough. That is your criterion, not a setting in a dropdown.</p>
+      <div class="how-grid">
+        <div class="how-intro">
+          <h2 class="section-title">Three steps, one sitting.</h2>
+          <p class="section-lead">The model reads your examples in context. There is no fitting step to wait on and nothing to redeploy when the data changes — you just ask again.</p>
+          <div class="code-panel">
+            <p class="code-cap">Called as a tool</p>
+            <pre>predict(
+  file: "accounts.csv",
+  target: "will_churn",
+  examples: 52
+)
+→ 4,130 rows scored
+→ confidence per row</pre>
+          </div>
         </div>
-        <div class="card">
-          <span class="step-num">02</span>
-          <h3>Ask in plain English</h3>
-          <p>"Score these for fit." In chat, or as a tool call from your own agent. No column mapping, no config file.</p>
-        </div>
-        <div class="card">
-          <span class="step-num">03</span>
-          <h3>Get every row back, scored</h3>
-          <p>With a confidence figure on each one, so you know which rows to trust and which to check. Download it or pipe it onward.</p>
-        </div>
+        <ol class="steps-list">
+          <li class="step-card">
+            <div class="step-card-inner">
+              <span class="step-num">01</span>
+              <div>
+                <h3>Say what you want to predict</h3>
+                <p>In plain language: “which of these accounts will churn next quarter?” No schema mapping, no target-column ceremony.</p>
+              </div>
+            </div>
+          </li>
+          <li class="step-card">
+            <div class="step-card-inner">
+              <span class="step-num">02</span>
+              <div>
+                <h3>It learns from your labeled rows</h3>
+                <p>The tabular foundation model reads the examples you already labeled — roughly 50 is plenty — and infers the pattern in-context.</p>
+              </div>
+            </div>
+          </li>
+          <li class="step-card">
+            <div class="step-card-inner">
+              <span class="step-num">03</span>
+              <div>
+                <h3>Every remaining row comes back scored</h3>
+                <p>A prediction and a confidence per row, in chat or returned straight to the agent that called it as a tool.</p>
+              </div>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <section class="rule">
+  <section class="rule" id="use-cases">
     <div class="wrap">
-      <div class="grid split">
-        <div>
-          <p class="eyebrow">The model</p>
-          <h2>No training run, no tuning</h2>
-          <p class="lead">Under the hood is a tabular foundation model, pre-trained on millions of synthetic tables. It already knows how columns tend to relate, so your examples go in as context rather than as a training set.</p>
-          <p class="lead">A prediction takes seconds instead of a sprint, and you can change your criteria and run it again without starting over.</p>
-          <p><a href="auto.html">See a full run &rarr;</a></p>
+      <h2 class="section-title">What teams point it at first</h2>
+      <p class="section-lead">If the answer lives in a spreadsheet and a person could label 50 rows of it, it's a fit.</p>
+      <div class="use-grid">
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 17h6v-6M22 17l-8.5-8.5-5 5L2 7"/></svg></div>
+          <h3>Deal &amp; intent scoring</h3>
+          <p>Rank open opportunities by likelihood to close from the CRM export you already run.</p>
         </div>
-        <div class="grid" style="gap:16px">
-          <div class="card">
-            <h3>Your criteria, not a fixed schema</h3>
-            <p>Lead fit, risk flags, churn, priority, a quality grade. If you can label 50 rows, you can predict the rest.</p>
-          </div>
-          <div class="card">
-            <h3>Works on plain CSVs</h3>
-            <p>Numbers, text categories, missing values. Columns are matched between the two files for you.</p>
-          </div>
-          <div class="card">
-            <h3>Runs on your machine</h3>
-            <p>The app runs locally on a laptop CPU. Your data does not have to leave your network.</p>
-          </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Lead &amp; account scoring</h3>
+          <p>Turn 50 hand-picked good-fit accounts into a scored list across the whole database.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></div>
+          <h3>Churn &amp; renewal risk</h3>
+          <p>Flag the renewals worth a call this week, with confidence to size the outreach.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Data-quality flags</h3>
+          <p>Learn what a bad record looks like from a few examples and catch the rest automatically.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+          <h3>Category fill-in</h3>
+          <p>Backfill missing categories, segments and tags across thousands of rows consistently.</p>
+        </div>
+        <div class="use-card">
+          <div class="use-icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 12v5M12 8v9M17 11v6"/></svg></div>
+          <h3>Estimates &amp; grades</h3>
+          <p>Predict numeric estimates or graded tiers where a rule set would be too brittle to maintain.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="rule">
+  <section class="rule" id="proof">
     <div class="wrap">
-      <p class="eyebrow center">Where it fits</p>
-      <h2 class="center">Structured or unstructured data,<br class="brk"> just upload</h2>
-      <div class="grid grid-3" style="margin-top:52px">
-        <div class="card"><h3>Lead and account scoring</h3><p>Label the accounts that closed. Score the rest of the list against the same bar.</p></div>
-        <div class="card"><h3>Churn and renewal risk</h3><p>Label who left and who stayed. Flag the accounts heading the same way.</p></div>
-        <div class="card"><h3>Intent scoring</h3><p>Label the owners who sold. Rank every other company by how likely it is to sell next.</p></div>
-        <div class="card"><h3>Data quality flags</h3><p>Label the rows you know are wrong. Find the ones that look like them.</p></div>
-        <div class="card"><h3>Category fill-in</h3><p>Tag part of a catalogue by hand. Let the model finish the rest.</p></div>
-        <div class="card"><h3>Estimates and grades</h3><p>Continuous targets work too: price, duration, a numeric quality score.</p></div>
+      <h2 class="section-title">Shipped by revenue, data and platform teams</h2>
+      <div class="proof-grid">
+        <figure class="proof-card">
+          <svg class="proof-quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/></svg>
+          <blockquote>“We had a churn model on the roadmap for two quarters. We labeled 60 accounts on a Tuesday and had scored renewals the same afternoon.”</blockquote>
+          <figcaption>
+            <div class="name">Dana Whitfield</div>
+            <div class="role">VP Revenue Operations, Harbor Analytics</div>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <svg class="proof-quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/></svg>
+          <blockquote>“It's the first predictive tool our agents can just call. Structured scores with confidence beats an LLM guessing at a spreadsheet.”</blockquote>
+          <figcaption>
+            <div class="name">Marcus Reyn</div>
+            <div class="role">Head of Platform, Verity Logistics</div>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <svg class="proof-quote-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/></svg>
+          <blockquote>“Nothing left our network, so security signed off in a week. That's never happened with an ML vendor before.”</blockquote>
+          <figcaption>
+            <div class="name">Priya Nandan</div>
+            <div class="role">Director of Data, Cobalt Health</div>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="rule">
-    <div class="wrap narrow center">
-      <h2>Try it on your own data</h2>
-      <p class="sub center" style="margin-bottom:0">Tell us what you want to score and we will get you set up.</p>
-      <div class="btn-row center">
-        <a class="btn btn-primary" href="contact.html">Get in touch</a>
-        <button class="btn btn-secondary" data-mail-open>Email us</button>
+  <section class="rule" id="cta">
+    <div class="wrap">
+      <div class="cta-box">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="cta-inner">
+          <h2 class="section-title">Bring a CSV and 50 labeled rows. Leave with predictions.</h2>
+          <p class="section-lead">Run it on your laptop, keep your data on your network, and find out in an afternoon whether the prediction is worth a project.</p>
+          <form class="cta-form" action="contact.html" method="get">
+            <label for="work-email" class="sr-only">Work email</label>
+            <input id="work-email" name="email" type="email" required placeholder="you@company.com">
+            <button class="btn btn-accent" type="submit">Get access <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          </form>
+          <p class="cta-note">No GPU required · works offline · CSV in, CSV out</p>
+        </div>
       </div>
     </div>
   </section>
+
 
 </main>
 
 <footer class="site-footer">
   <div class="wrap footer-row">
-    <div>&copy; 2026 Predictive Layer</div>
-    <div class="footer-links">
-      <a href="auto.html">One-click</a>
-      <a href="product.html">Drop and Predict</a>
-      <a href="index.html#how">How it works</a>
-      <a href="resources.html">Resources</a>
-      <a href="#" data-mail-open>Email us</a>
+    <div class="footer-brand">
+      <span class="footer-mark"><img src="logo.svg" alt="" width="14" height="14" aria-hidden="true"></span>
+      <span class="footer-name">Predictive Layer</span>
     </div>
+    <nav class="footer-links">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#use-cases">Use cases</a>
+      <a href="contact.html">Get in touch</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 predictivelayer.io</p>
   </div>
 </footer>
 
-<script src="main.js?v=16"></script>
+<script src="main.js?v=23"></script>
 </body>
 </html>
