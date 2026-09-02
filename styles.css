@@ -561,6 +561,18 @@ a:hover { color: var(--accent-2); }
   min-width: 0;
   width: 100%;
 }
+/* Space between the CTA row and the run window on stacked page heroes */
+.btn-row + .hero-visual { margin-top: 3.5rem; }
+
+/* Sections with no .rule class still keep the page's vertical rhythm */
+main > section:not(.hero):not(.rule):not(.tight) { padding: 5rem 0; }
+@media (min-width: 640px) {
+  main > section:not(.hero):not(.rule):not(.tight) { padding: 7rem 0; }
+}
+section.tight { padding: 2.5rem 0 4.5rem; }
+@media (min-width: 640px) {
+  section.tight { padding: 3rem 0 6rem; }
+}
 
 /* Static ScoreDemo panel (hero right) */
 .score-demo {
