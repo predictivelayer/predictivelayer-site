@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibration analysis — predictivelayer.io</title>
+<meta name="description" content="Describe turbine-generator vibration symptoms. Cited field cases and book passages propose the next checks.">
+<meta name="theme-color" content="#f8f8f3">
+<link rel="stylesheet" href="../styles.css?v=47">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<style>
+  body.vib-app-page { min-height: 100vh; display: flex; flex-direction: column; }
+  body.vib-app-page .site-header { flex-shrink: 0; }
+  .vib-shell { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .vib-intro {
+    padding: 1.25rem 0 0.85rem;
+    border-bottom: 1px solid var(--line-soft, #e5e1d6);
+    background: var(--background, #f8f8f3);
+  }
+  .vib-intro .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .vib-intro h1 {
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    margin: 0.2rem 0 0;
+    letter-spacing: -0.02em;
+  }
+  .vib-intro .sub {
+    margin: 0.45rem 0 0;
+    max-width: 62ch;
+    color: var(--muted-foreground, #5c564c);
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  .vib-frame-wrap {
+    flex: 1;
+    min-height: 70vh;
+    background: #efe7d8;
+  }
+  .vib-frame {
+    width: 100%;
+    height: calc(100vh - 148px);
+    min-height: 640px;
+    border: 0;
+    display: block;
+    background: #f3efe6;
+  }
+  .vib-fallback {
+    max-width: 52ch;
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
+    color: var(--muted-foreground, #5c564c);
+    line-height: 1.55;
+  }
+  @media (max-width: 720px) {
+    .vib-frame { height: calc(100vh - 200px); min-height: 520px; }
+  }
+</style>
+</head>
+<body class="vib-app-page">
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="../index.html"><img class="wordmark-mark" src="../logo.svg" alt="" width="19" height="20" aria-hidden="true">Predictive Layer</a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger active" aria-expanded="false" aria-haspopup="true">Product <span class="chev">&#9662;</span></button>
+        <div class="menu">
+          <a class="menu-item" href="../auto.html">
+            <span class="menu-title">One-click <span class="menu-tag">Planning</span></span>
+            <span class="menu-desc">Bring a question and a list of rows. It finds the data, labels a sample with you, and scores the rest.</span>
+          </a>
+          <a class="menu-item" href="../product.html">
+            <span class="menu-title">Drop and Predict <span class="menu-tag soft">Fast</span></span>
+            <span class="menu-desc">Already have the rows and the labels? Drop in two CSVs and get a scored column back.</span>
+          </a>
+          <a class="menu-item" href="./">
+            <span class="menu-title">Vibration analysis <span class="menu-tag soft">Field</span></span>
+            <span class="menu-desc">Describe turbine-generator vibration symptoms. Cited field cases and book passages propose the next checks.</span>
+          </a>
+        </div>
+      </div>
+      <a href="../index.html#how">How it works</a>
+      <a href="../resources.html">Resources</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-signin" href="https://app.predictivelayer.io">Sign in</a>
+      <a class="btn btn-primary" href="../contact.html">Get in touch</a>
+      <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <svg class="lang-globe" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.1"/><path d="M1.75 8h12.5M8 1.75c1.7 1.85 2.65 3.95 2.65 6.25S9.7 12.4 8 14.25C6.3 12.4 5.35 10.3 5.35 8S6.3 3.6 8 1.75z" stroke="currentColor" stroke-width="1.1"/></svg>
+        <span class="lang-current" aria-current="true">EN</span>
+        <span class="lang-sep">|</span>
+        <a class="lang-link" href="../zh/index.html">中文</a>
+      </div>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Menu">Menu</button>
+  </div>
+</header>
+
+<div class="vib-shell">
+  <section class="vib-intro">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Vibration analysis</p>
+        <h1>Citation-checked field diagnosis</h1>
+        <p class="sub">Describe symptoms in Chinese or English. The assistant retrieves book passages and plant cases, verifies quotes, and proposes checks for an expert to confirm.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-accent" id="vibOpenApp" href="https://predictivelayer-vibration.fly.dev" target="_blank" rel="noopener">Open full screen</a>
+      </div>
+    </div>
+  </section>
+  <div class="vib-frame-wrap">
+    <iframe
+      class="vib-frame"
+      id="vibFrame"
+      title="Vibration diagnosis assistant"
+      src="https://predictivelayer-vibration.fly.dev"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allow="clipboard-write"
+    ></iframe>
+    <p class="vib-fallback" id="vibFallback" hidden>
+      The live assistant is deploying to Fly.io (<code>predictivelayer-vibration</code>).
+      Until that machine is up, run locally with <code>python -m server.api</code> on port 8765,
+      or open the full-screen link once deploy finishes.
+    </p>
+  </div>
+</div>
+
+<script src="../main.js?v=20"></script>
+<script>
+  // If the Fly app is unreachable, surface a short note (iframe errors are opaque;
+  // we probe /api/health from the parent when possible).
+  (function () {
+    var url = "https://predictivelayer-vibration.fly.dev/api/health";
+    var ctrl = new AbortController();
+    var t = setTimeout(function () { ctrl.abort(); }, 4000);
+    fetch(url, { mode: "cors", signal: ctrl.signal })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function () { clearTimeout(t); })
+      .catch(function () {
+        clearTimeout(t);
+        var el = document.getElementById("vibFallback");
+        if (el) el.hidden = false;
+      });
+  })();
+</script>
+</body>
+</html>
